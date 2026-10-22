@@ -1,0 +1,31 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+body {
+  font-family: 'Plus Jakarta Sans', sans-serif;
+  background-color: #f6fbf7;
+  color: #1a2e26;
+  overflow-x: hidden;
+}
+
+.bg-grid-pattern {
+  background-image: radial-gradient(#087c50 0.75px, transparent 0.75px);
+  background-size: 24px 24px;
+  opacity: 0.08;
+}
+
+.hide-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.hide-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(8, 124, 80, 0.12);
+}

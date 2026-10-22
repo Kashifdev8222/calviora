@@ -1,0 +1,984 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calviora - Good food. Better you.</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        brand: {
+                            deep: '#034F36',
+                            action: '#087C50',
+                            soft: '#E6F3EA',
+                            cloud: '#F6FBF7',
+                            leaf: '#B0EA48',
+                            dark: '#023122'
+                        }
+                    },
+                    fontFamily: {
+                        sans: ['"Plus Jakarta Sans"', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: #F6FBF7;
+            color: #1A2E26;
+            overflow-x: hidden;
+        }
+        .bg-grid-pattern {
+            background-image: radial-gradient(#087C50 0.75px, transparent 0.75px);
+            background-size: 24px 24px;
+            opacity: 0.08;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.85);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(8, 124, 80, 0.12);
+        }
+    </style>
+</head>
+<body class="antialiased text-slate-800">
+
+    <!-- Navigation Header -->
+    <header class="sticky top-0 z-50 glass-card border-b border-brand-soft/50 bg-white/80">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <!-- Brand Logo -->
+            <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-brand-deep flex items-center justify-center text-brand-leaf font-bold text-xl shadow-md">
+                    <i data-lucide="camera" class="w-5 h-5"></i>
+                </div>
+                <div>
+                    <span class="text-2xl font-extrabold tracking-tight text-brand-deep">Calviora</span>
+                    <span class="block text-[10px] uppercase font-bold tracking-widest text-brand-action -mt-1">Good food. Better you.</span>
+                </div>
+            </div>
+
+            <!-- Nav Links -->
+            <nav class="hidden md:flex items-center gap-8 font-semibold text-sm text-slate-700">
+                <a href="#features" class="hover:text-brand-action transition">Features</a>
+                <a href="#goals" class="hover:text-brand-action transition">Your Goals</a>
+                <a href="#app-preview" class="hover:text-brand-action transition">App Preview</a>
+                <a href="#pricing" class="hover:text-brand-action transition">Pricing</a>
+                <a href="#faq" class="hover:text-brand-action transition">FAQ</a>
+            </nav>
+
+            <!-- Header Action CTA -->
+            <div class="flex items-center gap-3">
+                <a href="#pricing" class="hidden sm:inline-flex items-center gap-2 px-5 py-2.5 rounded-full bg-brand-soft text-brand-deep font-bold text-sm hover:bg-brand-action hover:text-white transition">
+                    3 Free AI Scans
+                </a>
+                <a href="#download" class="inline-flex items-center gap-2 px-6 py-2.5 rounded-full bg-brand-deep text-brand-leaf font-bold text-sm hover:bg-brand-dark transition shadow-lg shadow-brand-deep/20">
+                    Get Started <i data-lucide="arrow-right" class="w-4 h-4"></i>
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+        <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="grid lg:grid-cols-12 gap-12 items-center">
+                
+                <!-- Hero Left Content -->
+                <div class="lg:col-span-7 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-soft text-brand-deep font-semibold text-xs sm:text-sm mb-6 border border-brand-action/20">
+                        <span class="flex h-2 w-2 rounded-full bg-brand-leaf animate-pulse"></span>
+                        AI Food Scan & South Asian Dish Recognition
+                    </div>
+                    
+                    <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-deep leading-[1.15]">
+                        Eat Smart. Track Easy. <br class="hidden sm:block"/>
+                        <span class="text-brand-action underline decoration-brand-leaf decoration-wavy decoration-2">Live Better.</span>
+                    </h1>
+                    
+                    <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 font-medium">
+                        Snap a photo of your plate—whether it's Biryani, Avocado Toast, or a homemade curry—and let Calviora AI calculate your calories, macros & nutrition in seconds.
+                    </p>
+
+                    <div class="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+                        <a href="#pricing" class="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-action text-white font-extrabold text-base hover:bg-brand-deep transition shadow-xl shadow-brand-action/25 flex items-center justify-center gap-3">
+                            <i data-lucide="sparkles" class="w-5 h-5 text-brand-leaf"></i>
+                            Start Free Trial (3 Free Scans/Day)
+                        </a>
+                        <a href="#app-preview" class="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-base hover:border-brand-action transition flex items-center justify-center gap-2">
+                            <i data-lucide="play-circle" class="w-5 h-5 text-brand-action"></i>
+                            See How It Works
+                        </a>
+                    </div>
+
+                    <!-- Trust Stats & Badges -->
+                    <div class="mt-10 pt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-8">
+                        <div>
+                            <div class="text-2xl font-extrabold text-brand-deep">18,500+</div>
+                            <div class="text-xs text-slate-500 font-medium">Foods & Desi Dishes Recognized</div>
+                        </div>
+                        <div class="h-8 w-px bg-slate-200 hidden sm:block"></div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-brand-deep">98%</div>
+                            <div class="text-xs text-slate-500 font-medium">Calorie AI Accuracy</div>
+                        </div>
+                        <div class="h-8 w-px bg-slate-200 hidden sm:block"></div>
+                        <div>
+                            <div class="text-2xl font-extrabold text-brand-deep">Zero</div>
+                            <div class="text-xs text-slate-500 font-medium">Manual Search Hassle</div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Right Mobile Mockup Showcase -->
+                <div class="lg:col-span-5 flex justify-center relative">
+                    <div class="w-72 sm:w-80 h-[560px] bg-slate-900 rounded-[48px] p-4 shadow-2xl border-4 border-slate-800 relative z-10 flex flex-col justify-between overflow-hidden">
+                        <!-- Top Bar Mock -->
+                        <div class="w-32 h-5 bg-slate-800 rounded-full mx-auto mb-2"></div>
+                        
+                        <!-- Screen Content -->
+                        <div class="bg-brand-cloud flex-1 rounded-[32px] p-4 flex flex-col justify-between overflow-hidden relative border border-slate-200">
+                            <!-- App Header -->
+                            <div class="flex items-center justify-between pb-3 border-b border-slate-200">
+                                <div>
+                                    <div class="text-[10px] text-slate-400 font-bold uppercase">Today</div>
+                                    <div class="text-sm font-bold text-brand-deep">Dashboard</div>
+                                </div>
+                                <span class="px-2 py-1 bg-brand-soft text-brand-action text-[10px] font-bold rounded-full">3 Free Scans</span>
+                            </div>
+
+                            <!-- Meal Scan Graphic -->
+                            <div class="my-auto relative rounded-2xl overflow-hidden border-2 border-brand-action shadow-lg group">
+                                <img src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80" alt="Biryani Dish" class="w-full h-44 object-cover">
+                                <div class="absolute inset-0 bg-brand-deep/30 flex items-center justify-center">
+                                    <div class="bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl text-center shadow-lg border border-brand-action/20">
+                                        <div class="flex items-center gap-1.5 text-brand-action text-xs font-extrabold">
+                                            <i data-lucide="check-circle" class="w-4 h-4"></i> Chicken Biryani
+                                        </div>
+                                        <div class="text-slate-600 text-[11px] font-semibold mt-0.5">540 Cal | P: 28g | C: 62g | F: 18g</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- Macros Bar -->
+                            <div class="bg-white p-3 rounded-xl border border-slate-100 shadow-sm">
+                                <div class="flex justify-between text-xs font-bold text-slate-700 mb-1">
+                                    <span>Daily Calorie Goal</span>
+                                    <span class="text-brand-action">1,420 / 1,960 kcal</span>
+                                </div>
+                                <div class="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
+                                    <div class="bg-brand-action h-full w-[72%] rounded-full"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Decorative Floating Elements -->
+                    <div class="absolute -top-6 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 z-20">
+                        <div class="w-10 h-10 rounded-xl bg-brand-soft text-brand-action flex items-center justify-center font-bold">
+                            <i data-lucide="qr-code" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-slate-800">Barcode Scanner</div>
+                            <div class="text-[10px] text-slate-500">Scan packaged items instantly</div>
+                        </div>
+                    </div>
+
+                    <div class="absolute -bottom-6 -left-4 bg-brand-deep text-white p-4 rounded-2xl shadow-xl z-20 flex items-center gap-3">
+                        <div class="w-10 h-10 rounded-xl bg-brand-leaf text-brand-deep flex items-center justify-center font-bold">
+                            <i data-lucide="droplet" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <div class="text-xs font-bold text-brand-leaf">Water Tracker</div>
+                            <div class="text-[10px] text-slate-200">Goal: 2.5L Logged</div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- App Screenshots Horizontal Showcase Section (Competitor Inspired) -->
+    <section id="app-screenshots" class="py-16 bg-gradient-to-b from-brand-cloud via-white to-brand-cloud overflow-hidden border-y border-brand-soft">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            
+            <div class="text-center max-w-3xl mx-auto mb-10">
+                <span class="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-soft text-brand-action font-bold text-xs uppercase tracking-wider mb-3">
+                    <i data-lucide="smartphone" class="w-4 h-4"></i> Calviora Experience
+                </span>
+                <h2 class="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-brand-deep tracking-tight">
+                    Designed to make healthy eating effortless
+                </h2>
+                <p class="mt-3 text-slate-600 text-base sm:text-lg font-medium">
+                    Take a look inside Calviora — from instant AI food scans to streak achievements.
+                </p>
+            </div>
+
+            <!-- Screenshots Carousel Wrapper with Navigation Arrows -->
+            <div class="relative max-w-6xl mx-auto group">
+                
+                <!-- Left Navigation Arrow -->
+                <button id="scrollLeftBtn" aria-label="Scroll Left" class="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white text-brand-deep border-2 border-brand-action/20 shadow-xl flex items-center justify-center hover:bg-brand-action hover:text-white hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none">
+                    <i data-lucide="chevron-left" class="w-6 h-6 stroke-[2.5]"></i>
+                </button>
+
+                <!-- Right Navigation Arrow -->
+                <button id="scrollRightBtn" aria-label="Scroll Right" class="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white text-brand-deep border-2 border-brand-action/20 shadow-xl flex items-center justify-center hover:bg-brand-action hover:text-white hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none">
+                    <i data-lucide="chevron-right" class="w-6 h-6 stroke-[2.5]"></i>
+                </button>
+
+                <!-- 5 Mobile App Screenshots Row -->
+                <div id="screenshotsContainer" class="flex items-center gap-4 sm:gap-6 overflow-x-auto scroll-smooth py-6 px-4 hide-scrollbar">
+                    
+                    <!-- Screen 1: Plan Progress -->
+                    <div class="w-64 sm:w-72 flex-shrink-0 bg-white rounded-[36px] p-3 shadow-xl border-4 border-slate-900 transition-transform duration-300 hover:-translate-y-2">
+                        <div class="bg-slate-50 rounded-[28px] p-5 h-[480px] flex flex-col justify-between border border-slate-200">
+                            <div class="text-center pt-6">
+                                <!-- Circular Progress Indicator -->
+                                <div class="relative w-28 h-28 mx-auto flex items-center justify-center">
+                                    <svg class="w-full h-full transform -rotate-90" viewBox="0 0 36 36">
+                                        <path class="text-slate-200" stroke-width="3" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                        <path class="text-brand-action" stroke-dasharray="75, 100" stroke-width="3.5" stroke-linecap="round" stroke="currentColor" fill="none" d="M18 2.0845 a 15.9155 15.9155 0 0 1 0 31.831 a 15.9155 15.9155 0 0 1 0 -31.831" />
+                                    </svg>
+                                    <span class="absolute text-2xl font-black text-slate-900">75%</span>
+                                </div>
+
+                                <h3 class="text-xl font-extrabold text-slate-900 mt-6 leading-tight">We're creating your plan...</h3>
+                            </div>
+
+                            <!-- Checklists -->
+                            <div class="space-y-3 px-2 mb-6 text-xs font-semibold text-slate-700">
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-5 h-5 rounded-full bg-brand-action text-white flex items-center justify-center text-[10px]">✓</div>
+                                    <span>Analyzing your answers</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-5 h-5 rounded-full bg-brand-action text-white flex items-center justify-center text-[10px]">✓</div>
+                                    <span>Calculating your calorie goal</span>
+                                </div>
+                                <div class="flex items-center gap-2.5">
+                                    <div class="w-5 h-5 rounded-full bg-brand-action text-white flex items-center justify-center text-[10px]">✓</div>
+                                    <span>Predicting your progress</span>
+                                </div>
+                                <div class="flex items-center gap-2.5 opacity-40">
+                                    <div class="w-5 h-5 rounded-full border border-slate-400"></div>
+                                    <span>Adding finishing touches</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Screen 2: AI Camera View (Dark UI) -->
+                    <div class="w-64 sm:w-72 flex-shrink-0 bg-white rounded-[36px] p-3 shadow-xl border-4 border-slate-900 transition-transform duration-300 hover:-translate-y-2">
+                        <div class="bg-slate-950 text-white rounded-[28px] p-4 h-[480px] flex flex-col justify-between relative overflow-hidden">
+                            <!-- Top Navigation -->
+                            <div class="flex items-center justify-between text-slate-300 text-xs font-bold pt-1">
+                                <i data-lucide="arrow-left" class="w-5 h-5"></i>
+                                <span class="text-sm font-black tracking-wider text-white">Calviora</span>
+                                <i data-lucide="help-circle" class="w-5 h-5"></i>
+                            </div>
+
+                            <!-- Camera View Finder -->
+                            <div class="relative my-auto w-full h-56 rounded-2xl overflow-hidden border-2 border-white/20 shadow-inner">
+                                <img src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80" alt="Croissant & Coffee" class="w-full h-full object-cover">
+                                
+                                <!-- Scanner Overlay Lines -->
+                                <div class="absolute inset-4 border-2 border-dashed border-brand-leaf/80 rounded-xl pointer-events-none"></div>
+
+                                <div class="absolute bottom-2 left-0 right-0 text-center px-3">
+                                    <span class="bg-black/60 backdrop-blur-md text-[10px] font-medium text-white px-3 py-1 rounded-full border border-white/10">
+                                        Make sure your meal is well lit
+                                    </span>
+                                </div>
+                            </div>
+
+                            <!-- Camera Action Bar -->
+                            <div class="pb-2">
+                                <div class="flex items-center justify-around mb-4">
+                                    <button class="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-white">
+                                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                                            <i data-lucide="image" class="w-4 h-4"></i>
+                                        </div>
+                                        <span>Gallery</span>
+                                    </button>
+                                    
+                                    <button class="w-14 h-14 rounded-full bg-brand-action text-brand-leaf flex items-center justify-center shadow-lg shadow-brand-action/50 border-2 border-white">
+                                        <i data-lucide="camera" class="w-7 h-7"></i>
+                                    </button>
+
+                                    <button class="flex flex-col items-center gap-1 text-[10px] text-slate-400 hover:text-white">
+                                        <div class="w-8 h-8 rounded-lg bg-white/10 flex items-center justify-center">
+                                            <i data-lucide="zap" class="w-4 h-4"></i>
+                                        </div>
+                                        <span>Flash</span>
+                                    </button>
+                                </div>
+
+                                <div class="flex justify-center gap-6 text-[11px] font-bold text-slate-400 border-t border-white/10 pt-2">
+                                    <span class="text-brand-leaf flex items-center gap-1"><i data-lucide="sparkles" class="w-3 h-3"></i> AI Camera</span>
+                                    <span>Search</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Screen 3: Main Dashboard -->
+                    <div class="w-64 sm:w-72 flex-shrink-0 bg-white rounded-[36px] p-3 shadow-xl border-4 border-slate-900 transition-transform duration-300 hover:-translate-y-2">
+                        <div class="bg-slate-50 rounded-[28px] p-4 h-[480px] flex flex-col justify-between border border-slate-200">
+                            <div>
+                                <!-- Header Bar -->
+                                <div class="flex justify-between items-center mb-1">
+                                    <span class="text-xl font-black text-slate-900">Today</span>
+                                    <div class="flex items-center gap-2 text-xs font-bold text-slate-600">
+                                        <span class="flex items-center gap-1 text-sky-600"><i data-lucide="gem" class="w-3.5 h-3.5"></i> 2000</span>
+                                        <span class="flex items-center gap-1 text-orange-500"><i data-lucide="flame" class="w-3.5 h-3.5 fill-current"></i> 135</span>
+                                    </div>
+                                </div>
+                                <div class="text-[10px] text-slate-400 font-bold mb-3">Week 175</div>
+
+                                <!-- Calorie Summary Ring -->
+                                <div class="bg-white p-3 rounded-2xl border border-slate-200 shadow-sm text-center mb-3">
+                                    <div class="text-[10px] font-bold text-slate-400 uppercase tracking-wider mb-1">Summary</div>
+                                    <div class="relative w-24 h-24 mx-auto flex flex-col items-center justify-center">
+                                        <div class="text-xl font-black text-slate-900 leading-none">868</div>
+                                        <div class="text-[10px] text-slate-500 font-bold">Remaining</div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-3 gap-1 pt-2 border-t border-slate-100 text-[10px] font-semibold text-slate-600">
+                                        <div><span class="block text-slate-400">Eaten</span>1,020</div>
+                                        <div><span class="block text-slate-400">Protein</span>46g</div>
+                                        <div><span class="block text-slate-400">Burned</span>142</div>
+                                    </div>
+                                </div>
+
+                                <!-- Nutrition Diary Cards -->
+                                <div class="space-y-2">
+                                    <div class="flex justify-between items-center text-xs font-bold text-slate-800">
+                                        <span>Nutrition</span>
+                                        <span class="text-brand-action text-[10px]">More</span>
+                                    </div>
+                                    
+                                    <div class="bg-white p-2.5 rounded-xl border border-slate-200 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-8 h-8 rounded-full bg-amber-100 text-amber-700 flex items-center justify-center font-bold text-xs">🍳</div>
+                                            <div>
+                                                <div class="text-xs font-bold text-slate-800">Breakfast</div>
+                                                <div class="text-[10px] text-slate-500">466 / 566 Cal</div>
+                                            </div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs">+</div>
+                                    </div>
+
+                                    <div class="bg-white p-2.5 rounded-xl border border-slate-200 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-8 h-8 rounded-full bg-emerald-100 text-emerald-700 flex items-center justify-center font-bold text-xs">🥗</div>
+                                            <div>
+                                                <div class="text-xs font-bold text-slate-800">Lunch</div>
+                                                <div class="text-[10px] text-slate-500">554 / 755 Cal</div>
+                                            </div>
+                                        </div>
+                                        <div class="w-6 h-6 rounded-full bg-slate-900 text-white flex items-center justify-center font-bold text-xs">+</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- App Bottom Tab Bar -->
+                            <div class="flex justify-around pt-2 border-t border-slate-200 text-[9px] font-bold text-slate-400">
+                                <span class="text-brand-action flex flex-col items-center"><i data-lucide="book-open" class="w-4 h-4"></i> Diary</span>
+                                <span class="flex flex-col items-center"><i data-lucide="utensils" class="w-4 h-4"></i> Recipes</span>
+                                <span class="flex flex-col items-center"><i data-lucide="timer" class="w-4 h-4"></i> Fasting</span>
+                                <span class="flex flex-col items-center"><i data-lucide="user" class="w-4 h-4"></i> Profile</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Screen 4: Water Tracker & Activities -->
+                    <div class="w-64 sm:w-72 flex-shrink-0 bg-white rounded-[36px] p-3 shadow-xl border-4 border-slate-900 transition-transform duration-300 hover:-translate-y-2">
+                        <div class="bg-slate-50 rounded-[28px] p-4 h-[480px] flex flex-col justify-between border border-slate-200">
+                            <div>
+                                <!-- Water Card -->
+                                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm mb-4">
+                                    <div class="text-xs font-extrabold text-slate-900 mb-2">Water Tracker</div>
+                                    <div class="text-center py-2">
+                                        <div class="text-[10px] text-slate-400 font-bold uppercase">Goal: 74 fl oz</div>
+                                        <div class="text-2xl font-black text-sky-600 mt-0.5">72 fl oz</div>
+                                    </div>
+                                    
+                                    <div class="grid grid-cols-4 gap-2 my-2">
+                                        <div class="h-7 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center"><i data-lucide="droplet" class="w-4 h-4 fill-current"></i></div>
+                                        <div class="h-7 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center"><i data-lucide="droplet" class="w-4 h-4 fill-current"></i></div>
+                                        <div class="h-7 bg-sky-100 text-sky-600 rounded-lg flex items-center justify-center"><i data-lucide="droplet" class="w-4 h-4 fill-current"></i></div>
+                                        <div class="h-7 bg-sky-500 text-white rounded-lg flex items-center justify-center font-bold text-xs"><i data-lucide="plus" class="w-4 h-4"></i></div>
+                                    </div>
+                                    <div class="text-[9px] text-center text-slate-400 font-semibold">+ Water from food: 0.0 fl oz</div>
+                                </div>
+
+                                <!-- Activity Card -->
+                                <div class="bg-white p-4 rounded-2xl border border-slate-200 shadow-sm">
+                                    <div class="flex justify-between items-center mb-3">
+                                        <span class="text-xs font-extrabold text-slate-900">Activities</span>
+                                        <span class="text-[10px] text-brand-action font-bold">More</span>
+                                    </div>
+
+                                    <div class="bg-slate-50 p-3 rounded-xl border border-slate-100 flex items-center justify-between">
+                                        <div class="flex items-center gap-2">
+                                            <div class="w-8 h-8 rounded-lg bg-sky-100 text-sky-600 flex items-center justify-center">
+                                                <i data-lucide="footprints" class="w-4 h-4"></i>
+                                            </div>
+                                            <div>
+                                                <div class="text-xs font-bold text-slate-800">Steps</div>
+                                                <div class="text-[10px] text-slate-400">Automatic Tracking</div>
+                                            </div>
+                                        </div>
+                                        <button class="px-3 py-1 bg-slate-900 text-white text-[10px] font-bold rounded-lg">Connect</button>
+                                    </div>
+                                    
+                                    <button class="w-full mt-2 py-1.5 text-center text-[10px] font-bold text-brand-action">
+                                        Track steps manually
+                                    </button>
+                                </div>
+                            </div>
+
+                            <!-- Footer Control -->
+                            <div class="flex justify-between items-center pt-2 border-t border-slate-200">
+                                <div class="w-8 h-8 rounded-full border border-slate-300 flex items-center justify-center font-bold text-slate-600 text-xs">+</div>
+                                <div class="text-[10px] font-bold text-slate-500 flex items-center gap-1">
+                                    🏃 361 Cal
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Screen 5: Streaks & Milestones -->
+                    <div class="w-64 sm:w-72 flex-shrink-0 bg-white rounded-[36px] p-3 shadow-xl border-4 border-slate-900 transition-transform duration-300 hover:-translate-y-2">
+                        <div class="bg-slate-50 rounded-[28px] p-5 h-[480px] flex flex-col justify-between border border-slate-200 text-center">
+                            <div class="pt-6">
+                                <!-- Fire Icon Graphic -->
+                                <div class="relative w-24 h-24 mx-auto mb-2 flex items-center justify-center">
+                                    <div class="absolute inset-0 bg-orange-400/20 rounded-full blur-xl animate-pulse"></div>
+                                    <div class="text-6xl relative z-10">🔥</div>
+                                </div>
+
+                                <div class="text-4xl font-black text-slate-900">3</div>
+                                <div class="text-lg font-extrabold text-slate-800 tracking-tight">Day Milestone</div>
+
+                                <!-- Days Row -->
+                                <div class="grid grid-cols-7 gap-1 mt-6 bg-white p-2 rounded-xl border border-slate-200 text-[10px] font-bold text-slate-600">
+                                    <div>Mo<span class="block text-brand-action font-black">✓</span></div>
+                                    <div>Tu<span class="block text-brand-action font-black">✓</span></div>
+                                    <div>We<span class="block text-brand-action font-black">✓</span></div>
+                                    <div class="opacity-40">Th</div>
+                                    <div class="opacity-40">Fr</div>
+                                    <div class="opacity-40">Sa</div>
+                                    <div class="opacity-40">Su</div>
+                                </div>
+
+                                <p class="text-xs text-slate-600 font-medium mt-4 px-2">
+                                    Amazing! Now, let's go for the 7-day milestone.
+                                </p>
+                            </div>
+
+                            <div>
+                                <button class="text-xs font-bold text-brand-action block mb-3 w-full">Share My Milestone</button>
+                                <button class="w-full py-3 bg-slate-900 text-white rounded-xl font-bold text-xs shadow-md hover:bg-brand-deep transition">
+                                    I'm committed
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Goal Cards Section -->
+    <section id="goals" class="py-16 bg-brand-action text-white relative overflow-hidden">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-12">
+                <h2 class="text-3xl sm:text-4xl font-extrabold tracking-tight">Reach your goals, your way</h2>
+                <p class="mt-4 text-brand-soft text-base sm:text-lg">Whether you want to drop body fat, gain lean muscle, or stay mindful of your daily nutrition, Calviora adapts to your lifestyle.</p>
+            </div>
+
+            <!-- Cards Grid -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Card 1 -->
+                <div class="bg-white text-slate-800 rounded-3xl p-6 shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-rose-100 text-rose-600 flex items-center justify-center mb-4">
+                            <i data-lucide="trending-down" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-deep mb-2">Lose Weight</h3>
+                        <p class="text-slate-600 text-sm">Stay in a healthy calorie deficit with zero guesswork using precise AI meal tracking.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=500&q=80" alt="Lose Weight" class="w-full h-36 object-cover rounded-2xl mt-6">
+                </div>
+
+                <!-- Card 2 -->
+                <div class="bg-white text-slate-800 rounded-3xl p-6 shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-amber-100 text-amber-600 flex items-center justify-center mb-4">
+                            <i data-lucide="dumbbell" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-deep mb-2">Build Lean Muscle</h3>
+                        <p class="text-slate-600 text-sm">Track your daily protein intake accurately to support recovery and muscle growth.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=500&q=80" alt="Build Muscle" class="w-full h-36 object-cover rounded-2xl mt-6">
+                </div>
+
+                <!-- Card 3 -->
+                <div class="bg-white text-slate-800 rounded-3xl p-6 shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-emerald-100 text-emerald-600 flex items-center justify-center mb-4">
+                            <i data-lucide="salad" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-deep mb-2">Eat Balanced Meals</h3>
+                        <p class="text-slate-600 text-sm">Log both western foods and South Asian/Desi recipes effortlessly.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80" alt="Balanced Meals" class="w-full h-36 object-cover rounded-2xl mt-6">
+                </div>
+
+                <!-- Card 4 -->
+                <div class="bg-white text-slate-800 rounded-3xl p-6 shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between">
+                    <div>
+                        <div class="w-12 h-12 rounded-2xl bg-blue-100 text-blue-600 flex items-center justify-center mb-4">
+                            <i data-lucide="pie-chart" class="w-6 h-6"></i>
+                        </div>
+                        <h3 class="text-xl font-bold text-brand-deep mb-2">Track Macro Ratios</h3>
+                        <p class="text-slate-600 text-sm">Keep your Carbs, Protein, and Fats ratio perfectly aligned with your health targets.</p>
+                    </div>
+                    <img src="https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=500&q=80" alt="Track Macros" class="w-full h-36 object-cover rounded-2xl mt-6">
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- SECTION 4: All-In-One Feature Hub (Redesigned & Elevated) -->
+    <section id="features" class="py-24 bg-gradient-to-b from-slate-900 via-brand-dark to-slate-900 text-white relative overflow-hidden">
+        <!-- Background Decorative Glow Effects -->
+        <div class="absolute top-0 left-1/4 w-96 h-96 bg-brand-action/20 rounded-full filter blur-[128px] pointer-events-none"></div>
+        <div class="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-leaf/10 rounded-full filter blur-[128px] pointer-events-none"></div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            
+            <!-- Section Header -->
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <div class="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-action/20 border border-brand-leaf/30 text-brand-leaf font-bold text-xs uppercase tracking-widest mb-4">
+                    <i data-lucide="sparkles" class="w-4 h-4"></i> Powerful All-In-One Suite
+                </div>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight">
+                    Everything you need for smart nutrition & lifestyle
+                </h2>
+                <p class="mt-4 text-slate-300 text-base sm:text-lg font-medium">
+                    Say goodbye to multiple cluttery apps. Calviora combines smart visual logging, intermittent fasting, and regional nutrition into one seamless hub.
+                </p>
+            </div>
+
+            <!-- Enhanced Interactive Feature Cards Grid -->
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                
+                <!-- Feature Card 1: AI Food Tracking -->
+                <div class="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-brand-leaf/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-action/20 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-24 h-24 bg-brand-leaf/10 rounded-full blur-xl group-hover:bg-brand-leaf/20 transition"></div>
+                    
+                    <div>
+                        <!-- Icon & Badge Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-brand-action text-brand-dark flex items-center justify-center font-extrabold shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="camera" class="w-7 h-7"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">Instant Scan</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-brand-leaf transition">AI Visual Food Scan</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Snap any plate or snack. Our AI instantly measures portion sizes and breaks down calories and macros with 98% accuracy.
+                        </p>
+                    </div>
+
+                    <!-- Mini Visual UI Element -->
+                    <div class="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-2 text-slate-200 font-semibold">
+                            <span class="w-2 h-2 rounded-full bg-brand-leaf animate-ping"></span>
+                            <span>Auto-Detect Calories</span>
+                        </div>
+                        <span class="text-brand-leaf font-extrabold">98% Match</span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 2: Intermittent Fasting -->
+                <div class="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-sky-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/20 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-24 h-24 bg-sky-400/10 rounded-full blur-xl group-hover:bg-sky-400/20 transition"></div>
+                    
+                    <div>
+                        <!-- Icon & Badge Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white flex items-center justify-center font-extrabold shadow-lg shadow-sky-500/20 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="timer" class="w-7 h-7"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">Custom Timers</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-sky-300 transition">Smart Fasting Tracker</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Flexible fasting modes (16:8, 14:10, 5:2) with real-time biological stage alerts (Ketosis, Fat Burning, Autophagy).
+                        </p>
+                    </div>
+
+                    <!-- Mini Visual UI Element -->
+                    <div class="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-1.5 text-sky-300 font-bold">
+                            <i data-lucide="flame" class="w-3.5 h-3.5 fill-current"></i>
+                            <span>Fat Burning Mode</span>
+                        </div>
+                        <span class="text-white font-mono font-bold">14h : 22m</span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 3: Regional & Desi Database -->
+                <div class="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/20 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-24 h-24 bg-amber-400/10 rounded-full blur-xl group-hover:bg-amber-400/20 transition"></div>
+                    
+                    <div>
+                        <!-- Icon & Badge Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-amber-950 flex items-center justify-center font-extrabold shadow-lg shadow-amber-500/20 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="utensils" class="w-7 h-7"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">18,500+ Dishes</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-amber-300 transition">Desi & Global Library</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Full support for complex South Asian and global homemade dishes (Biryani, Nihari, Daal, Roti) with authentic oil & spice factors.
+                        </p>
+                    </div>
+
+                    <!-- Mini Visual UI Element -->
+                    <div class="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+                        <span class="text-slate-300 font-medium">Verified Portion Metrics</span>
+                        <span class="text-amber-300 font-bold flex items-center gap-1">
+                            <i data-lucide="check-circle-2" class="w-3.5 h-3.5"></i> Custom Recipes
+                        </span>
+                    </div>
+                </div>
+
+                <!-- Feature Card 4: Water & Activity Sync -->
+                <div class="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col justify-between overflow-hidden">
+                    <div class="absolute -right-8 -top-8 w-24 h-24 bg-purple-400/10 rounded-full blur-xl group-hover:bg-purple-400/20 transition"></div>
+                    
+                    <div>
+                        <!-- Icon & Badge Header -->
+                        <div class="flex items-center justify-between mb-6">
+                            <div class="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-400 to-indigo-600 text-white flex items-center justify-center font-extrabold shadow-lg shadow-purple-500/20 group-hover:scale-110 transition duration-300">
+                                <i data-lucide="activity" class="w-7 h-7"></i>
+                            </div>
+                            <span class="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">Auto Sync</span>
+                        </div>
+
+                        <h3 class="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition">Hydration & Activity Sync</h3>
+                        <p class="text-slate-300 text-xs sm:text-sm leading-relaxed">
+                            Sync your daily steps, active workout calories, and hydration logs in one place to maintain an accurate net burn rate.
+                        </p>
+                    </div>
+
+                    <!-- Mini Visual UI Element -->
+                    <div class="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+                        <div class="flex items-center gap-1 text-purple-300 font-semibold">
+                            <i data-lucide="footprints" class="w-3.5 h-3.5"></i> 8,420 Steps
+                        </div>
+                        <span class="text-emerald-400 font-bold">+2.2L Water</span>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Bottom Highlight Callout Box -->
+            <div class="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-brand-action/30 via-white/10 to-brand-deep border border-brand-leaf/30 flex flex-col sm:flex-row items-center justify-between gap-6">
+                <div class="flex items-center gap-4 text-center sm:text-left">
+                    <div class="w-12 h-12 rounded-2xl bg-brand-leaf text-brand-deep flex items-center justify-center font-black flex-shrink-0 mx-auto sm:mx-0">
+                        <i data-lucide="zap" class="w-6 h-6"></i>
+                    </div>
+                    <div>
+                        <h4 class="text-lg font-bold text-white">No credit card required to start</h4>
+                        <p class="text-xs sm:text-sm text-slate-300 mt-0.5">Test all premium features with 3 free AI food scans every single day.</p>
+                    </div>
+                </div>
+                <a href="#pricing" class="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-leaf text-brand-deep font-extrabold text-sm hover:bg-white transition text-center shadow-lg whitespace-nowrap">
+                    Try 3 Free Scans Now
+                </a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- App UI Screen Showcase Carousel Section -->
+    <section id="app-preview" class="py-20 bg-brand-cloud border-y border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-2xl mx-auto mb-12">
+                <span class="text-xs font-bold text-brand-action uppercase tracking-widest bg-brand-soft px-3 py-1 rounded-full">Designed for simplicity</span>
+                <h2 class="text-3xl sm:text-4xl font-extrabold text-brand-deep mt-3">See how Calviora fits your daily routine</h2>
+            </div>
+
+            <!-- Horizontal Screen Scroll / Grid -->
+            <div class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 overflow-x-auto pb-6">
+                
+                <!-- Screen 1: Plan Setup -->
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-md flex flex-col items-center text-center">
+                    <div class="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4">
+                        <div class="w-12 h-12 rounded-full bg-brand-action mx-auto flex items-center justify-center font-bold text-brand-leaf text-lg mb-2">75%</div>
+                        <div class="text-xs font-bold">Calculating Plan...</div>
+                    </div>
+                    <h4 class="font-bold text-brand-deep text-base">1. Personalized Plan</h4>
+                    <p class="text-xs text-slate-500 mt-1">AI creates your customized calorie & macro budget instantly.</p>
+                </div>
+
+                <!-- Screen 2: AI Scanner -->
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-md flex flex-col items-center text-center">
+                    <div class="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4 relative overflow-hidden h-36 flex items-center justify-center">
+                        <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80" class="absolute inset-0 w-full h-full object-cover opacity-60">
+                        <div class="relative z-10 w-10 h-10 rounded-full bg-brand-leaf text-brand-deep flex items-center justify-center shadow-lg">
+                            <i data-lucide="camera" class="w-5 h-5"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-brand-deep text-base">2. Photo AI Scan</h4>
+                    <p class="text-xs text-slate-500 mt-1">Point camera at your meal. AI detects food and portions.</p>
+                </div>
+
+                <!-- Screen 3: Dashboard -->
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-md flex flex-col items-center text-center">
+                    <div class="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4">
+                        <div class="text-xs text-slate-400">Remaining Today</div>
+                        <div class="text-2xl font-extrabold text-brand-leaf my-1">868 kcal</div>
+                        <div class="flex justify-between text-[10px] text-slate-300">
+                            <span>Carbs: 97g</span>
+                            <span>Protein: 46g</span>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-brand-deep text-base">3. Daily Dashboard</h4>
+                    <p class="text-xs text-slate-500 mt-1">See your remaining calories and nutrients live.</p>
+                </div>
+
+                <!-- Screen 4: Water & Activity -->
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-md flex flex-col items-center text-center">
+                    <div class="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4">
+                        <div class="text-xs text-slate-400">Water Log</div>
+                        <div class="text-lg font-bold text-sky-400 my-1">72 fl oz</div>
+                        <div class="flex justify-center gap-1 text-sky-400 text-xs">
+                            <i data-lucide="droplet" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="droplet" class="w-3 h-3 fill-current"></i>
+                            <i data-lucide="droplet" class="w-3 h-3 fill-current"></i>
+                        </div>
+                    </div>
+                    <h4 class="font-bold text-brand-deep text-base">4. Habit Tracking</h4>
+                    <p class="text-xs text-slate-500 mt-1">Log water, weight check-ins & activity seamlessly.</p>
+                </div>
+
+                <!-- Screen 5: Milestones -->
+                <div class="bg-white p-5 rounded-3xl border border-slate-200 shadow-md flex flex-col items-center text-center">
+                    <div class="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4">
+                        <div class="w-10 h-10 mx-auto rounded-full bg-amber-400/20 text-amber-400 flex items-center justify-center font-bold mb-1">
+                            🔥 3
+                        </div>
+                        <div class="text-xs font-bold text-amber-300">Streak Achieved!</div>
+                    </div>
+                    <h4 class="font-bold text-brand-deep text-base">5. Streaks & Progress</h4>
+                    <p class="text-xs text-slate-500 mt-1">Build daily consistency with habit milestone awards.</p>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- Pricing Section -->
+    <section id="pricing" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center max-w-3xl mx-auto mb-16">
+                <span class="text-xs font-bold text-brand-action uppercase tracking-widest bg-brand-soft px-3 py-1 rounded-full">Transparent Pricing</span>
+                <h2 class="text-3xl sm:text-5xl font-extrabold text-brand-deep mt-3">Simple plans for every budget</h2>
+                <p class="mt-4 text-slate-600 text-base">Start with 3 free AI scans daily or unlock higher volume for continuous tracking.</p>
+            </div>
+
+            <div class="grid md:grid-cols-4 gap-6 items-stretch">
+                
+                <!-- Free Tier -->
+                <div class="bg-brand-cloud rounded-3xl p-6 border border-slate-200 flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-slate-500 uppercase tracking-wider">Free Starter</div>
+                        <div class="text-3xl font-extrabold text-brand-deep mt-2">$0 <span class="text-xs font-normal text-slate-500">/ forever</span></div>
+                        <p class="text-slate-600 text-xs mt-2">Perfect for casual calorie checking.</p>
+                        
+                        <ul class="mt-6 space-y-3 text-xs text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> 3 Free AI Scans Daily</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> Basic Food Search</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> Water Tracker</li>
+                        </ul>
+                    </div>
+                    <a href="#download" class="mt-8 w-full py-3 rounded-xl bg-white border border-brand-action text-brand-action font-bold text-xs text-center hover:bg-brand-soft transition">Start Free</a>
+                </div>
+
+                <!-- Monthly Tier -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-brand-action uppercase tracking-wider">Monthly Pass</div>
+                        <div class="text-3xl font-extrabold text-brand-deep mt-2">$1.99 <span class="text-xs font-normal text-slate-500">/ month</span></div>
+                        <p class="text-slate-600 text-xs mt-2">Ideal for focused 30-day goals.</p>
+
+                        <ul class="mt-6 space-y-3 text-xs text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> 40 AI Scans / Month</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> Barcode Scanner</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> Macro Analytics</li>
+                        </ul>
+                    </div>
+                    <a href="#download" class="mt-8 w-full py-3 rounded-xl bg-brand-action text-white font-bold text-xs text-center hover:bg-brand-deep transition">Subscribe Monthly</a>
+                </div>
+
+                <!-- Quarterly Tier -->
+                <div class="bg-brand-deep text-white rounded-3xl p-6 shadow-2xl relative flex flex-col justify-between border-2 border-brand-leaf">
+                    <div class="absolute -top-3 right-4 bg-brand-leaf text-brand-deep px-3 py-1 rounded-full text-[10px] font-extrabold uppercase tracking-wide">Most Popular</div>
+                    <div>
+                        <div class="text-xs font-bold text-brand-leaf uppercase tracking-wider">Quarterly Pass</div>
+                        <div class="text-3xl font-extrabold text-white mt-2">$4.99 <span class="text-xs font-normal text-slate-300">/ 3 months</span></div>
+                        <p class="text-slate-200 text-xs mt-2">Great value for habit formation.</p>
+
+                        <ul class="mt-6 space-y-3 text-xs text-slate-200 font-medium">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-leaf"></i> 120 AI Scans / Quarter</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-leaf"></i> Full Desi Food Library</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-leaf"></i> Intermittent Fasting Timers</li>
+                        </ul>
+                    </div>
+                    <a href="#download" class="mt-8 w-full py-3 rounded-xl bg-brand-leaf text-brand-deep font-extrabold text-xs text-center hover:bg-white transition shadow-lg">Get Quarterly Plan</a>
+                </div>
+
+                <!-- Annual Tier -->
+                <div class="bg-white rounded-3xl p-6 border border-slate-200 shadow-lg flex flex-col justify-between">
+                    <div>
+                        <div class="text-xs font-bold text-brand-action uppercase tracking-wider">Annual Best Savings</div>
+                        <div class="text-3xl font-extrabold text-brand-deep mt-2">$17.99 <span class="text-xs font-normal text-slate-500">/ year</span></div>
+                        <p class="text-slate-600 text-xs mt-2">Maximum savings for serious trackers.</p>
+
+                        <ul class="mt-6 space-y-3 text-xs text-slate-700 font-medium">
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> 400 AI Scans / Year</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> Priority AI Processing</li>
+                            <li class="flex items-center gap-2"><i data-lucide="check" class="w-4 h-4 text-brand-action"></i> Unlimited Manual Search</li>
+                        </ul>
+                    </div>
+                    <a href="#download" class="mt-8 w-full py-3 rounded-xl bg-slate-900 text-white font-bold text-xs text-center hover:bg-brand-deep transition">Get Annual Pass</a>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" class="py-16 bg-brand-cloud">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-12">
+                <h2 class="text-3xl font-extrabold text-brand-deep">Frequently Asked Questions</h2>
+            </div>
+
+            <div class="space-y-4">
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-bold text-brand-deep text-base">How does Calviora's AI Food Scan work?</h3>
+                    <p class="text-slate-600 text-sm mt-2">Simply open the camera inside Calviora and take a clear photo of your meal. Our trained visual recognition AI detects the items, estimates the portion size, and outputs calories, protein, carbs, and fat breakdown.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-bold text-brand-deep text-base">Does Calviora recognize Pakistani & South Asian dishes?</h3>
+                    <p class="text-slate-600 text-sm mt-2">Yes! Unlike traditional apps that struggle with complex homemade dishes, Calviora is specifically tuned to recognize South Asian foods like Biryani, Roti, Naan, Karahi, Daal, and regional snacks.</p>
+                </div>
+
+                <div class="bg-white p-6 rounded-2xl border border-slate-200">
+                    <h3 class="font-bold text-brand-deep text-base">Can I use Calviora for free?</h3>
+                    <p class="text-slate-600 text-sm mt-2">Yes! All users receive 3 Free AI Photo Scans every day, along with full access to water tracking, weight logs, and manual search.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Final Download Banner -->
+    <section id="download" class="py-16 bg-brand-deep text-white text-center relative">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <h2 class="text-3xl sm:text-5xl font-extrabold leading-tight">Ready to transform your health habits?</h2>
+            <p class="text-brand-soft text-lg mt-4 max-w-xl mx-auto">Download Calviora today and claim your 3 free AI food scans.</p>
+            
+            <div class="mt-8 flex flex-wrap justify-center gap-4">
+                <a href="#" class="px-8 py-4 bg-brand-leaf text-brand-deep rounded-2xl font-extrabold text-base hover:bg-white transition shadow-xl inline-flex items-center gap-3">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M18.71 19.5c-.83 1.24-1.71 2.45-3.05 2.47-1.34.03-1.77-.79-3.29-.79-1.53 0-2 .77-3.27.82-1.31.05-2.3-1.32-3.14-2.53C4.25 17 2.94 12.45 4.7 9.39c.87-1.52 2.43-2.48 4.12-2.51 1.28-.02 2.5.87 3.29.87.78 0 2.26-1.07 3.81-.91.65.03 2.47.26 3.64 1.98-.09.06-2.17 1.28-2.15 3.81.03 3.02 2.65 4.03 2.68 4.04-.03.07-.42 1.44-1.38 2.83M15.97 6.85c.67-.82 1.12-1.96.99-3.1-.97.04-2.15.65-2.85 1.47-.63.73-1.18 1.89-1.03 3.01 1.09.08 2.22-.56 2.89-1.38z"/>
+                    </svg>
+                    <span>Download on App Store</span>
+                </a>
+                <a href="#" class="px-8 py-4 bg-white/10 text-white border border-white/20 rounded-2xl font-extrabold text-base hover:bg-white hover:text-brand-deep transition inline-flex items-center gap-3">
+                    <svg class="w-6 h-6 fill-current" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M3.609 1.814L13.792 12 3.61 22.186a1.861 1.861 0 0 1-.61-1.386V3.2a1.86 1.86 0 0 1 .609-1.386zm11.3 9.072l2.306-2.306 3.732 2.133c.895.511.895 1.343 0 1.854l-3.732 2.133-2.306-2.306zm-1.131 1.131l-9.842 9.842a1.815 1.815 0 0 0 2.052.127l10.37-5.926-2.58-2.583zm0-2.034l2.58-2.583-10.37-5.926a1.815 1.815 0 0 0-2.052.127l9.842 9.842z"/>
+                    </svg>
+                    <span>GET IT ON Google Play</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-brand-dark text-slate-400 py-10 border-t border-white/10 text-xs">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row justify-between items-center gap-4">
+            <div>
+                <span class="text-white font-bold text-base">Calviora</span>
+                <span class="ml-2 text-slate-400">— Good food. Better you.</span>
+            </div>
+            <div>
+                &copy; 2026 Calviora Inc. All rights reserved.
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Initialize Lucide icons
+        lucide.createIcons();
+
+        // Screenshots Slider Controls
+        const screenshotsContainer = document.getElementById('screenshotsContainer');
+        const scrollLeftBtn = document.getElementById('scrollLeftBtn');
+        const scrollRightBtn = document.getElementById('scrollRightBtn');
+
+        if (screenshotsContainer && scrollLeftBtn && scrollRightBtn) {
+            scrollLeftBtn.addEventListener('click', () => {
+                screenshotsContainer.scrollBy({
+                    left: -300,
+                    behavior: 'smooth'
+                });
+            });
+
+            scrollRightBtn.addEventListener('click', () => {
+                screenshotsContainer.scrollBy({
+                    left: 300,
+                    behavior: 'smooth'
+                });
+            });
+        }
+    </script>
+</body>
+</html>
