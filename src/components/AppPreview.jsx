@@ -28,6 +28,7 @@ export default function AppPreview() {
               <img
                 src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
                 alt=""
+                loading="lazy"
                 className="absolute inset-0 w-full h-full object-cover opacity-60"
               />
               <div className="relative z-10 w-10 h-10 rounded-full bg-brand-leaf text-brand-deep flex items-center justify-center shadow-lg">

@@ -61,7 +61,7 @@ export default function Goals() {
                 <h3 className="text-xl font-bold text-brand-deep mb-2">{goal.title}</h3>
                 <p className="text-slate-600 text-sm">{goal.copy}</p>
               </div>
-              <img src={goal.image} alt={goal.alt} className="w-full h-36 object-cover rounded-2xl mt-6" />
+              <img src={goal.image} alt={goal.alt} loading="lazy" className="w-full h-36 object-cover rounded-2xl mt-6" />
             </div>
             );
           })}

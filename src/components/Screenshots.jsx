@@ -132,6 +132,7 @@ export default function Screenshots() {
                   <img
                     src="https://images.unsplash.com/photo-1509722747041-616f39b57569?auto=format&fit=crop&w=600&q=80"
                     alt="Croissant & Coffee"
+                    loading="lazy"
                     className="w-full h-full object-cover"
                   />
                   <div className="absolute inset-4 border-2 border-dashed border-brand-leaf/80 rounded-xl pointer-events-none"></div>
