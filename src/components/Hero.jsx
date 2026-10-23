@@ -5,11 +5,11 @@ export default function Hero() {
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-        <div className="grid lg:grid-cols-12 gap-12 items-center">
-          <div className="lg:col-span-7 text-center lg:text-left">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-brand-soft text-brand-deep font-semibold text-xs sm:text-sm mb-6 border border-brand-action/20">
-              <span className="flex h-2 w-2 rounded-full bg-brand-leaf animate-pulse"></span>
-              AI Food Scan & South Asian Dish Recognition
+        <div className="grid xl:grid-cols-12 gap-12 items-center">
+          <div className="xl:col-span-7 text-center xl:text-left">
+            <div className="inline-flex max-w-full items-center justify-center gap-2 px-4 py-2 rounded-full bg-brand-soft text-brand-deep font-semibold text-xs sm:text-sm mb-6 border border-brand-action/20 text-left">
+              <span className="flex h-2 w-2 shrink-0 rounded-full bg-brand-leaf animate-pulse"></span>
+              <span>AI Food Scan & South Asian Dish Recognition</span>
             </div>
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-deep leading-[1.15]">
@@ -19,29 +19,29 @@ export default function Hero() {
               </span>
             </h1>
 
-            <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto lg:mx-0 font-medium">
+            <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto xl:mx-0 font-medium">
               Snap a photo of your plate—whether it's Biryani, Avocado Toast, or a homemade curry—and let Calviora AI
               calculate your calories, macros & nutrition in seconds.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-4">
               <a
                 href="#pricing"
-                className="w-full sm:w-auto px-8 py-4 rounded-2xl bg-brand-action text-white font-extrabold text-base hover:bg-brand-deep transition shadow-xl shadow-brand-action/25 flex items-center justify-center gap-3"
+                className="w-full sm:w-auto px-5 sm:px-8 py-4 rounded-2xl bg-brand-action text-white font-extrabold text-sm sm:text-base hover:bg-brand-deep transition shadow-xl shadow-brand-action/25 flex items-center justify-center gap-3 text-center"
               >
                 <Sparkles className="w-5 h-5 text-brand-leaf" />
                 Start Free Trial (3 Free Scans/Day)
               </a>
               <a
                 href="#app-preview"
-                className="w-full sm:w-auto px-6 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-base hover:border-brand-action transition flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-5 sm:px-6 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-sm sm:text-base hover:border-brand-action transition flex items-center justify-center gap-2"
               >
                 <PlayCircle className="w-5 h-5 text-brand-action" />
                 See How It Works
               </a>
             </div>
 
-            <div className="mt-10 pt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-center lg:justify-start gap-8">
+            <div className="mt-10 pt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-center xl:justify-start gap-6 sm:gap-8">
               <div>
                 <div className="text-2xl font-extrabold text-brand-deep">18,500+</div>
                 <div className="text-xs text-slate-500 font-medium">Foods & Desi Dishes Recognized</div>
@@ -59,8 +59,8 @@ export default function Hero() {
             </div>
           </div>
 
-          <div className="lg:col-span-5 flex justify-center relative">
-            <div className="w-72 sm:w-80 h-[560px] bg-slate-900 rounded-[48px] p-4 shadow-2xl border-4 border-slate-800 relative z-10 flex flex-col justify-between overflow-hidden">
+          <div className="xl:col-span-5 relative mx-auto w-full max-w-[440px] xl:max-w-none flex justify-center py-6 xl:py-0">
+            <div className="w-[250px] min-[420px]:w-72 sm:w-80 h-[500px] sm:h-[560px] bg-slate-900 rounded-[48px] p-3 sm:p-4 shadow-2xl border-4 border-slate-800 relative z-10 flex flex-col justify-between overflow-hidden">
               <div className="w-32 h-5 bg-slate-800 rounded-full mx-auto mb-2"></div>
 
               <div className="bg-brand-cloud flex-1 rounded-[32px] p-4 flex flex-col justify-between overflow-hidden relative border border-slate-200">
@@ -102,7 +102,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="absolute -top-6 -right-4 bg-white p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 z-20">
+            <div className="absolute top-0 right-0 xl:-top-6 xl:-right-4 bg-white p-3 sm:p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 z-20 max-w-[168px] sm:max-w-none">
               <div className="w-10 h-10 rounded-xl bg-brand-soft text-brand-action flex items-center justify-center font-bold">
                 <QrCode className="w-5 h-5" />
               </div>
@@ -112,7 +112,7 @@ export default function Hero() {
               </div>
             </div>
 
-            <div className="absolute -bottom-6 -left-4 bg-brand-deep text-white p-4 rounded-2xl shadow-xl z-20 flex items-center gap-3">
+            <div className="absolute bottom-0 left-0 xl:-bottom-6 xl:-left-4 bg-brand-deep text-white p-3 sm:p-4 rounded-2xl shadow-xl z-20 flex items-center gap-3 max-w-[168px] sm:max-w-none">
               <div className="w-10 h-10 rounded-xl bg-brand-leaf text-brand-deep flex items-center justify-center font-bold">
                 <Droplet className="w-5 h-5" />
               </div>

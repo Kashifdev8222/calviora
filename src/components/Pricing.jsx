@@ -45,7 +45,7 @@ const styles = {
 
 export default function Pricing({ plans }) {
   return (
-    <section id="pricing" className="py-20 bg-white">
+    <section id="pricing" className="scroll-mt-24 py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-brand-action uppercase tracking-widest bg-brand-soft px-3 py-1 rounded-full">
@@ -57,7 +57,7 @@ export default function Pricing({ plans }) {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-4 gap-6 items-stretch">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6 items-stretch pt-3">
           {plans.map((plan) => {
             const style = styles[plan.variant] || styles.monthly;
             return (

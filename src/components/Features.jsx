@@ -2,7 +2,7 @@ import { Activity, Camera, CheckCircle2, Flame, Footprints, Sparkles, Timer, Ute
 
 export default function Features() {
   return (
-    <section id="features" className="py-24 bg-gradient-to-b from-slate-900 via-brand-dark to-slate-900 text-white relative overflow-hidden">
+    <section id="features" className="scroll-mt-24 py-24 bg-gradient-to-b from-slate-900 via-brand-dark to-slate-900 text-white relative overflow-hidden">
       <div className="absolute top-0 left-1/4 w-96 h-96 bg-brand-action/20 rounded-full filter blur-[128px] pointer-events-none"></div>
       <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-brand-leaf/10 rounded-full filter blur-[128px] pointer-events-none"></div>
 
@@ -19,7 +19,7 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           <div className="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-brand-leaf/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-action/20 flex flex-col justify-between overflow-hidden">
             <div className="absolute -right-8 -top-8 w-24 h-24 bg-brand-leaf/10 rounded-full blur-xl group-hover:bg-brand-leaf/20 transition"></div>
             <div>
@@ -36,7 +36,7 @@ export default function Features() {
                 Snap any plate or snack. Our AI instantly measures portion sizes and breaks down calories and macros with 98% accuracy.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
               <div className="flex items-center gap-2 text-slate-200 font-semibold">
                 <span className="w-2 h-2 rounded-full bg-brand-leaf animate-ping"></span>
                 <span>Auto-Detect Calories</span>
@@ -61,7 +61,7 @@ export default function Features() {
                 Flexible fasting modes (16:8, 14:10, 5:2) with real-time biological stage alerts (Ketosis, Fat Burning, Autophagy).
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
               <div className="flex items-center gap-1.5 text-sky-300 font-bold">
                 <Flame className="w-3.5 h-3.5 fill-current" />
                 <span>Fat Burning Mode</span>
@@ -86,7 +86,7 @@ export default function Features() {
                 Full support for complex South Asian and global homemade dishes (Biryani, Nihari, Daal, Roti) with authentic oil & spice factors.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
               <span className="text-slate-300 font-medium">Verified Portion Metrics</span>
               <span className="text-amber-300 font-bold flex items-center gap-1">
                 <CheckCircle2 className="w-3.5 h-3.5" /> Custom Recipes
@@ -110,7 +110,7 @@ export default function Features() {
                 Sync your daily steps, active workout calories, and hydration logs in one place to maintain an accurate net burn rate.
               </p>
             </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex items-center justify-between text-xs">
+            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
               <div className="flex items-center gap-1 text-purple-300 font-semibold">
                 <Footprints className="w-3.5 h-3.5" /> 8,420 Steps
               </div>

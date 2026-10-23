@@ -37,7 +37,7 @@ const goals = [
 
 export default function Goals() {
   return (
-    <section id="goals" className="py-16 bg-brand-action text-white relative overflow-hidden">
+    <section id="goals" className="scroll-mt-24 py-16 bg-brand-action text-white relative overflow-hidden">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Reach your goals, your way</h2>
@@ -46,7 +46,7 @@ export default function Goals() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
           {goals.map((goal) => {
             const Icon = goal.Icon;
             return (

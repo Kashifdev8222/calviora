@@ -31,7 +31,7 @@ export default function Screenshots() {
   };
 
   return (
-    <section id="app-screenshots" className="py-16 bg-gradient-to-b from-brand-cloud via-white to-brand-cloud overflow-hidden border-y border-brand-soft">
+    <section id="app-screenshots" className="scroll-mt-24 py-16 bg-gradient-to-b from-brand-cloud via-white to-brand-cloud overflow-hidden border-y border-brand-soft">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-10">
           <span className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-brand-soft text-brand-action font-bold text-xs uppercase tracking-wider mb-3">
@@ -51,7 +51,7 @@ export default function Screenshots() {
             type="button"
             aria-label="Scroll Left"
             onClick={() => scrollScreens(-1)}
-            className="absolute -left-4 sm:-left-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white text-brand-deep border-2 border-brand-action/20 shadow-xl flex items-center justify-center hover:bg-brand-action hover:text-white hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none"
+            className="absolute left-0 sm:left-1 xl:-left-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-brand-deep border-2 border-brand-action/20 shadow-xl flex items-center justify-center hover:bg-brand-action hover:text-white hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none"
           >
             <ChevronLeft className="w-6 h-6 stroke-[2.5]" />
           </button>
@@ -61,7 +61,7 @@ export default function Screenshots() {
             type="button"
             aria-label="Scroll Right"
             onClick={() => scrollScreens(1)}
-            className="absolute -right-4 sm:-right-6 top-1/2 -translate-y-1/2 z-30 w-12 h-12 rounded-full bg-white text-brand-deep border-2 border-brand-action/20 shadow-xl flex items-center justify-center hover:bg-brand-action hover:text-white hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none"
+            className="absolute right-0 sm:right-1 xl:-right-6 top-1/2 -translate-y-1/2 z-30 w-10 h-10 sm:w-12 sm:h-12 rounded-full bg-white text-brand-deep border-2 border-brand-action/20 shadow-xl flex items-center justify-center hover:bg-brand-action hover:text-white hover:scale-110 active:scale-95 transition-all duration-200 focus:outline-none"
           >
             <ChevronRight className="w-6 h-6 stroke-[2.5]" />
           </button>

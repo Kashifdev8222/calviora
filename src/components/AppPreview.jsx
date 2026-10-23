@@ -2,7 +2,7 @@ import { Camera, Droplet } from 'lucide-react';
 
 export default function AppPreview() {
   return (
-    <section id="app-preview" className="py-20 bg-brand-cloud border-y border-slate-200">
+    <section id="app-preview" className="scroll-mt-24 py-20 bg-brand-cloud border-y border-slate-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
           <span className="text-xs font-bold text-brand-action uppercase tracking-widest bg-brand-soft px-3 py-1 rounded-full">
@@ -11,7 +11,7 @@ export default function AppPreview() {
           <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-deep mt-3">See how Calviora fits your daily routine</h2>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-6 overflow-x-auto pb-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 pb-6">
           <div className="bg-white p-5 rounded-3xl border border-slate-200 shadow-md flex flex-col items-center text-center">
             <div className="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4">
               <div className="w-12 h-12 rounded-full bg-brand-action mx-auto flex items-center justify-center font-bold text-brand-leaf text-lg mb-2">

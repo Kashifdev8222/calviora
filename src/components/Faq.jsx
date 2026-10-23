@@ -1,6 +1,6 @@
 export default function Faq({ faqs }) {
   return (
-    <section id="faq" className="py-16 bg-brand-cloud">
+    <section id="faq" className="scroll-mt-24 py-16 bg-brand-cloud">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-12">
           <h2 className="text-3xl font-extrabold text-brand-deep">Frequently Asked Questions</h2>
