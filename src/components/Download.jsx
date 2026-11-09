@@ -20,6 +20,9 @@ function PlayMark() {
 const badgeClass =
   'inline-flex items-center gap-3 h-14 px-4 rounded-lg bg-black text-white border border-white/10 shadow-lg hover:bg-slate-900 transition w-full sm:w-auto justify-center';
 
+const APP_STORE_URL = 'https://apps.apple.com/us/app/calviora-ai-calorie-tracker/id6764837841';
+const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ';
+
 export default function Download() {
   return (
     <section id="download" className="scroll-mt-24 py-16 bg-brand-deep text-white text-center relative">
@@ -28,14 +31,14 @@ export default function Download() {
         <p className="text-brand-soft text-lg mt-4 max-w-xl mx-auto">Download Calviora today and claim your 3 free AI food scans.</p>
 
         <div className="mt-8 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
-          <a href="#" className={badgeClass} aria-label="Download on the App Store">
+          <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={badgeClass} aria-label="Download on the App Store">
             <AppleMark />
             <span className="text-left leading-none">
               <span className="block text-[10px] font-medium tracking-wide">Download on the</span>
               <span className="block text-lg font-semibold mt-0.5">App Store</span>
             </span>
           </a>
-          <a href="#" className={badgeClass} aria-label="Get it on Google Play">
+          <a href={PLAY_STORE_URL} target="_blank" rel="noopener noreferrer" className={badgeClass} aria-label="Get it on Google Play">
             <PlayMark />
             <span className="text-left leading-none">
               <span className="block text-[10px] font-medium tracking-wider">GET IT ON</span>

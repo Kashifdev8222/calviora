@@ -12,26 +12,36 @@ import AskAi from './components/AskAi.jsx';
 import Download from './components/Download.jsx';
 import Footer from './components/Footer.jsx';
 import { plans as defaultPlans, faqs as defaultFaqs } from '../shared/content.js';
-import { adoptCalculatorUrl, scrollToLocation, syncTitle } from './lib/navigate.js';
+import { adoptCalculatorUrl, locationKey, scrollToLocation, syncTitle } from './lib/navigate.js';
+import { toolFromPath } from './data/calculators.js';
+import { topicFromPath } from './data/topics.js';
+import TopicPage from './components/TopicPage.jsx';
 
 export default function App() {
+  const [route, setRoute] = useState(locationKey);
   const [plans, setPlans] = useState(defaultPlans);
   const [faqs, setFaqs] = useState(defaultFaqs);
 
   useLayoutEffect(() => {
-    adoptCalculatorUrl();
-    const apply = () => {
-      syncTitle();
-      scrollToLocation();
-    };
-    apply();
-    window.addEventListener('popstate', apply);
-    window.addEventListener('hashchange', apply);
+    const remember = () => setRoute(locationKey());
+    window.addEventListener('popstate', remember);
+    window.addEventListener('hashchange', remember);
     return () => {
-      window.removeEventListener('popstate', apply);
-      window.removeEventListener('hashchange', apply);
+      window.removeEventListener('popstate', remember);
+      window.removeEventListener('hashchange', remember);
     };
   }, []);
+
+  useLayoutEffect(() => {
+    adoptCalculatorUrl();
+    const next = locationKey();
+    if (next !== route) {
+      setRoute(next);
+      return;
+    }
+    syncTitle();
+    scrollToLocation();
+  }, [route]);
 
   useEffect(() => {
     let ignore = false;
@@ -50,19 +60,35 @@ export default function App() {
     };
   }, []);
 
+  const path = route.split('#')[0].split('?')[0] || '/';
+  const topic = topicFromPath(path);
+  const calculator = toolFromPath(path);
+
   return (
     <>
       <Header />
-      <Hero />
-      <Screenshots />
-      <Goals />
-      <Features />
-      <AppPreview />
-      <Pricing plans={plans} />
-      <Faq faqs={faqs} />
-      <Calculators />
-      <AskAi />
-      <Download />
+      {topic ? (
+        <TopicPage topic={topic} />
+      ) : calculator ? (
+        <>
+          <Calculators />
+          <AskAi />
+          <Download />
+        </>
+      ) : (
+        <>
+          <Hero />
+          <Screenshots />
+          <Goals />
+          <Features />
+          <AppPreview />
+          <Pricing plans={plans} />
+          <Faq faqs={faqs} />
+          <Calculators />
+          <AskAi />
+          <Download />
+        </>
+      )}
       <Footer />
     </>
   );

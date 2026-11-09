@@ -1,7 +1,10 @@
 import { Activity, BookOpen, Camera, Droplet, Sparkles, Zap } from 'lucide-react';
+import { onSamePageClick } from '../lib/navigate.js';
+import { featurePath } from '../data/topics.js';
 
 const features = [
   {
+    slug: 'ai-meal-scan',
     title: 'AI Meal Scan',
     badge: 'Instant Scan',
     copy: 'Snap a photo of your plate. Calviora estimates the portion, calories, and macros in seconds.',
@@ -16,6 +19,7 @@ const features = [
     rightClass: 'text-brand-leaf',
   },
   {
+    slug: 'meal-logging',
     title: 'Meal Logging',
     badge: 'Daily Diary',
     copy: 'Save breakfast, lunch, dinner, and snacks in one diary so your day stays easy to review.',
@@ -30,6 +34,7 @@ const features = [
     rightClass: 'text-amber-300',
   },
   {
+    slug: 'activity-tracker',
     title: 'Activity Tracker',
     badge: 'Move More',
     copy: 'Log steps and workouts so the calories you burn sit next to the calories you eat.',
@@ -44,6 +49,7 @@ const features = [
     rightClass: 'text-sky-300',
   },
   {
+    slug: 'water-intake-tracker',
     title: 'Water Intake Tracker',
     badge: 'Stay Hydrated',
     copy: 'Tap to log glasses through the day and see how close you are to your hydration goal.',
@@ -58,6 +64,7 @@ const features = [
     rightClass: 'text-cyan-200',
   },
   {
+    slug: 'ai-nutrition-coach',
     title: 'AI Nutrition Coach',
     badge: 'Guidance',
     copy: 'Get plain-language coaching on portions, protein, and the next meal that fits your goal.',
@@ -96,8 +103,10 @@ export default function Features() {
           {features.map((feature) => {
             const Icon = feature.Icon;
             return (
-              <div
-                key={feature.title}
+              <a
+                key={feature.slug}
+                href={featurePath(feature.slug)}
+                onClick={onSamePageClick}
                 className={`group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col justify-between overflow-hidden ${feature.card}`}
               >
                 <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-xl transition ${feature.glow}`}></div>
@@ -117,7 +126,7 @@ export default function Features() {
                   <span className="text-slate-200 font-semibold">{feature.footerLeft}</span>
                   <span className={`font-bold ${feature.rightClass}`}>{feature.footerRight}</span>
                 </div>
-              </div>
+              </a>
             );
           })}
         </div>
@@ -135,7 +144,8 @@ export default function Features() {
             </div>
           </div>
           <a
-            href="#pricing"
+            href="/#pricing"
+            onClick={onSamePageClick}
             className="w-full sm:w-auto px-6 py-3 rounded-xl bg-brand-leaf text-brand-deep font-extrabold text-sm hover:bg-white transition text-center shadow-lg whitespace-nowrap"
           >
             Try 3 Free Scans Now

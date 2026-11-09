@@ -1,8 +1,32 @@
 import { calculatorPath, calculatorTools, toolFromHash, toolFromPath } from '../data/calculators.js';
+import { topicFromPath } from '../data/topics.js';
 
 export const HOME_TITLE = 'Calviora | AI Calorie Counter and Food Scanner App';
+export const SITE_ORIGIN = 'https://calviora.app';
+
+function syncCanonical() {
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  const href = path === '/' ? `${SITE_ORIGIN}/` : `${SITE_ORIGIN}${path}`;
+  let link = document.querySelector('link[rel="canonical"]');
+  if (!link) {
+    link = document.createElement('link');
+    link.setAttribute('rel', 'canonical');
+    document.head.appendChild(link);
+  }
+  link.setAttribute('href', href);
+}
+
+export function locationKey() {
+  return `${window.location.pathname}${window.location.search}${window.location.hash}`;
+}
 
 export function syncTitle() {
+  syncCanonical();
+  const topic = topicFromPath(window.location.pathname);
+  if (topic) {
+    document.title = `${topic.title} | Calviora`;
+    return;
+  }
   const id = toolFromPath(window.location.pathname);
   const tool = calculatorTools.find((item) => item.id === id);
   document.title = tool ? `${tool.label} | Calviora` : HOME_TITLE;
@@ -10,13 +34,12 @@ export function syncTitle() {
 
 export function scrollToLocation() {
   const hash = window.location.hash.replace('#', '');
-  const tool = toolFromPath(window.location.pathname);
-  const id = hash && !hash.startsWith('calc-') ? hash : tool ? 'calculators' : '';
-  if (!id) {
-    window.scrollTo(0, 0);
+  const onHome = window.location.pathname === '/';
+  if (onHome && hash && !hash.startsWith('calc-')) {
+    document.getElementById(hash)?.scrollIntoView();
     return;
   }
-  document.getElementById(id)?.scrollIntoView();
+  window.scrollTo(0, 0);
 }
 
 export function adoptCalculatorUrl() {
@@ -25,7 +48,12 @@ export function adoptCalculatorUrl() {
     window.history.replaceState({}, '', calculatorPath(legacy));
     return;
   }
-  if (window.location.pathname.startsWith('/calculators/') && !toolFromPath(window.location.pathname)) {
+  const path = window.location.pathname;
+  if (path.startsWith('/calculators/') && !toolFromPath(path)) {
+    window.history.replaceState({}, '', '/');
+    return;
+  }
+  if ((path.startsWith('/features/') || path.startsWith('/goals/')) && !topicFromPath(path)) {
     window.history.replaceState({}, '', '/');
   }
 }
