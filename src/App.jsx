@@ -84,7 +84,6 @@ export default function App() {
           <AppPreview />
           <Pricing plans={plans} />
           <Faq faqs={faqs} />
-          <Calculators />
           <AskAi />
           <Download />
         </>
