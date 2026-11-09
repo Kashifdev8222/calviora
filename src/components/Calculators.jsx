@@ -3,13 +3,15 @@ import { Plus, Trash2 } from 'lucide-react';
 import {
   activities,
   burnActivities,
+  calculatorPath,
   calculatorTools,
   drinks,
   foods,
   stepPaces,
-  toolFromHash,
+  toolFromPath,
 } from '../data/calculators.js';
 import { calculate } from '../lib/nutritionCalc.js';
+import { go, onSamePageClick } from '../lib/navigate.js';
 
 const fieldClass =
   'w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 outline-none focus:border-brand-action';
@@ -47,7 +49,7 @@ const emptyForm = {
 let plateKey = 2;
 
 export default function Calculators() {
-  const [tool, setTool] = useState(() => toolFromHash(window.location.hash) || 'tdee');
+  const [tool, setTool] = useState(() => toolFromPath(window.location.pathname) || 'tdee');
   const [form, setForm] = useState(emptyForm);
   const [plate, setPlate] = useState([
     { key: 1, foodId: 'chicken', grams: '150' },
@@ -56,11 +58,11 @@ export default function Calculators() {
 
   useEffect(() => {
     const sync = () => {
-      const next = toolFromHash(window.location.hash);
+      const next = toolFromPath(window.location.pathname);
       if (next) setTool(next);
     };
-    window.addEventListener('hashchange', sync);
-    return () => window.removeEventListener('hashchange', sync);
+    window.addEventListener('popstate', sync);
+    return () => window.removeEventListener('popstate', sync);
   }, []);
 
   useEffect(() => {
@@ -75,9 +77,7 @@ export default function Calculators() {
   }, [tool]);
 
   const choose = (id) => {
-    setTool(id);
-    const next = `#calc-${id}`;
-    if (window.location.hash !== next) window.history.replaceState(null, '', next);
+    go(calculatorPath(id));
   };
 
   const update = (key) => (event) => {
@@ -128,8 +128,8 @@ export default function Calculators() {
               {calculatorTools.map((item) => (
                 <a
                   key={item.id}
-                  href={`#calc-${item.id}`}
-                  onClick={() => setTool(item.id)}
+                  href={calculatorPath(item.id)}
+                  onClick={onSamePageClick}
                   className={`block px-3 py-2.5 rounded-2xl text-sm font-bold transition ${
                     tool === item.id ? 'bg-brand-deep text-brand-leaf' : 'text-brand-deep hover:bg-white'
                   }`}

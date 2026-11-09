@@ -1,26 +1,33 @@
 export const calculatorTools = [
-  { id: 'tdee', label: 'TDEE Calculator' },
-  { id: 'weight-loss', label: 'Weight Loss Calculator' },
-  { id: 'weight-gain', label: 'Weight Gain Calculator' },
-  { id: 'protein', label: 'Protein Intake Calculator' },
-  { id: 'calories-burned', label: 'Calories Burned Calculator' },
-  { id: 'burn-it-off', label: 'Burn It Off Calculator' },
-  { id: 'alcohol', label: 'Alcohol Calories Calculator' },
-  { id: 'serving', label: 'Serving Size Calculator' },
-  { id: 'calorie-counter', label: 'AI Calorie Counter' },
-  { id: 'macros', label: 'Macro Calculator' },
-  { id: 'pcos', label: 'PCOS Macro Calculator' },
-  { id: 'pregnancy-calories', label: 'Pregnancy Calorie Calculator' },
-  { id: 'pregnancy-macros', label: 'Pregnancy Macro Calculator' },
-  { id: 'diabetes', label: 'Diabetes Macro Calculator' },
+  { id: 'tdee', slug: 'tdee-calculator', label: 'TDEE Calculator' },
+  { id: 'weight-loss', slug: 'weight-loss-calculator', label: 'Weight Loss Calculator' },
+  { id: 'weight-gain', slug: 'weight-gain-calculator', label: 'Weight Gain Calculator' },
+  { id: 'protein', slug: 'protein-intake-calculator', label: 'Protein Intake Calculator' },
+  { id: 'calories-burned', slug: 'calories-burned-calculator', label: 'Calories Burned Calculator' },
+  { id: 'burn-it-off', slug: 'burn-it-off-calculator', label: 'Burn It Off Calculator' },
+  { id: 'alcohol', slug: 'alcohol-calories-calculator', label: 'Alcohol Calories Calculator' },
+  { id: 'serving', slug: 'serving-size-calculator', label: 'Serving Size Calculator' },
+  { id: 'calorie-counter', slug: 'online-calorie-calculator', label: 'AI Calorie Counter' },
+  { id: 'macros', slug: 'online-macro-calculator', label: 'Macro Calculator' },
+  { id: 'pcos', slug: 'pcos-macro-calculator', label: 'PCOS Macro Calculator' },
+  { id: 'pregnancy-calories', slug: 'pregnancy-calorie-calculator', label: 'Pregnancy Calorie Calculator' },
+  { id: 'pregnancy-macros', slug: 'pregnancy-macro-calculator', label: 'Pregnancy Macro Calculator' },
+  { id: 'diabetes', slug: 'diabetes-macro-calculator', label: 'Diabetes Macro Calculator' },
 ];
 
-export function calculatorHash(id) {
-  return `#calc-${id}`;
+export function calculatorPath(id) {
+  const tool = calculatorTools.find((item) => item.id === id);
+  return `/calculators/${tool?.slug || 'tdee-calculator'}`;
+}
+
+export function toolFromPath(pathname = '') {
+  const match = String(pathname).match(/^\/calculators\/([^/]+)\/?$/);
+  if (!match) return '';
+  return calculatorTools.find((item) => item.slug === match[1])?.id || '';
 }
 
 export function toolFromHash(hash = '') {
-  const id = hash.replace('#', '');
+  const id = String(hash).replace('#', '');
   if (!id.startsWith('calc-')) return '';
   const tool = id.slice(5);
   return calculatorTools.some((item) => item.id === tool) ? tool : '';

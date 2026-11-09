@@ -12,22 +12,25 @@ import AskAi from './components/AskAi.jsx';
 import Download from './components/Download.jsx';
 import Footer from './components/Footer.jsx';
 import { plans as defaultPlans, faqs as defaultFaqs } from '../shared/content.js';
+import { adoptCalculatorUrl, scrollToLocation, syncTitle } from './lib/navigate.js';
 
 export default function App() {
   const [plans, setPlans] = useState(defaultPlans);
   const [faqs, setFaqs] = useState(defaultFaqs);
 
   useLayoutEffect(() => {
-    const scrollToHash = () => {
-      const raw = window.location.hash.replace('#', '');
-      const id = raw.startsWith('calc-') ? 'calculators' : raw;
-      if (!id) return;
-      document.getElementById(id)?.scrollIntoView();
+    adoptCalculatorUrl();
+    const apply = () => {
+      syncTitle();
+      scrollToLocation();
     };
-
-    scrollToHash();
-    window.addEventListener('hashchange', scrollToHash);
-    return () => window.removeEventListener('hashchange', scrollToHash);
+    apply();
+    window.addEventListener('popstate', apply);
+    window.addEventListener('hashchange', apply);
+    return () => {
+      window.removeEventListener('popstate', apply);
+      window.removeEventListener('hashchange', apply);
+    };
   }, []);
 
   useEffect(() => {
