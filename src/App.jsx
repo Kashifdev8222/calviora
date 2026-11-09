@@ -7,6 +7,8 @@ import Features from './components/Features.jsx';
 import AppPreview from './components/AppPreview.jsx';
 import Pricing from './components/Pricing.jsx';
 import Faq from './components/Faq.jsx';
+import Calculators from './components/Calculators.jsx';
+import AskAi from './components/AskAi.jsx';
 import Download from './components/Download.jsx';
 import Footer from './components/Footer.jsx';
 import { plans as defaultPlans, faqs as defaultFaqs } from '../shared/content.js';
@@ -17,7 +19,8 @@ export default function App() {
 
   useLayoutEffect(() => {
     const scrollToHash = () => {
-      const id = window.location.hash.replace('#', '');
+      const raw = window.location.hash.replace('#', '');
+      const id = raw.startsWith('calc-') ? 'calculators' : raw;
       if (!id) return;
       document.getElementById(id)?.scrollIntoView();
     };
@@ -54,6 +57,8 @@ export default function App() {
       <AppPreview />
       <Pricing plans={plans} />
       <Faq faqs={faqs} />
+      <Calculators />
+      <AskAi />
       <Download />
       <Footer />
     </>

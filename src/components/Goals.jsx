@@ -1,37 +1,53 @@
-import { Dumbbell, PieChart, Salad, TrendingDown } from 'lucide-react';
+import { Dumbbell, Leaf, Scale, TrendingDown, TrendingUp, Zap } from 'lucide-react';
 
 const goals = [
   {
     title: 'Lose Weight',
-    copy: 'Stay in a healthy calorie deficit with zero guesswork using precise AI meal tracking.',
+    copy: 'Stay in a steady calorie deficit with meal scans that take the guesswork out of portions.',
     image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=500&q=80',
-    alt: 'Lose Weight',
+    alt: 'Person training to lose weight',
     iconWrap: 'bg-rose-100 text-rose-600',
     Icon: TrendingDown,
   },
   {
-    title: 'Build Lean Muscle',
-    copy: 'Track your daily protein intake accurately to support recovery and muscle growth.',
+    title: 'Gain Muscle',
+    copy: 'Hit your protein target each day so training and recovery have the fuel they need.',
     image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=500&q=80',
-    alt: 'Build Muscle',
+    alt: 'Person strength training',
     iconWrap: 'bg-amber-100 text-amber-600',
     Icon: Dumbbell,
   },
   {
-    title: 'Eat Balanced Meals',
-    copy: 'Log both western foods and South Asian/Desi recipes effortlessly.',
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80',
-    alt: 'Balanced Meals',
-    iconWrap: 'bg-emerald-100 text-emerald-600',
-    Icon: Salad,
+    title: 'Maintain Weight',
+    copy: 'Keep intake close to what you burn, with a clear view of meals, activity, and water.',
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=500&q=80',
+    alt: 'Balanced meal for weight maintenance',
+    iconWrap: 'bg-sky-100 text-sky-600',
+    Icon: Scale,
   },
   {
-    title: 'Track Macro Ratios',
-    copy: 'Keep your Carbs, Protein, and Fats ratio perfectly aligned with your health targets.',
-    image: 'https://images.unsplash.com/photo-1498837167922-ddd27525d352?auto=format&fit=crop&w=500&q=80',
-    alt: 'Track Macros',
-    iconWrap: 'bg-blue-100 text-blue-600',
-    Icon: PieChart,
+    title: 'Improve Nutrition',
+    copy: 'See calories and macros on everyday plates, including homemade and South Asian dishes.',
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80',
+    alt: 'Colorful nutritious meal',
+    iconWrap: 'bg-emerald-100 text-emerald-600',
+    Icon: Leaf,
+  },
+  {
+    title: 'Boost Energy',
+    copy: 'Balance meals, movement, and hydration so afternoon slumps are easier to avoid.',
+    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=500&q=80',
+    alt: 'Person running outdoors',
+    iconWrap: 'bg-yellow-100 text-yellow-600',
+    Icon: Zap,
+  },
+  {
+    title: 'Gain Weight',
+    copy: 'Add calories on purpose and track them, so gaining happens with meals you can measure.',
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
+    alt: 'Hearty nutritious plate',
+    iconWrap: 'bg-orange-100 text-orange-600',
+    Icon: TrendingUp,
   },
 ];
 
@@ -42,27 +58,27 @@ export default function Goals() {
         <div className="text-center max-w-3xl mx-auto mb-12">
           <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Reach your goals, your way</h2>
           <p className="mt-4 text-brand-soft text-base sm:text-lg">
-            Whether you want to drop body fat, gain lean muscle, or stay mindful of your daily nutrition, Calviora adapts to your lifestyle.
+            Lose weight, gain muscle, maintain, or simply eat with more energy. Calviora adapts the plan to the goal you pick.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
           {goals.map((goal) => {
             const Icon = goal.Icon;
             return (
-            <div
-              key={goal.title}
-              className="bg-white text-slate-800 rounded-3xl p-6 shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
-            >
-              <div>
-                <div className={`w-12 h-12 rounded-2xl ${goal.iconWrap} flex items-center justify-center mb-4`}>
-                  <Icon className="w-6 h-6" />
+              <div
+                key={goal.title}
+                className="bg-white text-slate-800 rounded-3xl p-6 shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
+              >
+                <div>
+                  <div className={`w-12 h-12 rounded-2xl ${goal.iconWrap} flex items-center justify-center mb-4`}>
+                    <Icon className="w-6 h-6" />
+                  </div>
+                  <h3 className="text-xl font-bold text-brand-deep mb-2">{goal.title}</h3>
+                  <p className="text-slate-600 text-sm">{goal.copy}</p>
                 </div>
-                <h3 className="text-xl font-bold text-brand-deep mb-2">{goal.title}</h3>
-                <p className="text-slate-600 text-sm">{goal.copy}</p>
+                <img src={goal.image} alt={goal.alt} loading="lazy" className="w-full h-36 object-cover rounded-2xl mt-6" />
               </div>
-              <img src={goal.image} alt={goal.alt} loading="lazy" className="w-full h-36 object-cover rounded-2xl mt-6" />
-            </div>
             );
           })}
         </div>

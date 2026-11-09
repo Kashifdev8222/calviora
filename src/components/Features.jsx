@@ -1,4 +1,77 @@
-import { Activity, Camera, CheckCircle2, Flame, Footprints, Sparkles, Timer, Utensils, Zap } from 'lucide-react';
+import { Activity, BookOpen, Camera, Droplet, Sparkles, Zap } from 'lucide-react';
+
+const features = [
+  {
+    title: 'AI Meal Scan',
+    badge: 'Instant Scan',
+    copy: 'Snap a photo of your plate. Calviora estimates the portion, calories, and macros in seconds.',
+    footerLeft: 'Auto-detect calories',
+    footerRight: '3 free scans/day',
+    Icon: Camera,
+    icon: 'bg-gradient-to-br from-emerald-400 to-brand-action text-brand-dark shadow-emerald-500/20',
+    badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
+    card: 'hover:border-brand-leaf/50 hover:shadow-brand-action/20',
+    titleHover: 'group-hover:text-brand-leaf',
+    glow: 'bg-brand-leaf/10 group-hover:bg-brand-leaf/20',
+    rightClass: 'text-brand-leaf',
+  },
+  {
+    title: 'Meal Logging',
+    badge: 'Daily Diary',
+    copy: 'Save breakfast, lunch, dinner, and snacks in one diary so your day stays easy to review.',
+    footerLeft: 'Photo or manual log',
+    footerRight: 'Macros included',
+    Icon: BookOpen,
+    icon: 'bg-gradient-to-br from-amber-400 to-orange-500 text-amber-950 shadow-amber-500/20',
+    badgeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
+    card: 'hover:border-amber-400/50 hover:shadow-amber-500/20',
+    titleHover: 'group-hover:text-amber-300',
+    glow: 'bg-amber-400/10 group-hover:bg-amber-400/20',
+    rightClass: 'text-amber-300',
+  },
+  {
+    title: 'Activity Tracker',
+    badge: 'Move More',
+    copy: 'Log steps and workouts so the calories you burn sit next to the calories you eat.',
+    footerLeft: 'Steps and workouts',
+    footerRight: 'Net calorie view',
+    Icon: Activity,
+    icon: 'bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-sky-500/20',
+    badgeClass: 'bg-sky-500/20 text-sky-300 border-sky-500/30',
+    card: 'hover:border-sky-400/50 hover:shadow-sky-500/20',
+    titleHover: 'group-hover:text-sky-300',
+    glow: 'bg-sky-400/10 group-hover:bg-sky-400/20',
+    rightClass: 'text-sky-300',
+  },
+  {
+    title: 'Water Intake Tracker',
+    badge: 'Stay Hydrated',
+    copy: 'Tap to log glasses through the day and see how close you are to your hydration goal.',
+    footerLeft: 'Daily water goal',
+    footerRight: '2.5L example',
+    Icon: Droplet,
+    icon: 'bg-gradient-to-br from-cyan-400 to-sky-600 text-white shadow-cyan-500/20',
+    badgeClass: 'bg-cyan-500/20 text-cyan-200 border-cyan-500/30',
+    card: 'hover:border-cyan-300/50 hover:shadow-cyan-500/20',
+    titleHover: 'group-hover:text-cyan-200',
+    glow: 'bg-cyan-400/10 group-hover:bg-cyan-400/20',
+    rightClass: 'text-cyan-200',
+  },
+  {
+    title: 'AI Nutrition Coach',
+    badge: 'Guidance',
+    copy: 'Get plain-language coaching on portions, protein, and the next meal that fits your goal.',
+    footerLeft: 'Goal-aware tips',
+    footerRight: 'Ask anytime',
+    Icon: Sparkles,
+    icon: 'bg-gradient-to-br from-purple-400 to-indigo-600 text-white shadow-purple-500/20',
+    badgeClass: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
+    card: 'hover:border-purple-400/50 hover:shadow-purple-500/20',
+    titleHover: 'group-hover:text-purple-300',
+    glow: 'bg-purple-400/10 group-hover:bg-purple-400/20',
+    rightClass: 'text-purple-300',
+  },
+];
 
 export default function Features() {
   return (
@@ -15,108 +88,38 @@ export default function Features() {
             Everything you need for smart nutrition & lifestyle
           </h2>
           <p className="mt-4 text-slate-300 text-base sm:text-lg font-medium">
-            Say goodbye to multiple cluttery apps. Calviora combines smart visual logging, intermittent fasting, and regional nutrition into one seamless hub.
+            Scan meals, log food, track activity and water, and get coaching without juggling extra apps.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-6">
-          <div className="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-brand-leaf/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-brand-action/20 flex flex-col justify-between overflow-hidden">
-            <div className="absolute -right-8 -top-8 w-24 h-24 bg-brand-leaf/10 rounded-full blur-xl group-hover:bg-brand-leaf/20 transition"></div>
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-emerald-400 to-brand-action text-brand-dark flex items-center justify-center font-extrabold shadow-lg shadow-emerald-500/20 group-hover:scale-110 transition duration-300">
-                  <Camera className="w-7 h-7" />
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+          {features.map((feature) => {
+            const Icon = feature.Icon;
+            return (
+              <div
+                key={feature.title}
+                className={`group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl flex flex-col justify-between overflow-hidden ${feature.card}`}
+              >
+                <div className={`absolute -right-8 -top-8 w-24 h-24 rounded-full blur-xl transition ${feature.glow}`}></div>
+                <div>
+                  <div className="flex items-center justify-between gap-3 mb-6">
+                    <div className={`w-14 h-14 shrink-0 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition duration-300 ${feature.icon}`}>
+                      <Icon className="w-7 h-7" />
+                    </div>
+                    <span className={`text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full border ${feature.badgeClass}`}>
+                      {feature.badge}
+                    </span>
+                  </div>
+                  <h3 className={`text-xl font-bold text-white mb-2 transition ${feature.titleHover}`}>{feature.title}</h3>
+                  <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">{feature.copy}</p>
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-emerald-500/20 text-emerald-300 border border-emerald-500/30">
-                  Instant Scan
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-brand-leaf transition">AI Visual Food Scan</h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Snap any plate or snack. Our AI instantly measures portion sizes and breaks down calories and macros with 98% accuracy.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <div className="flex items-center gap-2 text-slate-200 font-semibold">
-                <span className="w-2 h-2 rounded-full bg-brand-leaf animate-ping"></span>
-                <span>Auto-Detect Calories</span>
-              </div>
-              <span className="text-brand-leaf font-extrabold">98% Match</span>
-            </div>
-          </div>
-
-          <div className="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-sky-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-sky-500/20 flex flex-col justify-between overflow-hidden">
-            <div className="absolute -right-8 -top-8 w-24 h-24 bg-sky-400/10 rounded-full blur-xl group-hover:bg-sky-400/20 transition"></div>
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-sky-400 to-blue-600 text-white flex items-center justify-center font-extrabold shadow-lg shadow-sky-500/20 group-hover:scale-110 transition duration-300">
-                  <Timer className="w-7 h-7" />
+                <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
+                  <span className="text-slate-200 font-semibold">{feature.footerLeft}</span>
+                  <span className={`font-bold ${feature.rightClass}`}>{feature.footerRight}</span>
                 </div>
-                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-sky-500/20 text-sky-300 border border-sky-500/30">
-                  Custom Timers
-                </span>
               </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-sky-300 transition">Smart Fasting Tracker</h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Flexible fasting modes (16:8, 14:10, 5:2) with real-time biological stage alerts (Ketosis, Fat Burning, Autophagy).
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <div className="flex items-center gap-1.5 text-sky-300 font-bold">
-                <Flame className="w-3.5 h-3.5 fill-current" />
-                <span>Fat Burning Mode</span>
-              </div>
-              <span className="text-white font-mono font-bold">14h : 22m</span>
-            </div>
-          </div>
-
-          <div className="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-amber-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-amber-500/20 flex flex-col justify-between overflow-hidden">
-            <div className="absolute -right-8 -top-8 w-24 h-24 bg-amber-400/10 rounded-full blur-xl group-hover:bg-amber-400/20 transition"></div>
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-amber-400 to-orange-500 text-amber-950 flex items-center justify-center font-extrabold shadow-lg shadow-amber-500/20 group-hover:scale-110 transition duration-300">
-                  <Utensils className="w-7 h-7" />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-amber-500/20 text-amber-300 border border-amber-500/30">
-                  18,500+ Dishes
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-amber-300 transition">Desi & Global Library</h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Full support for complex South Asian and global homemade dishes (Biryani, Nihari, Daal, Roti) with authentic oil & spice factors.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <span className="text-slate-300 font-medium">Verified Portion Metrics</span>
-              <span className="text-amber-300 font-bold flex items-center gap-1">
-                <CheckCircle2 className="w-3.5 h-3.5" /> Custom Recipes
-              </span>
-            </div>
-          </div>
-
-          <div className="group relative bg-white/5 backdrop-blur-xl p-6 rounded-3xl border border-white/10 hover:border-purple-400/50 transition-all duration-300 hover:-translate-y-2 hover:shadow-2xl hover:shadow-purple-500/20 flex flex-col justify-between overflow-hidden">
-            <div className="absolute -right-8 -top-8 w-24 h-24 bg-purple-400/10 rounded-full blur-xl group-hover:bg-purple-400/20 transition"></div>
-            <div>
-              <div className="flex items-center justify-between mb-6">
-                <div className="w-14 h-14 rounded-2xl bg-gradient-to-br from-purple-400 to-indigo-600 text-white flex items-center justify-center font-extrabold shadow-lg shadow-purple-500/20 group-hover:scale-110 transition duration-300">
-                  <Activity className="w-7 h-7" />
-                </div>
-                <span className="text-[10px] font-black uppercase tracking-wider px-2.5 py-1 rounded-full bg-purple-500/20 text-purple-300 border border-purple-500/30">
-                  Auto Sync
-                </span>
-              </div>
-              <h3 className="text-xl font-bold text-white mb-2 group-hover:text-purple-300 transition">Hydration & Activity Sync</h3>
-              <p className="text-slate-300 text-xs sm:text-sm leading-relaxed">
-                Sync your daily steps, active workout calories, and hydration logs in one place to maintain an accurate net burn rate.
-              </p>
-            </div>
-            <div className="mt-6 pt-4 border-t border-white/10 bg-black/20 -mx-6 -mb-6 p-4 flex flex-wrap items-center justify-between gap-2 text-xs">
-              <div className="flex items-center gap-1 text-purple-300 font-semibold">
-                <Footprints className="w-3.5 h-3.5" /> 8,420 Steps
-              </div>
-              <span className="text-emerald-400 font-bold">+2.2L Water</span>
-            </div>
-          </div>
+            );
+          })}
         </div>
 
         <div className="mt-12 p-6 sm:p-8 rounded-3xl bg-gradient-to-r from-brand-action/30 via-white/10 to-brand-deep border border-brand-leaf/30 flex flex-col sm:flex-row items-center justify-between gap-6">
