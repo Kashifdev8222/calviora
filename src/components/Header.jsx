@@ -165,13 +165,13 @@ function DesktopMenu({ item, open, onToggle, onPick }) {
         <ChevronDown className={`w-4 h-4 transition ${open ? 'rotate-180' : ''}`} />
       </button>
       {open ? (
-        <div className="absolute left-1/2 top-full z-50 mt-3 w-72 -translate-x-1/2 max-h-[70vh] overflow-y-auto rounded-2xl border border-slate-200 bg-white py-2 shadow-xl">
+        <div className="absolute left-1/2 top-full z-50 mt-3 w-max -translate-x-1/2 max-h-[70vh] overflow-y-auto hide-scrollbar rounded-2xl border border-slate-200 bg-white py-2 shadow-xl">
           {item.items.map((link) => (
             <a
               key={link.href}
               href={link.href}
               onClick={(event) => { onSamePageClick(event); onPick(); }}
-              className="block px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-brand-soft hover:text-brand-action"
+              className="block whitespace-nowrap px-4 py-2.5 text-sm font-semibold text-slate-700 hover:bg-brand-soft hover:text-brand-action"
             >
               {link.label}
             </a>
