@@ -6,6 +6,50 @@ import { onSamePageClick } from '../lib/navigate.js';
 
 const washes = ['from-emerald-100 to-white', 'from-amber-100 to-white', 'from-sky-100 to-white'];
 
+const shotsBySlug = {
+  'ai-meal-scan': [
+    { src: '/screenshots/ai-food-scan.jpeg', alt: 'Calviora quick add with AI Food Scan', caption: 'AI Food Scan' },
+  ],
+  'meal-logging': [
+    { src: '/screenshots/daily-progress.jpeg', alt: 'Calviora daily progress with calories eaten', caption: 'Today’s log' },
+    { src: '/screenshots/meal-times.jpeg', alt: 'Breakfast, lunch, and dinner times in Calviora', caption: 'Meal times' },
+  ],
+  'activity-tracker': [
+    { src: '/screenshots/activities.jpeg', alt: 'Calviora activity list with calories per minute', caption: 'Activities' },
+  ],
+  'water-intake-tracker': [
+    { src: '/screenshots/hydration.jpeg', alt: 'Calviora hydration screen with a water glass', caption: 'Hydration' },
+  ],
+  'ai-nutrition-coach': [
+    { src: '/screenshots/personal-plan.jpeg', alt: 'Calviora personal plan with daily energy and meal split', caption: 'Your plan' },
+    { src: '/screenshots/daily-progress.jpeg', alt: 'Calviora home screen with a note about the day', caption: 'A note on the day' },
+  ],
+  'lose-weight': [
+    { src: '/screenshots/goal-lose-weight.jpeg', alt: 'Lose Weight selected in Calviora goals', caption: 'Lose Weight' },
+    { src: '/screenshots/personal-plan.jpeg', alt: 'A Calviora plan set for losing weight', caption: 'The plan' },
+  ],
+  'gain-muscle': [
+    { src: '/screenshots/goals.jpeg', alt: 'Gain Muscle listed in Calviora goals', caption: 'Gain Muscle' },
+    { src: '/screenshots/daily-progress.jpeg', alt: 'Protein shown beside calories in Calviora', caption: 'Protein on the day' },
+  ],
+  'maintain-weight': [
+    { src: '/screenshots/bmi-summary.jpeg', alt: 'Calviora summary with weight in a normal range', caption: 'Hold the range' },
+    { src: '/screenshots/daily-progress.jpeg', alt: 'Daily calories against the goal in Calviora', caption: 'Close to the goal' },
+  ],
+  'improve-nutrition': [
+    { src: '/screenshots/diet-type.jpeg', alt: 'Diet types in Calviora, including balanced and high protein', caption: 'Diet type' },
+    { src: '/screenshots/daily-progress.jpeg', alt: 'Calories, carbs, protein, and fat in Calviora', caption: 'Macros on the plate' },
+  ],
+  'boost-energy': [
+    { src: '/screenshots/hydration.jpeg', alt: 'Calviora hydration tracker', caption: 'Water through the day' },
+    { src: '/screenshots/meal-times.jpeg', alt: 'Meal times spread through the day in Calviora', caption: 'Meals spread out' },
+  ],
+  'gain-weight': [
+    { src: '/screenshots/goal-gain-weight.jpeg', alt: 'Calviora target weight showing kilograms to gain', caption: 'A higher target' },
+    { src: '/screenshots/goals.jpeg', alt: 'Gain Weight listed in Calviora goals', caption: 'Gain Weight' },
+  ],
+};
+
 const metersBySlug = {
   'ai-meal-scan': [
     { label: 'Protein', value: '21%', figure: '28g', pct: 21, color: '#087C50' },
@@ -169,6 +213,7 @@ function HeroWave() {
 export default function TopicPage({ topic }) {
   const scene = scenes[topic.slug] || scenes['ai-meal-scan'];
   const meters = metersBySlug[topic.slug] || metersBySlug['ai-meal-scan'];
+  const shots = shotsBySlug[topic.slug] || [];
   const play = useSweep(topic.slug);
 
   return (
@@ -233,6 +278,28 @@ export default function TopicPage({ topic }) {
           </div>
         </div>
       </section>
+
+      {shots.length ? (
+        <section id="in-the-app" className="scroll-mt-24 py-14 sm:py-16">
+          <div className="mx-auto max-w-5xl px-4 sm:px-6">
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-action">In the app</p>
+            <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">See it on this screen</h2>
+            <p className="mt-3 max-w-2xl text-slate-600">Screens from Calviora for {topic.title}.</p>
+            <div className="mt-8 flex gap-5 overflow-x-auto pb-3">
+              {shots.map((shot) => (
+                <figure key={shot.src} className="w-[220px] shrink-0 sm:w-[240px]">
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    className="w-full rounded-[28px] border border-slate-200 bg-white shadow-xl"
+                  />
+                  <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{shot.caption}</figcaption>
+                </figure>
+              ))}
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section id="guide" className="scroll-mt-24 py-14 sm:py-16">
         <div className="mx-auto max-w-3xl space-y-4 px-4 sm:px-6">
