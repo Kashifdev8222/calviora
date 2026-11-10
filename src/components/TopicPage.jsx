@@ -3,34 +3,9 @@ import Download from './Download.jsx';
 import Questions from './Questions.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
 
-const jumps = [
-  { href: '#highlights', label: 'Highlights' },
-  { href: '#guide', label: 'Guide' },
-  { href: '#questions', label: 'Questions' },
-  { href: '#related', label: 'Related' },
-];
-
 export default function TopicPage({ topic }) {
-  const crumb = topic.group === 'Goals' ? '/#goals' : '/#features';
-
   return (
     <main>
-      <nav aria-label="On this page" className="bg-white border-b border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3 overflow-x-auto hide-scrollbar">
-          <a href="/" onClick={onSamePageClick} className="shrink-0 text-sm font-semibold text-slate-500 hover:text-brand-action">Home</a>
-          <span className="shrink-0 text-slate-300" aria-hidden="true">/</span>
-          <a href={crumb} onClick={onSamePageClick} className="shrink-0 text-sm font-semibold text-slate-500 hover:text-brand-action">{topic.group}</a>
-          <span className="shrink-0 text-slate-300" aria-hidden="true">/</span>
-          <span className="shrink-0 text-sm font-semibold text-brand-deep">{topic.title}</span>
-          <span className="shrink-0 text-slate-300" aria-hidden="true">›</span>
-          {jumps.map((item) => (
-            <a key={item.href} href={item.href} onClick={onSamePageClick} className="shrink-0 text-sm font-semibold text-brand-deep hover:text-brand-action">
-              {item.label}
-            </a>
-          ))}
-        </div>
-      </nav>
-
       <section className="bg-white border-b border-slate-200">
         <div className="max-w-3xl mx-auto px-4 sm:px-6 pt-14 pb-12 sm:pt-20 sm:pb-16 text-center">
           <p className="inline-flex rounded-full bg-brand-soft px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-action">

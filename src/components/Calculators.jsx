@@ -104,22 +104,6 @@ export default function Calculators() {
 
   return (
     <>
-    <nav aria-label="On this page" className="bg-white border-b border-slate-200">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3 overflow-x-auto hide-scrollbar">
-        <a href="/" onClick={onSamePageClick} className="shrink-0 text-sm font-semibold text-slate-500 hover:text-brand-action">Home</a>
-        <span className="shrink-0 text-slate-300" aria-hidden="true">/</span>
-        <span className="shrink-0 text-sm font-semibold text-brand-deep">{active.label}</span>
-        <span className="shrink-0 text-slate-300" aria-hidden="true">›</span>
-        {[
-          ['#calculators', 'Calculator'],
-          ['#read', 'How to read it'],
-          ['#questions', 'Questions'],
-          ['#more', 'More tools'],
-        ].map(([href, label]) => (
-          <a key={href} href={href} onClick={onSamePageClick} className="shrink-0 text-sm font-semibold text-brand-deep hover:text-brand-action">{label}</a>
-        ))}
-      </div>
-    </nav>
     <section id="calculators" className="scroll-mt-24 py-10 sm:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-8">
