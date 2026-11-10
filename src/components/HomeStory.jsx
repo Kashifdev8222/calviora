@@ -53,7 +53,6 @@ const audiences = [
   {
     title: 'Homemade plates',
     text: 'Curry, rice, eggs, and leftovers rarely come with a label. A photo is the faster start.',
-    href: '/features/ai-meal-scan',
     points: ['South Asian dishes included', 'Portion stays editable'],
     Icon: Camera,
     iconWrap: 'bg-emerald-100 text-emerald-700',
@@ -61,7 +60,6 @@ const audiences = [
   {
     title: 'Losing weight',
     text: 'See what is already eaten before the next meal, while the choice is still easy to change.',
-    href: '/goals/lose-weight',
     points: ['A steady deficit', 'Meals you can measure'],
     Icon: TrendingDown,
     iconWrap: 'bg-rose-100 text-rose-600',
@@ -69,7 +67,6 @@ const audiences = [
   {
     title: 'Training days',
     text: 'Protein is easier to hit when each meal shows what is still missing.',
-    href: '/goals/gain-muscle',
     points: ['Protein next to the plate', 'Workouts in the same view'],
     Icon: Dumbbell,
     iconWrap: 'bg-amber-100 text-amber-700',
@@ -77,7 +74,6 @@ const audiences = [
   {
     title: 'Busy days',
     text: 'Log close to the meal. A usual breakfast does not need a new search every morning.',
-    href: '/features/meal-logging',
     points: ['Photo or typed food', 'A diary you can review'],
     Icon: Clock,
     iconWrap: 'bg-sky-100 text-sky-700',
@@ -85,7 +81,6 @@ const audiences = [
   {
     title: 'Low-energy afternoons',
     text: 'Meals, movement, and water in one place make a slump easier to notice.',
-    href: '/goals/boost-energy',
     points: ['Hydration goal', 'Activity beside food'],
     Icon: Zap,
     iconWrap: 'bg-yellow-100 text-yellow-700',
@@ -93,7 +88,6 @@ const audiences = [
   {
     title: 'Gaining on purpose',
     text: 'Add calories with meals you can measure, instead of guessing that you ate enough.',
-    href: '/goals/gain-weight',
     points: ['A higher target', 'The same scan and log'],
     Icon: TrendingUp,
     iconWrap: 'bg-orange-100 text-orange-700',
@@ -172,11 +166,9 @@ export function WhoFor() {
           {audiences.map((item) => {
             const Icon = item.Icon;
             return (
-            <a
+            <article
               key={item.title}
-              href={item.href}
-              onClick={onSamePageClick}
-              className="rounded-3xl bg-white border border-slate-200 p-6 hover:border-brand-action hover:-translate-y-1 transition"
+              className="rounded-3xl bg-white border border-slate-200 p-6"
             >
               <div className={`w-11 h-11 rounded-2xl flex items-center justify-center ${item.iconWrap}`}>
                 <Icon className="w-5 h-5" />
@@ -188,7 +180,7 @@ export function WhoFor() {
                   <li key={point}>{point}</li>
                 ))}
               </ul>
-            </a>
+            </article>
             );
           })}
         </div>
