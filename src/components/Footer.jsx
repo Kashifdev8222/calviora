@@ -58,7 +58,7 @@ export default function Footer() {
             <img src="/logo.jpg" alt="Calviora" className="h-16 w-auto rounded-xl bg-white" />
           </a>
           <p className="mt-4 text-sm leading-relaxed max-w-xs">Track meals, water, and activity. Eat with a clearer picture of the day.</p>
-          <div className="mt-5 flex flex-wrap gap-2">
+          <div className="mt-5 flex gap-2">
             {socials.map((item) => (
               <a
                 key={item.name}
@@ -66,10 +66,9 @@ export default function Footer() {
                 target="_blank"
                 rel="noopener noreferrer"
                 aria-label={item.name}
-                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-3 py-1.5 text-sm font-semibold text-white hover:border-brand-leaf hover:text-brand-leaf"
+                className="inline-flex h-10 w-10 items-center justify-center rounded-full border border-white/15 text-white hover:border-brand-leaf hover:text-brand-leaf"
               >
                 <SocialIcon name={item.name} />
-                {item.name}
               </a>
             ))}
           </div>
@@ -89,7 +88,7 @@ export default function Footer() {
           ))}
         </Column>
         <Column title="Calculators">
-          {calculatorTools.map((item) => (
+          {calculatorTools.slice(0, 6).map((item) => (
             <Item key={item.id} href={calculatorPath(item.id)}>
               {item.label}
             </Item>
