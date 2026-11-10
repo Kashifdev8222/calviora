@@ -1,3 +1,4 @@
+import { BookOpen, Camera, Clock, Dumbbell, Droplet, Sparkles, TrendingDown, TrendingUp, Zap } from 'lucide-react';
 import { onSamePageClick } from '../lib/navigate.js';
 
 const steps = [
@@ -7,6 +8,9 @@ const steps = [
     text: 'A photo returns an estimate of calories, protein, carbs, and fat. Change the portion if the serving looks off.',
     href: '/features/ai-meal-scan',
     label: 'AI Meal Scan',
+    Icon: Camera,
+    wash: 'from-emerald-100 to-white',
+    bar: 'w-[72%] bg-brand-action',
   },
   {
     n: '2',
@@ -14,6 +18,9 @@ const steps = [
     text: 'Breakfast, lunch, dinner, and snacks stay in one diary, so one heavy plate does not hide the rest of the day.',
     href: '/features/meal-logging',
     label: 'Meal Logging',
+    Icon: BookOpen,
+    wash: 'from-amber-100 to-white',
+    bar: 'w-[54%] bg-amber-400',
   },
   {
     n: '3',
@@ -21,6 +28,9 @@ const steps = [
     text: 'The coach talks about portions, protein, and the next meal that still fits the goal you picked.',
     href: '/features/ai-nutrition-coach',
     label: 'AI Nutrition Coach',
+    Icon: Sparkles,
+    wash: 'from-violet-100 to-white',
+    bar: 'w-[40%] bg-violet-400',
   },
   {
     n: '4',
@@ -28,6 +38,9 @@ const steps = [
     text: 'Water and activity sit beside the food log, so the day is more than a calorie total.',
     href: '/features/water-intake-tracker',
     label: 'Water and activity',
+    Icon: Droplet,
+    wash: 'from-sky-100 to-white',
+    bar: 'w-[80%] bg-sky-400',
   },
 ];
 
@@ -37,36 +50,48 @@ const audiences = [
     text: 'Curry, rice, eggs, and leftovers rarely come with a label. A photo is the faster start.',
     href: '/features/ai-meal-scan',
     points: ['South Asian dishes included', 'Portion stays editable'],
+    Icon: Camera,
+    iconWrap: 'bg-emerald-100 text-emerald-700',
   },
   {
     title: 'Losing weight',
     text: 'See what is already eaten before the next meal, while the choice is still easy to change.',
     href: '/goals/lose-weight',
     points: ['A steady deficit', 'Meals you can measure'],
+    Icon: TrendingDown,
+    iconWrap: 'bg-rose-100 text-rose-600',
   },
   {
     title: 'Training days',
     text: 'Protein is easier to hit when each meal shows what is still missing.',
     href: '/goals/gain-muscle',
     points: ['Protein next to the plate', 'Workouts in the same view'],
+    Icon: Dumbbell,
+    iconWrap: 'bg-amber-100 text-amber-700',
   },
   {
     title: 'Busy days',
     text: 'Log close to the meal. A usual breakfast does not need a new search every morning.',
     href: '/features/meal-logging',
     points: ['Photo or typed food', 'A diary you can review'],
+    Icon: Clock,
+    iconWrap: 'bg-sky-100 text-sky-700',
   },
   {
     title: 'Low-energy afternoons',
     text: 'Meals, movement, and water in one place make a slump easier to notice.',
     href: '/goals/boost-energy',
     points: ['Hydration goal', 'Activity beside food'],
+    Icon: Zap,
+    iconWrap: 'bg-yellow-100 text-yellow-700',
   },
   {
     title: 'Gaining on purpose',
     text: 'Add calories with meals you can measure, instead of guessing that you ate enough.',
     href: '/goals/gain-weight',
     points: ['A higher target', 'The same scan and log'],
+    Icon: TrendingUp,
+    iconWrap: 'bg-orange-100 text-orange-700',
   },
 ];
 
@@ -83,19 +108,30 @@ export function DayFlow() {
         </div>
 
         <div className="mt-10 grid sm:grid-cols-2 xl:grid-cols-4 gap-4">
-          {steps.map((step) => (
-            <a
-              key={step.n}
-              href={step.href}
-              onClick={onSamePageClick}
-              className="rounded-3xl border border-slate-200 bg-brand-cloud p-5 hover:border-brand-action"
-            >
-              <div className="w-9 h-9 rounded-full bg-brand-deep text-brand-leaf font-extrabold flex items-center justify-center">{step.n}</div>
-              <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{step.title}</h3>
-              <p className="mt-2 text-sm text-slate-600 leading-relaxed">{step.text}</p>
-              <p className="mt-4 text-sm font-bold text-brand-action">{step.label}</p>
-            </a>
-          ))}
+          {steps.map((step) => {
+            const Icon = step.Icon;
+            return (
+              <a
+                key={step.n}
+                href={step.href}
+                onClick={onSamePageClick}
+                className={`rounded-3xl border border-slate-200 bg-gradient-to-b ${step.wash} p-5 hover:border-brand-action`}
+              >
+                <div className="flex items-center justify-between">
+                  <div className="w-11 h-11 rounded-2xl bg-white shadow-sm text-brand-deep flex items-center justify-center">
+                    <Icon className="w-5 h-5" />
+                  </div>
+                  <span className="text-sm font-extrabold text-brand-action">{step.n}</span>
+                </div>
+                <div className="mt-5 h-1.5 rounded-full bg-white">
+                  <div className={`h-full rounded-full ${step.bar}`}></div>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{step.title}</h3>
+                <p className="mt-2 text-sm text-slate-600 leading-relaxed">{step.text}</p>
+                <p className="mt-4 text-sm font-bold text-brand-action">{step.label}</p>
+              </a>
+            );
+          })}
         </div>
 
         <div className="mt-8 grid lg:grid-cols-2 gap-4">
@@ -126,14 +162,19 @@ export function WhoFor() {
           <p className="mt-4 text-slate-600 text-base sm:text-lg">The scan, the log, and the coach change with the reason you opened the app.</p>
         </div>
         <div className="mt-10 grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
-          {audiences.map((item) => (
+          {audiences.map((item) => {
+            const Icon = item.Icon;
+            return (
             <a
               key={item.title}
               href={item.href}
               onClick={onSamePageClick}
               className="rounded-3xl bg-white border border-slate-200 p-6 hover:border-brand-action hover:-translate-y-1 transition"
             >
-              <h3 className="text-xl font-extrabold text-brand-deep">{item.title}</h3>
+              <div className={`w-11 h-11 rounded-2xl flex items-center justify-center ${item.iconWrap}`}>
+                <Icon className="w-5 h-5" />
+              </div>
+              <h3 className="mt-4 text-xl font-extrabold text-brand-deep">{item.title}</h3>
               <p className="mt-2 text-sm text-slate-600 leading-relaxed">{item.text}</p>
               <ul className="mt-4 space-y-1 text-sm font-semibold text-brand-action">
                 {item.points.map((point) => (
@@ -141,7 +182,8 @@ export function WhoFor() {
                 ))}
               </ul>
             </a>
-          ))}
+            );
+          })}
         </div>
       </div>
     </section>

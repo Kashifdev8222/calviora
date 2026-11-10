@@ -4,6 +4,8 @@ export default function Hero() {
   return (
     <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+      <div className="pointer-events-none absolute -left-16 top-10 h-56 w-56 rounded-full bg-brand-leaf/50 blur-3xl"></div>
+      <div className="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-brand-action/20 blur-3xl"></div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid xl:grid-cols-12 gap-12 items-center">
           <div className="xl:col-span-7 text-center xl:text-left">

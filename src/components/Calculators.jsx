@@ -104,8 +104,9 @@ export default function Calculators() {
 
   return (
     <>
-    <section id="calculators" className="scroll-mt-24 py-10 sm:py-14">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <section id="calculators" className="relative scroll-mt-24 overflow-hidden py-10 sm:py-14">
+      <div className="pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-brand-leaf/40 blur-3xl"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
         <div className="max-w-3xl mb-8">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Free calculator</p>
           <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">{active.label}</h1>
