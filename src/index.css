@@ -29,3 +29,36 @@ body {
   backdrop-filter: blur(12px);
   border: 1px solid rgba(8, 124, 80, 0.12);
 }
+
+@property --ring-turn {
+  syntax: '<angle>';
+  inherits: false;
+  initial-value: 0deg;
+}
+
+.ring-sweep {
+  background: conic-gradient(var(--ring-color, #087c50) var(--ring-turn), #e6f3ea 0deg);
+  transition: --ring-turn 1.15s cubic-bezier(0.22, 0.8, 0.28, 1);
+}
+
+.ring-sweep.is-reset {
+  transition: none;
+}
+
+.fill-bar {
+  height: 100%;
+  width: 0;
+  border-radius: 9999px;
+  transition: width 1.15s cubic-bezier(0.22, 0.8, 0.28, 1);
+}
+
+.fill-bar.is-reset {
+  transition: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .ring-sweep,
+  .fill-bar {
+    transition: none;
+  }
+}

@@ -1,28 +1,28 @@
 import { CheckCircle, Droplet, PlayCircle, QrCode, Sparkles } from 'lucide-react';
+import { FillBar, RingSweep, useSweep } from './RingSweep.jsx';
 
 const sampleRings = [
-  { label: 'Calories', value: '72%', turn: 259, color: '#087C50' },
-  { label: 'Protein', value: '64%', turn: 230, color: '#f59e0b' },
-  { label: 'Water', value: '80%', turn: 288, color: '#0284c7' },
+  { label: 'Calories', value: '72%', pct: 72, color: '#087C50' },
+  { label: 'Protein', value: '64%', pct: 64, color: '#f59e0b' },
+  { label: 'Water', value: '80%', pct: 80, color: '#0284c7' },
 ];
 
-function SampleRing({ label, value, turn, color }) {
+function SampleRing({ label, value, pct, color, play }) {
   return (
     <div className="text-center">
-      <div
-        className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full"
-        style={{ background: `conic-gradient(${color} ${turn}deg, #E6F3EA 0deg)` }}
-      >
+      <RingSweep pct={pct} color={color} play={play} className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">
           {value}
         </div>
-      </div>
+      </RingSweep>
       <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-500">{label}</p>
     </div>
   );
 }
 
 export default function Hero() {
+  const play = useSweep('home');
+
   return (
     <section className="relative overflow-hidden pt-12 pb-28 md:pt-20 md:pb-36">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
@@ -87,7 +87,7 @@ export default function Hero() {
               <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
               <div className="mt-3 flex items-start justify-center gap-6 xl:justify-start">
                 {sampleRings.map((ring) => (
-                  <SampleRing key={ring.label} {...ring} />
+                  <SampleRing key={ring.label} {...ring} play={play} />
                 ))}
               </div>
             </div>
@@ -130,7 +130,7 @@ export default function Hero() {
                     <span className="text-brand-action">1,420 / 1,960 kcal</span>
                   </div>
                   <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                    <div className="bg-brand-action h-full w-[72%] rounded-full"></div>
+                    <FillBar pct={72} color="#087C50" play={play} />
                   </div>
                 </div>
               </div>

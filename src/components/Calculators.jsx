@@ -14,6 +14,7 @@ import {
 import { calculate } from '../lib/nutritionCalc.js';
 import { go, onSamePageClick } from '../lib/navigate.js';
 import Questions from './Questions.jsx';
+import { FillBar, RingSweep, useSweep } from './RingSweep.jsx';
 
 const fieldClass =
   'w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 outline-none focus:border-brand-action';
@@ -162,6 +163,7 @@ export default function Calculators() {
   const note = calculatorNotes[tool] || calculatorNotes.tdee;
 
   const rings = ringsFromResult(result);
+  const play = useSweep(tool);
   const readSteps = [
     ['1', 'Enter what you know', 'A guessed weight makes a guessed plan. Use the numbers you can actually measure.', 'from-emerald-100 to-white'],
     ['2', 'Read the estimate', 'Change one input if the week does not match the figure on the card.', 'from-amber-100 to-white'],
@@ -186,12 +188,14 @@ export default function Calculators() {
               <div className={`mt-3 grid gap-2 ${rings.length > 2 ? 'grid-cols-3' : 'grid-cols-2'}`}>
                 {rings.map((ring) => (
                   <div key={ring.label} className="text-center">
-                    <div
+                    <RingSweep
+                      pct={ring.pct}
+                      color={ring.color}
+                      play={play}
                       className="mx-auto flex h-14 w-14 items-center justify-center rounded-full"
-                      style={{ background: `conic-gradient(${ring.color} ${ring.pct * 3.6}deg, #E6F3EA 0deg)` }}
                     >
                       <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[10px] font-extrabold text-brand-deep">{ring.pct}%</div>
-                    </div>
+                    </RingSweep>
                     <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-slate-500">{ring.label}</p>
                     <p className="text-[10px] font-semibold text-brand-deep">{ring.text}</p>
                   </div>
@@ -250,7 +254,7 @@ export default function Calculators() {
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-deep font-extrabold text-brand-leaf">{n}</div>
                 {rings[index] ? (
                   <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white">
-                    <div className="h-full rounded-full" style={{ width: `${rings[index].pct}%`, background: rings[index].color }}></div>
+                    <FillBar pct={rings[index].pct} color={rings[index].color} play={play} />
                   </div>
                 ) : null}
                 <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{title}</h3>

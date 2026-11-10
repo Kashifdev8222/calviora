@@ -1,4 +1,5 @@
 import { Activity, BookOpen, Camera, Droplet, Sparkles, Zap } from 'lucide-react';
+import { FillBar, useSweep } from './RingSweep.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
 import { featurePath } from '../data/topics.js';
 
@@ -81,6 +82,8 @@ const features = [
 ];
 
 export default function Features() {
+  const play = useSweep('features');
+
   return (
     <section id="features" className="scroll-mt-24 py-16 sm:py-20 bg-brand-cloud">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -131,7 +134,7 @@ export default function Features() {
                     <p className="text-sm font-extrabold text-brand-deep">Chicken Biryani</p>
                     <p className="mt-1 text-xs font-semibold text-slate-500">540 kcal · Protein 28g · Carbs 62g · Fat 18g</p>
                     <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
-                      <div className="h-full w-[72%] rounded-full bg-brand-action"></div>
+                      <FillBar pct={72} color="#087C50" play={play} />
                     </div>
                   </div>
                 </div>

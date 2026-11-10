@@ -1,4 +1,5 @@
 import { BookOpen, Camera, Clock, Dumbbell, Droplet, Sparkles, TrendingDown, TrendingUp, Zap } from 'lucide-react';
+import { FillBar, useSweep } from './RingSweep.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
 
 const steps = [
@@ -10,7 +11,8 @@ const steps = [
     label: 'AI Meal Scan',
     Icon: Camera,
     wash: 'from-emerald-100 to-white',
-    bar: 'w-[72%] bg-brand-action',
+    pct: 72,
+    color: '#087C50',
   },
   {
     n: '2',
@@ -20,7 +22,8 @@ const steps = [
     label: 'Meal Logging',
     Icon: BookOpen,
     wash: 'from-amber-100 to-white',
-    bar: 'w-[54%] bg-amber-400',
+    pct: 54,
+    color: '#fbbf24',
   },
   {
     n: '3',
@@ -30,7 +33,8 @@ const steps = [
     label: 'AI Nutrition Coach',
     Icon: Sparkles,
     wash: 'from-violet-100 to-white',
-    bar: 'w-[40%] bg-violet-400',
+    pct: 40,
+    color: '#a78bfa',
   },
   {
     n: '4',
@@ -40,7 +44,8 @@ const steps = [
     label: 'Water and activity',
     Icon: Droplet,
     wash: 'from-sky-100 to-white',
-    bar: 'w-[80%] bg-sky-400',
+    pct: 80,
+    color: '#38bdf8',
   },
 ];
 
@@ -96,6 +101,8 @@ const audiences = [
 ];
 
 export function DayFlow() {
+  const play = useSweep('routine');
+
   return (
     <section id="routine" className="scroll-mt-24 py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -123,8 +130,8 @@ export function DayFlow() {
                   </div>
                   <span className="text-sm font-extrabold text-brand-action">{step.n}</span>
                 </div>
-                <div className="mt-5 h-1.5 rounded-full bg-white">
-                  <div className={`h-full rounded-full ${step.bar}`}></div>
+                <div className="mt-5 h-1.5 overflow-hidden rounded-full bg-white">
+                  <FillBar pct={step.pct} color={step.color} play={play} />
                 </div>
                 <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{step.title}</h3>
                 <p className="mt-2 text-sm text-slate-600 leading-relaxed">{step.text}</p>
