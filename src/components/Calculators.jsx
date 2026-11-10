@@ -18,6 +18,65 @@ import Questions from './Questions.jsx';
 const fieldClass =
   'w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 outline-none focus:border-brand-action';
 
+const ringColors = ['#087C50', '#f59e0b', '#0284c7'];
+
+function firstNumber(text) {
+  const match = String(text ?? '').replace(/,/g, '').match(/\d+(\.\d+)?/);
+  return match ? Number(match[0]) : null;
+}
+
+function unitOf(text) {
+  const value = String(text).toLowerCase();
+  if (value.includes('kcal')) return 'kcal';
+  if (/\bkg\b/.test(value)) return 'kg';
+  if (value.includes('%')) return '%';
+  if (/\bg\b/.test(value)) return 'g';
+  return '';
+}
+
+function ringsFromResult(result) {
+  if (!result || result.error) return [];
+  const items = [];
+  if (result.value) items.push({ label: result.kicker || 'Result', text: String(result.value) });
+  for (const stat of result.stats || []) items.push({ label: stat.label, text: String(stat.value) });
+
+  const parsed = items
+    .map((item) => ({ ...item, n: firstNumber(item.text), unit: unitOf(item.text) }))
+    .filter((item) => item.n != null && item.unit);
+
+  const grams = parsed.filter((item) => item.unit === 'g');
+  const kcalItems = parsed.filter((item) => item.unit === 'kcal');
+  const protein = grams.find((item) => /protein/i.test(item.label));
+  const carbs = grams.find((item) => /carb/i.test(item.label));
+  const fat = grams.find((item) => /fat/i.test(item.label));
+
+  let chosen = [];
+  if (protein && carbs && fat && kcalItems[0]) {
+    const proteinKcal = protein.n * 4;
+    const carbKcal = carbs.n * 4;
+    const fatKcal = fat.n * 9;
+    const total = proteinKcal + carbKcal + fatKcal || 1;
+    chosen = [
+      { label: 'Protein', text: protein.text, pct: proteinKcal / total },
+      { label: 'Carbs', text: carbs.text, pct: carbKcal / total },
+      { label: 'Fat', text: fat.text, pct: fatKcal / total },
+    ];
+  } else if (kcalItems.length >= 2) {
+    const max = Math.max(...kcalItems.map((item) => item.n));
+    chosen = kcalItems.slice(0, 3).map((item) => ({ label: item.label, text: item.text, pct: item.n / max }));
+  } else {
+    const unit = parsed[0]?.unit;
+    const same = parsed.filter((item) => item.unit === unit);
+    const max = Math.max(...same.map((item) => item.n), 1);
+    chosen = same.slice(0, 3).map((item) => ({ label: item.label, text: item.text, pct: item.n / max }));
+  }
+
+  return chosen.map((item, index) => {
+    const pct = Math.max(8, Math.min(100, Math.round(item.pct * 100)));
+    return { ...item, pct, color: ringColors[index % ringColors.length] };
+  });
+}
+
 const emptyForm = {
   sex: 'female',
   age: '28',
@@ -102,10 +161,11 @@ export default function Calculators() {
   const active = calculatorTools.find((item) => item.id === tool) || calculatorTools[0];
   const note = calculatorNotes[tool] || calculatorNotes.tdee;
 
+  const rings = ringsFromResult(result);
   const readSteps = [
-    ['1', 'Enter what you know', 'A guessed weight makes a guessed plan. Use the numbers you can actually measure.', 'from-emerald-100 to-white', 'w-[72%] bg-brand-action'],
-    ['2', 'Read the estimate', 'Change one input if the week does not match the figure on the card.', 'from-amber-100 to-white', 'w-[54%] bg-amber-400'],
-    ['3', 'Use it as a plan', 'It is a planning estimate. It is not a diagnosis, a prescription, or a lab test.', 'from-sky-100 to-white', 'w-[40%] bg-sky-400'],
+    ['1', 'Enter what you know', 'A guessed weight makes a guessed plan. Use the numbers you can actually measure.', 'from-emerald-100 to-white'],
+    ['2', 'Read the estimate', 'Change one input if the week does not match the figure on the card.', 'from-amber-100 to-white'],
+    ['3', 'Use it as a plan', 'It is a planning estimate. It is not a diagnosis, a prescription, or a lab test.', 'from-sky-100 to-white'],
   ];
 
   return (
@@ -121,24 +181,25 @@ export default function Calculators() {
             <p className="mt-3 text-slate-600 text-base sm:text-lg">{note.about}</p>
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-lg">
-            <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
-            <div className="mt-3 grid grid-cols-3 gap-2">
-              {[
-                ['72%', 'Calories', '#087C50', 259],
-                ['64%', 'Protein', '#f59e0b', 230],
-                ['80%', 'Water', '#0284c7', 288],
-              ].map(([value, label, color, turn]) => (
-                <div key={label} className="text-center">
-                  <div
-                    className="mx-auto flex h-14 w-14 items-center justify-center rounded-full"
-                    style={{ background: `conic-gradient(${color} ${turn}deg, #E6F3EA 0deg)` }}
-                  >
-                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[10px] font-extrabold text-brand-deep">{value}</div>
+            <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">This result</p>
+            {rings.length ? (
+              <div className={`mt-3 grid gap-2 ${rings.length > 2 ? 'grid-cols-3' : 'grid-cols-2'}`}>
+                {rings.map((ring) => (
+                  <div key={ring.label} className="text-center">
+                    <div
+                      className="mx-auto flex h-14 w-14 items-center justify-center rounded-full"
+                      style={{ background: `conic-gradient(${ring.color} ${ring.pct * 3.6}deg, #E6F3EA 0deg)` }}
+                    >
+                      <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[10px] font-extrabold text-brand-deep">{ring.pct}%</div>
+                    </div>
+                    <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-slate-500">{ring.label}</p>
+                    <p className="text-[10px] font-semibold text-brand-deep">{ring.text}</p>
                   </div>
-                  <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-slate-500">{label}</p>
-                </div>
-              ))}
-            </div>
+                ))}
+              </div>
+            ) : (
+              <p className="mt-3 text-sm font-semibold text-slate-500">Enter valid numbers and the rings follow this result.</p>
+            )}
           </div>
         </div>
 
@@ -184,12 +245,14 @@ export default function Calculators() {
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Guide</p>
           <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-brand-deep">How to read this result</h2>
           <div className="mt-5 grid gap-4 sm:grid-cols-3">
-            {readSteps.map(([n, title, text, wash, bar]) => (
+            {readSteps.map(([n, title, text, wash], index) => (
               <article key={n} className={`rounded-3xl border border-slate-200 bg-gradient-to-b p-5 ${wash}`}>
                 <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-deep font-extrabold text-brand-leaf">{n}</div>
-                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white">
-                  <div className={`h-full rounded-full ${bar}`}></div>
-                </div>
+                {rings[index] ? (
+                  <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white">
+                    <div className="h-full rounded-full" style={{ width: `${rings[index].pct}%`, background: rings[index].color }}></div>
+                  </div>
+                ) : null}
                 <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
               </article>

@@ -3,14 +3,65 @@ import Download from './Download.jsx';
 import Questions from './Questions.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
 
-const rings = [
-  { label: 'Calories', value: '72%', turn: 259, color: '#087C50' },
-  { label: 'Protein', value: '64%', turn: 230, color: '#f59e0b' },
-  { label: 'Water', value: '80%', turn: 288, color: '#0284c7' },
-];
-
 const washes = ['from-emerald-100 to-white', 'from-amber-100 to-white', 'from-sky-100 to-white'];
-const pointBars = ['w-[72%] bg-brand-action', 'w-[54%] bg-amber-400', 'w-[80%] bg-sky-400'];
+
+const metersBySlug = {
+  'ai-meal-scan': [
+    { label: 'Protein', value: '21%', figure: '28g', pct: 21, color: '#087C50' },
+    { label: 'Carbs', value: '46%', figure: '62g', pct: 46, color: '#f59e0b' },
+    { label: 'Fat', value: '30%', figure: '18g', pct: 30, color: '#e11d48' },
+  ],
+  'meal-logging': [
+    { label: 'Calories', value: '85%', figure: '1,860 kcal', pct: 85, color: '#087C50' },
+    { label: 'Protein', value: '77%', figure: '92g', pct: 77, color: '#f59e0b' },
+    { label: 'Water', value: '64%', figure: '1.6L', pct: 64, color: '#0284c7' },
+  ],
+  'activity-tracker': [
+    { label: 'Steps', value: '84%', figure: '8,400', pct: 84, color: '#087C50' },
+    { label: 'Workout', value: '60%', figure: '45 min', pct: 60, color: '#f59e0b' },
+    { label: 'Meals', value: '70%', figure: '3 logged', pct: 70, color: '#0284c7' },
+  ],
+  'water-intake-tracker': [
+    { label: 'Water', value: '72%', figure: '1.8L', pct: 72, color: '#0284c7' },
+    { label: 'Meals', value: '58%', figure: '2 logged', pct: 58, color: '#087C50' },
+    { label: 'Steps', value: '40%', figure: '4,200', pct: 40, color: '#f59e0b' },
+  ],
+  'ai-nutrition-coach': [
+    { label: 'Left', value: '46%', figure: '920 kcal', pct: 46, color: '#087C50' },
+    { label: 'Protein', value: '71%', figure: '86g', pct: 71, color: '#f59e0b' },
+    { label: 'Water', value: '55%', figure: '1.4L', pct: 55, color: '#0284c7' },
+  ],
+  'lose-weight': [
+    { label: 'Intake', value: '78%', figure: '1,720 kcal', pct: 78, color: '#087C50' },
+    { label: 'Protein', value: '88%', figure: '118g', pct: 88, color: '#f59e0b' },
+    { label: 'Water', value: '63%', figure: '1.6L', pct: 63, color: '#0284c7' },
+  ],
+  'gain-muscle': [
+    { label: 'Protein', value: '94%', figure: '156g', pct: 94, color: '#f59e0b' },
+    { label: 'Calories', value: '91%', figure: '2,640 kcal', pct: 91, color: '#087C50' },
+    { label: 'Water', value: '68%', figure: '2.1L', pct: 68, color: '#0284c7' },
+  ],
+  'maintain-weight': [
+    { label: 'Calories', value: '99%', figure: '2,180 kcal', pct: 99, color: '#087C50' },
+    { label: 'Protein', value: '80%', figure: '110g', pct: 80, color: '#f59e0b' },
+    { label: 'Water', value: '74%', figure: '1.9L', pct: 74, color: '#0284c7' },
+  ],
+  'improve-nutrition': [
+    { label: 'Plants', value: '86%', figure: '5 colors', pct: 86, color: '#087C50' },
+    { label: 'Protein', value: '69%', figure: '98g', pct: 69, color: '#f59e0b' },
+    { label: 'Calories', value: '73%', figure: '1,940 kcal', pct: 73, color: '#0284c7' },
+  ],
+  'boost-energy': [
+    { label: 'Water', value: '92%', figure: '2.3L', pct: 92, color: '#0284c7' },
+    { label: 'Meals', value: '61%', figure: '1,540 kcal', pct: 61, color: '#087C50' },
+    { label: 'Move', value: '48%', figure: '35 min', pct: 48, color: '#f59e0b' },
+  ],
+  'gain-weight': [
+    { label: 'Calories', value: '96%', figure: '2,680 kcal', pct: 96, color: '#087C50' },
+    { label: 'Protein', value: '82%', figure: '140g', pct: 82, color: '#f59e0b' },
+    { label: 'Meals', value: '90%', figure: '4 logged', pct: 90, color: '#0284c7' },
+  ],
+};
 
 const scenes = {
   'ai-meal-scan': {
@@ -81,20 +132,21 @@ const scenes = {
   },
 };
 
-function Rings() {
+function Rings({ meters }) {
   return (
     <div className="grid grid-cols-3 gap-2">
-      {rings.map((ring) => (
+      {meters.map((ring) => (
         <div key={ring.label} className="text-center">
           <div
             className="mx-auto flex h-[68px] w-[68px] items-center justify-center rounded-full"
-            style={{ background: `conic-gradient(${ring.color} ${ring.turn}deg, #E6F3EA 0deg)` }}
+            style={{ background: `conic-gradient(${ring.color} ${ring.pct * 3.6}deg, #E6F3EA 0deg)` }}
           >
             <div className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white text-[11px] font-extrabold text-brand-deep">
               {ring.value}
             </div>
           </div>
           <p className="mt-1.5 text-[10px] font-bold uppercase tracking-wide text-slate-500">{ring.label}</p>
+          <p className="text-[10px] font-semibold text-brand-deep">{ring.figure}</p>
         </div>
       ))}
     </div>
@@ -113,6 +165,7 @@ function HeroWave() {
 
 export default function TopicPage({ topic }) {
   const scene = scenes[topic.slug] || scenes['ai-meal-scan'];
+  const meters = metersBySlug[topic.slug] || metersBySlug['ai-meal-scan'];
 
   return (
     <main>
@@ -147,7 +200,7 @@ export default function TopicPage({ topic }) {
                   <p className="mt-0.5 text-xs font-semibold text-slate-500">{scene.meta}</p>
                 </div>
               </div>
-              <Rings />
+              <Rings meters={meters} />
               <p className="mt-3 rounded-2xl bg-brand-cloud px-3 py-2 text-sm font-semibold text-brand-deep">{topic.kicker}</p>
             </div>
           </div>
@@ -167,7 +220,13 @@ export default function TopicPage({ topic }) {
                   </div>
                 </div>
                 <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white">
-                  <div className={`h-full rounded-full ${pointBars[index % pointBars.length]}`}></div>
+                  <div
+                    className="h-full rounded-full"
+                    style={{
+                      width: `${meters[index % meters.length].pct}%`,
+                      background: meters[index % meters.length].color,
+                    }}
+                  ></div>
                 </div>
                 <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{point.title}</h3>
                 <p className="mt-2 text-sm leading-relaxed text-slate-600">{point.text}</p>
