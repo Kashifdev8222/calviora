@@ -1,11 +1,38 @@
 import { CheckCircle, Droplet, PlayCircle, QrCode, Sparkles } from 'lucide-react';
 
+const sampleRings = [
+  { label: 'Calories', value: '72%', turn: 259, color: '#087C50' },
+  { label: 'Protein', value: '64%', turn: 230, color: '#f59e0b' },
+  { label: 'Water', value: '80%', turn: 288, color: '#0284c7' },
+];
+
+function SampleRing({ label, value, turn, color }) {
+  return (
+    <div className="text-center">
+      <div
+        className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full"
+        style={{ background: `conic-gradient(${color} ${turn}deg, #E6F3EA 0deg)` }}
+      >
+        <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">
+          {value}
+        </div>
+      </div>
+      <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-500">{label}</p>
+    </div>
+  );
+}
+
 export default function Hero() {
   return (
-    <section className="relative pt-12 pb-20 md:pt-20 md:pb-28 overflow-hidden">
+    <section className="relative overflow-hidden pt-12 pb-28 md:pt-20 md:pb-36">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
       <div className="pointer-events-none absolute -left-16 top-10 h-56 w-56 rounded-full bg-brand-leaf/50 blur-3xl"></div>
       <div className="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-brand-action/20 blur-3xl"></div>
+      <div className="pointer-events-none absolute inset-x-0 bottom-0 text-brand-action" aria-hidden="true">
+        <svg viewBox="0 0 1440 90" preserveAspectRatio="none" className="block h-16 w-full sm:h-24">
+          <path fill="currentColor" d="M0,58 C280,8 520,8 760,42 C1000,76 1220,92 1440,36 L1440,90 L0,90 Z" />
+        </svg>
+      </div>
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid xl:grid-cols-12 gap-12 items-center">
           <div className="xl:col-span-7 text-center xl:text-left">
@@ -54,6 +81,15 @@ export default function Hero() {
                   <span className="text-xs font-medium text-slate-500">{label}</span>
                 </div>
               ))}
+            </div>
+
+            <div className="mt-8">
+              <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
+              <div className="mt-3 flex items-start justify-center gap-6 xl:justify-start">
+                {sampleRings.map((ring) => (
+                  <SampleRing key={ring.label} {...ring} />
+                ))}
+              </div>
             </div>
           </div>
 

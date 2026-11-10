@@ -94,34 +94,79 @@ export default function Features() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
-          {features.map((feature) => {
-            const Icon = feature.Icon;
-            return (
+        {(() => {
+          const [lead, ...rest] = features;
+          const LeadIcon = lead.Icon;
+          return (
+            <>
               <a
-                key={feature.slug}
-                href={featurePath(feature.slug)}
+                href={featurePath(lead.slug)}
                 onClick={onSamePageClick}
-                className="group bg-white p-6 rounded-3xl border border-slate-200 hover:border-brand-action/40 hover:-translate-y-1 hover:shadow-lg transition duration-300 flex flex-col"
+                className="group mb-5 grid overflow-hidden rounded-[28px] border border-slate-200 bg-white hover:border-brand-action/40 hover:shadow-lg transition lg:grid-cols-2"
               >
-                <div className="flex items-center justify-between gap-3 mb-5">
-                  <div className={`w-12 h-12 shrink-0 rounded-2xl flex items-center justify-center shadow-md ${feature.icon}`}>
-                    <Icon className="w-6 h-6" />
+                <div className="flex flex-col justify-center p-7 sm:p-10">
+                  <div className="mb-5 flex items-center justify-between gap-3">
+                    <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-md ${lead.icon}`}>
+                      <LeadIcon className="h-6 w-6" />
+                    </div>
+                    <span className="rounded-full bg-brand-soft px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-deep">
+                      {lead.badge}
+                    </span>
                   </div>
-                  <span className="text-[10px] font-bold uppercase tracking-wider px-2.5 py-1 rounded-full bg-brand-soft text-brand-deep">
-                    {feature.badge}
-                  </span>
+                  <h3 className="mb-2 text-3xl font-extrabold text-brand-deep">{lead.title}</h3>
+                  <p className="text-sm leading-relaxed text-slate-600 sm:text-base">{lead.copy}</p>
+                  <div className="mt-5 flex items-center justify-between gap-2 border-t border-slate-100 pt-4 text-xs">
+                    <span className="font-semibold text-slate-500">{lead.footerLeft}</span>
+                    <span className="font-bold text-brand-action">{lead.footerRight}</span>
+                  </div>
                 </div>
-                <h3 className="text-xl font-bold text-brand-deep mb-2">{feature.title}</h3>
-                <p className="text-slate-600 text-sm leading-relaxed">{feature.copy}</p>
-                <div className="mt-5 pt-4 border-t border-slate-100 flex items-center justify-between gap-2 text-xs">
-                  <span className="font-semibold text-slate-500">{feature.footerLeft}</span>
-                  <span className="font-bold text-brand-action">{feature.footerRight}</span>
+                <div className="relative min-h-[280px] bg-brand-deep">
+                  <img
+                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=80"
+                    alt="Chicken biryani on a plate"
+                    className="absolute inset-0 h-full w-full object-cover"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/85 via-brand-deep/10 to-transparent"></div>
+                  <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 p-4 shadow-xl">
+                    <p className="text-sm font-extrabold text-brand-deep">Chicken Biryani</p>
+                    <p className="mt-1 text-xs font-semibold text-slate-500">540 kcal · Protein 28g · Carbs 62g · Fat 18g</p>
+                    <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
+                      <div className="h-full w-[72%] rounded-full bg-brand-action"></div>
+                    </div>
+                  </div>
                 </div>
               </a>
-            );
-          })}
-        </div>
+              <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
+                {rest.map((feature) => {
+                  const Icon = feature.Icon;
+                  return (
+                    <a
+                      key={feature.slug}
+                      href={featurePath(feature.slug)}
+                      onClick={onSamePageClick}
+                      className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 transition duration-300 hover:-translate-y-1 hover:border-brand-action/40 hover:shadow-lg"
+                    >
+                      <div className="mb-5 flex items-center justify-between gap-3">
+                        <div className={`flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl shadow-md ${feature.icon}`}>
+                          <Icon className="h-6 w-6" />
+                        </div>
+                        <span className="rounded-full bg-brand-soft px-2.5 py-1 text-[10px] font-bold uppercase tracking-wider text-brand-deep">
+                          {feature.badge}
+                        </span>
+                      </div>
+                      <h3 className="mb-2 text-xl font-extrabold text-brand-deep">{feature.title}</h3>
+                      <p className="text-sm leading-relaxed text-slate-600">{feature.copy}</p>
+                      <div className="mt-5 flex items-center justify-between gap-2 border-t border-slate-100 pt-4 text-xs">
+                        <span className="font-semibold text-slate-500">{feature.footerLeft}</span>
+                        <span className="font-bold text-brand-action">{feature.footerRight}</span>
+                      </div>
+                    </a>
+                  );
+                })}
+              </div>
+            </>
+          );
+        })()}
 
         <div className="mt-8 p-6 sm:p-8 rounded-3xl bg-brand-deep text-white flex flex-col sm:flex-row items-center justify-between gap-6">
           <div className="flex items-center gap-4 text-center sm:text-left">

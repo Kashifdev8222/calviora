@@ -10,20 +10,34 @@ const bars = [
   ['Fat', '30%', 'bg-rose-400'],
 ];
 
+const rings = [
+  { label: 'Calories', value: '72%', turn: 259, color: '#087C50' },
+  { label: 'Protein', value: '64%', turn: 230, color: '#f59e0b' },
+  { label: 'Water', value: '80%', turn: 288, color: '#0284c7' },
+];
+
 function TopicVisual({ topic }) {
   return (
-    <div className="relative mx-auto w-full max-w-sm">
+    <div className="relative mx-auto w-full max-w-md">
       <div className="absolute -left-8 -top-8 h-28 w-28 rounded-full bg-brand-leaf/70 blur-2xl"></div>
       <div className="absolute -right-6 bottom-6 h-32 w-32 rounded-full bg-brand-action/25 blur-2xl"></div>
       <div className="relative rounded-[32px] border border-slate-200 bg-white p-5 shadow-xl">
-        <div className="flex items-center justify-between gap-4">
-          <div>
-            <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
-            <p className="mt-1 font-extrabold text-brand-deep">{topic.title}</p>
-          </div>
-          <div className="flex h-16 w-16 items-center justify-center rounded-full border-[6px] border-brand-soft border-r-brand-leaf border-t-brand-action text-xs font-extrabold text-brand-deep">
-            72%
-          </div>
+        <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
+        <p className="mt-1 font-extrabold text-brand-deep">{topic.title}</p>
+        <div className="mt-5 grid grid-cols-3 gap-2">
+          {rings.map((ring) => (
+            <div key={ring.label} className="text-center">
+              <div
+                className="mx-auto flex h-[76px] w-[76px] items-center justify-center rounded-full"
+                style={{ background: `conic-gradient(${ring.color} ${ring.turn}deg, #E6F3EA 0deg)` }}
+              >
+                <div className="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">
+                  {ring.value}
+                </div>
+              </div>
+              <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-500">{ring.label}</p>
+            </div>
+          ))}
         </div>
         <div className="mt-5 space-y-3">
           {bars.map(([label, width, color]) => (

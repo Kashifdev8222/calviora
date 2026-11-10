@@ -79,16 +79,17 @@ export default function Goals() {
                 key={goal.slug}
                 href={goalPath(goal.slug)}
                 onClick={onSamePageClick}
-                className="bg-brand-cloud text-slate-800 rounded-3xl overflow-hidden border border-slate-200 hover:-translate-y-1 hover:shadow-lg transition duration-300 flex flex-col"
+                className="group overflow-hidden rounded-3xl border border-slate-200 bg-white hover:-translate-y-1 hover:shadow-lg transition duration-300"
               >
-                <img src={goal.image} alt={goal.alt} loading="lazy" className="w-full h-40 object-cover" />
-                <div className="p-5">
-                  <div className={`w-10 h-10 rounded-xl ${goal.iconWrap} flex items-center justify-center mb-3`}>
+                <div className="relative h-56 overflow-hidden">
+                  <img src={goal.image} alt={goal.alt} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/25 to-transparent"></div>
+                  <div className={`absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white ${goal.iconWrap}`}>
                     <Icon className="w-5 h-5" />
                   </div>
-                  <h3 className="text-xl font-bold text-brand-deep mb-2">{goal.title}</h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">{goal.copy}</p>
+                  <h3 className="absolute bottom-4 left-4 right-4 text-2xl font-extrabold text-white">{goal.title}</h3>
                 </div>
+                <p className="p-5 text-sm leading-relaxed text-slate-600">{goal.copy}</p>
               </a>
             );
           })}
