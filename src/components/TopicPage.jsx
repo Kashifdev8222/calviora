@@ -287,7 +287,7 @@ export default function TopicPage({ topic }) {
             <p className="mt-3 max-w-2xl text-slate-600">Screens from Calviora for {topic.title}.</p>
             <div className="mt-8 flex gap-5 overflow-x-auto pb-3">
               {shots.map((shot) => (
-                <figure key={shot.src} className="w-[350px] shrink-0">
+                <figure key={shot.src} className="w-[300px] shrink-0">
                   <img
                     src={shot.src}
                     alt={shot.alt}
