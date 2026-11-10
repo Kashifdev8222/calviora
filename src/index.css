@@ -2,11 +2,15 @@
 @tailwind components;
 @tailwind utilities;
 
+html,
+body {
+  overflow-x: hidden;
+}
+
 body {
   font-family: 'Plus Jakarta Sans', sans-serif;
   background-color: #f6fbf7;
   color: #1a2e26;
-  overflow-x: hidden;
 }
 
 .bg-grid-pattern {

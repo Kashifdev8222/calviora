@@ -280,14 +280,14 @@ export default function TopicPage({ topic }) {
       </section>
 
       {shots.length ? (
-        <section id="in-the-app" className="scroll-mt-24 py-14 sm:py-16">
+        <section id="in-the-app" className="scroll-mt-24 overflow-hidden py-14 sm:py-16">
           <div className="mx-auto max-w-5xl px-4 sm:px-6">
             <p className="text-xs font-bold uppercase tracking-widest text-brand-action">In the app</p>
             <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">See it on this screen</h2>
             <p className="mt-3 max-w-2xl text-slate-600">Screens from Calviora for {topic.title}.</p>
-            <div className="mt-8 flex gap-5 overflow-x-auto pb-3">
+            <div className="mt-8 flex flex-wrap justify-center gap-8">
               {shots.map((shot) => (
-                <figure key={shot.src} className="w-[300px] shrink-0">
+                <figure key={shot.src} className="w-full max-w-[280px]">
                   <img
                     src={shot.src}
                     alt={shot.alt}

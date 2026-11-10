@@ -60,7 +60,7 @@ export default function Header() {
   return (
     <>
     <div className="bg-brand-deep text-white">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-center gap-3 text-xs sm:text-sm font-semibold">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-10 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs sm:text-sm font-semibold">
         <span>Start free with 3 AI scans a day</span>
         <a href="/#download" onClick={onSamePageClick} className="underline decoration-brand-leaf underline-offset-4 text-brand-leaf whitespace-nowrap">
           Get the app
