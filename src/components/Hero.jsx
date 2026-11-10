@@ -24,38 +24,34 @@ export default function Hero() {
               calculate your calories, macros & nutrition in seconds.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-3">
               <a
-                href="#pricing"
-                className="w-full sm:w-auto px-5 sm:px-8 py-4 rounded-2xl bg-brand-action text-white font-extrabold text-sm sm:text-base hover:bg-brand-deep transition shadow-xl shadow-brand-action/25 flex items-center justify-center gap-3 text-center"
+                href="#download"
+                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-brand-deep text-white font-extrabold text-sm sm:text-base hover:bg-brand-action transition shadow-xl shadow-brand-deep/20 flex items-center justify-center gap-2 text-center"
               >
                 <Sparkles className="w-5 h-5 text-brand-leaf" />
-                Start Free Trial (3 Free Scans/Day)
+                Get started free
               </a>
               <a
                 href="#app-preview"
-                className="w-full sm:w-auto px-5 sm:px-6 py-4 rounded-2xl bg-white border border-slate-200 text-slate-700 font-bold text-sm sm:text-base hover:border-brand-action transition flex items-center justify-center gap-2"
+                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white border border-slate-200 text-slate-700 font-bold text-sm sm:text-base hover:border-brand-action transition flex items-center justify-center gap-2"
               >
                 <PlayCircle className="w-5 h-5 text-brand-action" />
-                See How It Works
+                See how it works
               </a>
             </div>
 
-            <div className="mt-10 pt-8 border-t border-slate-200/80 flex flex-wrap items-center justify-center xl:justify-start gap-6 sm:gap-8">
-              <div>
-                <div className="text-2xl font-extrabold text-brand-deep">18,500+</div>
-                <div className="text-xs text-slate-500 font-medium">Foods & Desi Dishes Recognized</div>
-              </div>
-              <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
-              <div>
-                <div className="text-2xl font-extrabold text-brand-deep">98%</div>
-                <div className="text-xs text-slate-500 font-medium">Calorie AI Accuracy</div>
-              </div>
-              <div className="h-8 w-px bg-slate-200 hidden sm:block"></div>
-              <div>
-                <div className="text-2xl font-extrabold text-brand-deep">Zero</div>
-                <div className="text-xs text-slate-500 font-medium">Manual Search Hassle</div>
-              </div>
+            <div className="mt-8 flex flex-wrap items-center justify-center xl:justify-start gap-2">
+              {[
+                ['18,500+', 'Foods recognized'],
+                ['98%', 'Estimate accuracy'],
+                ['3 free', 'AI scans a day'],
+              ].map(([value, label]) => (
+                <div key={label} className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1.5 shadow-sm">
+                  <span className="text-sm font-extrabold text-brand-deep">{value}</span>
+                  <span className="text-xs font-medium text-slate-500">{label}</span>
+                </div>
+              ))}
             </div>
           </div>
 

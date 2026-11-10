@@ -58,6 +58,15 @@ export default function Header() {
   }, [menu]);
 
   return (
+    <>
+    <div className="bg-brand-deep text-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-10 flex items-center justify-center gap-3 text-xs sm:text-sm font-semibold">
+        <span>Start free with 3 AI scans a day</span>
+        <a href="/#download" onClick={onSamePageClick} className="underline decoration-brand-leaf underline-offset-4 text-brand-leaf whitespace-nowrap">
+          Get the app
+        </a>
+      </div>
+    </div>
     <header className="sticky top-0 z-50 glass-card border-b border-brand-soft/50 bg-white/80">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
         <a href="/" onClick={(event) => { onSamePageClick(event); close(); }} className="flex items-center min-w-0 shrink">
@@ -148,6 +157,7 @@ export default function Header() {
         </nav>
       ) : null}
     </header>
+    </>
   );
 }
 

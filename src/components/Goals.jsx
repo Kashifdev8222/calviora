@@ -61,16 +61,17 @@ const goals = [
 
 export default function Goals() {
   return (
-    <section id="goals" className="scroll-mt-24 py-16 bg-brand-action text-white relative overflow-hidden">
+    <section id="goals" className="scroll-mt-24 py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12">
-          <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">Reach your goals, your way</h2>
-          <p className="mt-4 text-brand-soft text-base sm:text-lg">
+        <div className="max-w-3xl mb-10">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Goals</p>
+          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight text-brand-deep">Reach your goals, your way</h2>
+          <p className="mt-4 text-slate-600 text-base sm:text-lg">
             Lose weight, gain muscle, maintain, or simply eat with more energy. Calviora adapts the plan to the goal you pick.
           </p>
         </div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-6">
+        <div className="grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-3 gap-5">
           {goals.map((goal) => {
             const Icon = goal.Icon;
             return (
@@ -78,16 +79,16 @@ export default function Goals() {
                 key={goal.slug}
                 href={goalPath(goal.slug)}
                 onClick={onSamePageClick}
-                className="bg-white text-slate-800 rounded-3xl p-6 shadow-xl hover:-translate-y-2 transition duration-300 flex flex-col justify-between"
+                className="bg-brand-cloud text-slate-800 rounded-3xl overflow-hidden border border-slate-200 hover:-translate-y-1 hover:shadow-lg transition duration-300 flex flex-col"
               >
-                <div>
-                  <div className={`w-12 h-12 rounded-2xl ${goal.iconWrap} flex items-center justify-center mb-4`}>
-                    <Icon className="w-6 h-6" />
+                <img src={goal.image} alt={goal.alt} loading="lazy" className="w-full h-40 object-cover" />
+                <div className="p-5">
+                  <div className={`w-10 h-10 rounded-xl ${goal.iconWrap} flex items-center justify-center mb-3`}>
+                    <Icon className="w-5 h-5" />
                   </div>
                   <h3 className="text-xl font-bold text-brand-deep mb-2">{goal.title}</h3>
-                  <p className="text-slate-600 text-sm">{goal.copy}</p>
+                  <p className="text-slate-600 text-sm leading-relaxed">{goal.copy}</p>
                 </div>
-                <img src={goal.image} alt={goal.alt} loading="lazy" className="w-full h-36 object-cover rounded-2xl mt-6" />
               </a>
             );
           })}

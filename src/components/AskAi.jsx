@@ -22,8 +22,8 @@ const options = [
 
 export default function AskAi() {
   return (
-    <section id="ask" className="scroll-mt-24 py-16 bg-brand-cloud">
-      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+    <section id="ask" className="scroll-mt-24 py-16 px-4 sm:px-6">
+      <div className="max-w-3xl mx-auto px-4 sm:px-8 text-center bg-white border border-slate-200 rounded-3xl py-12">
         <h2 className="text-3xl sm:text-4xl font-extrabold text-brand-deep">Still not sure if Calviora is right for you?</h2>
         <p className="mt-4 text-slate-600 text-base sm:text-lg">
           Let ChatGPT, Claude, or Perplexity do the thinking. Open one and see what it says about Calviora.

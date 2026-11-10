@@ -100,15 +100,13 @@ export default function Calculators() {
   const active = calculatorTools.find((item) => item.id === tool) || calculatorTools[0];
 
   return (
-    <section id="calculators" className="scroll-mt-24 py-16 sm:py-20 bg-white">
+    <section id="calculators" className="scroll-mt-24 py-10 sm:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-8 sm:mb-10">
-          <span className="text-xs font-bold text-brand-action uppercase tracking-widest bg-brand-soft px-3 py-1 rounded-full">
-            Free calculators
-          </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-brand-deep mt-3">Estimate your numbers before you scan</h2>
-          <p className="mt-4 text-slate-600 text-base">
-            Fourteen planning tools, from maintenance calories to macros. They are estimates, not medical advice.
+        <div className="max-w-3xl mb-8">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Free calculator</p>
+          <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">{active.label}</h1>
+          <p className="mt-3 text-slate-600 text-base">
+            A planning estimate you can adjust. It is not medical advice, a diagnosis, or a prescription.
           </p>
         </div>
 
@@ -124,14 +122,14 @@ export default function Calculators() {
                 ))}
               </select>
             </label>
-            <nav className="hidden xl:block rounded-3xl border border-slate-200 bg-brand-cloud p-2 max-h-[calc(100vh-7rem)] overflow-y-auto" aria-label="Calculators">
+            <nav className="hidden xl:block rounded-3xl border border-slate-200 bg-white p-2 max-h-[calc(100vh-7rem)] overflow-y-auto" aria-label="Calculators">
               {calculatorTools.map((item) => (
                 <a
                   key={item.id}
                   href={calculatorPath(item.id)}
                   onClick={onSamePageClick}
                   className={`block px-3 py-2.5 rounded-2xl text-sm font-bold transition ${
-                    tool === item.id ? 'bg-brand-deep text-brand-leaf' : 'text-brand-deep hover:bg-white'
+                    tool === item.id ? 'bg-brand-deep text-brand-leaf' : 'text-brand-deep hover:bg-brand-soft'
                   }`}
                   aria-current={tool === item.id ? 'true' : undefined}
                 >
@@ -142,7 +140,7 @@ export default function Calculators() {
           </div>
 
           <div className="grid lg:grid-cols-2 gap-6 items-start min-w-0">
-            <form className="bg-brand-cloud rounded-3xl border border-slate-200 p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 gap-4" onSubmit={(event) => event.preventDefault()}>
+            <form className="bg-white rounded-3xl border border-slate-200 p-5 sm:p-6 grid grid-cols-1 sm:grid-cols-2 gap-4" onSubmit={(event) => event.preventDefault()}>
               <h3 className="sm:col-span-2 text-lg font-extrabold text-brand-deep">{active.label}</h3>
               <Fields tool={tool} form={form} update={update} plate={plate} setPlate={setPlate} />
             </form>

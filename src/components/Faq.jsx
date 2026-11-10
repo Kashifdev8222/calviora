@@ -2,8 +2,9 @@ export default function Faq({ faqs }) {
   return (
     <section id="faq" className="scroll-mt-24 py-16 bg-brand-cloud">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-12">
-          <h2 className="text-3xl font-extrabold text-brand-deep">Frequently Asked Questions</h2>
+        <div className="text-center max-w-2xl mx-auto mb-10">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
+          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep">Questions, answered plainly</h2>
         </div>
 
         <div className="space-y-4">

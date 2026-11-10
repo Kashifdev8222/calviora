@@ -45,7 +45,7 @@ const styles = {
 
 export default function Pricing({ plans }) {
   return (
-    <section id="pricing" className="scroll-mt-24 py-20 bg-white">
+    <section id="pricing" className="scroll-mt-24 py-16 sm:py-20 bg-brand-cloud">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-brand-action uppercase tracking-widest bg-brand-soft px-3 py-1 rounded-full">
