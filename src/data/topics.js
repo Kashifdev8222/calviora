@@ -386,10 +386,61 @@ export function goalPath(slug) {
   return `/goals/${slug}`;
 }
 
+const topicFaqs = {
+  'ai-meal-scan': [
+    { q: 'Does the scan replace weighing food?', a: 'No. It is a starting estimate from the photo. If you know the grams, type them. The corrected meal is what the diary keeps.' },
+    { q: 'Where do I scan?', a: 'In the Calviora app. This website explains the feature and offers calculators you type into. It does not scan a photo.' },
+  ],
+  'meal-logging': [
+    { q: 'What belongs in the log?', a: 'Breakfast, lunch, dinner, snacks, and the drinks or oil you would otherwise forget. A total with those missing is not the day you had.' },
+    { q: 'Can I log without a photo?', a: 'Yes. Type a food when you already know it. Use a photo when the plate was cooked at home and has no label.' },
+  ],
+  'activity-tracker': [
+    { q: 'Should I eat back every calorie I burn?', a: 'Usually no. If your daily target already assumes an active day, adding the same walk again and then eating it double-counts the movement.' },
+    { q: 'What should I record?', a: 'The session and how long it lasted: a walk, a lift, a ride, or a sport. The point is to see it next to the meals.' },
+  ],
+  'water-intake-tracker': [
+    { q: 'How much water should I aim for?', a: 'About 35 ml per kilogram of body weight is a common planning start. Heat, long training, and illness change it. It is not a prescription.' },
+    { q: 'When should I tap a glass?', a: 'When you drink it. A total entered at night does not help you drink through the afternoon.' },
+  ],
+  'ai-nutrition-coach': [
+    { q: 'What is the coach for?', a: 'Everyday questions: what fits the calories left, where protein is short, and what the next meal could be. It is not a diagnosis or a prescription.' },
+    { q: 'Why would an answer be weak?', a: 'If the meals were never logged, the coach cannot see the day. Log first, then ask.' },
+  ],
+  'lose-weight': [
+    { q: 'How fast should the loss be?', a: 'About 0.25 to 0.5 kg a week is a pace many people can keep. The calculator will not set a target under a basic calorie floor.' },
+    { q: 'Is this medical advice?', a: 'No. It is a planning estimate. Talk to a doctor before a deep deficit, and if you are pregnant, under 18, or managing an illness.' },
+  ],
+  'gain-muscle': [
+    { q: 'How much protein?', a: 'A useful planning range is about 1.6 to 2.2 g per kilogram of body weight, spread across meals. Training is the other half.' },
+    { q: 'Is a huge surplus better?', a: 'A small surplus is enough for most people who already train. A very large surplus adds fat faster than muscle.' },
+  ],
+  'maintain-weight': [
+    { q: 'What number do I eat to?', a: 'Near your TDEE, the estimate of calories you burn in a day. Nudge it if a two-week trend climbs or drops.' },
+    { q: 'Do I still need to log?', a: 'Yes. Maintenance usually slips when portions and drinks creep up and nobody writes them down.' },
+  ],
+  'improve-nutrition': [
+    { q: 'Do I have to change every meal?', a: 'No. Log a few normal days, then change one meal. A higher-protein breakfast is easier to keep than a whole new menu.' },
+    { q: 'Will it recognize home cooking?', a: 'That is what the scan is for, including South Asian dishes. Packaged food can still be logged by name.' },
+  ],
+  'boost-energy': [
+    { q: 'What does the app change?', a: 'It makes meals, water, and movement visible together. It does not sell a stimulant, a detox, or a medical explanation for tiredness.' },
+    { q: 'When is tiredness not an app question?', a: 'If it is sudden, severe, or comes with other symptoms, ask a clinician. The tracker is for ordinary days.' },
+  ],
+  'gain-weight': [
+    { q: 'How big is the surplus?', a: 'A lean pace is about 250 kcal over maintenance. A standard pace is about 500. Protein still has a range beside that.' },
+    { q: 'What if the scale does not move?', a: 'Use a two-week average. If it is flat, add about 150 to 200 kcal and check again. Recalculate after every 4 to 5 kg.' },
+  ],
+};
+
 export function topicFromPath(pathname = '') {
   const feature = String(pathname).match(/^\/features\/([^/]+)\/?$/);
-  if (feature) return featurePages.find((item) => item.slug === feature[1]) || null;
   const goal = String(pathname).match(/^\/goals\/([^/]+)\/?$/);
-  if (goal) return goalPages.find((item) => item.slug === goal[1]) || null;
-  return null;
+  const topic = feature
+    ? featurePages.find((item) => item.slug === feature[1])
+    : goal
+      ? goalPages.find((item) => item.slug === goal[1])
+      : null;
+  if (!topic) return null;
+  return { ...topic, faqs: topicFaqs[topic.slug] || [] };
 }

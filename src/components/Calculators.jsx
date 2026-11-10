@@ -3,6 +3,7 @@ import { Plus, Trash2 } from 'lucide-react';
 import {
   activities,
   burnActivities,
+  calculatorNotes,
   calculatorPath,
   calculatorTools,
   drinks,
@@ -12,6 +13,7 @@ import {
 } from '../data/calculators.js';
 import { calculate } from '../lib/nutritionCalc.js';
 import { go, onSamePageClick } from '../lib/navigate.js';
+import Questions from './Questions.jsx';
 
 const fieldClass =
   'w-full rounded-xl border border-slate-200 bg-white px-3 py-2.5 text-sm font-semibold text-slate-800 outline-none focus:border-brand-action';
@@ -98,16 +100,32 @@ export default function Calculators() {
 
   const result = useMemo(() => calculate(tool, { ...form, plate }), [form, plate, tool]);
   const active = calculatorTools.find((item) => item.id === tool) || calculatorTools[0];
+  const note = calculatorNotes[tool] || calculatorNotes.tdee;
 
   return (
+    <>
+    <nav aria-label="On this page" className="bg-white border-b border-slate-200">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-3 flex items-center gap-3 overflow-x-auto hide-scrollbar">
+        <a href="/" onClick={onSamePageClick} className="shrink-0 text-sm font-semibold text-slate-500 hover:text-brand-action">Home</a>
+        <span className="shrink-0 text-slate-300" aria-hidden="true">/</span>
+        <span className="shrink-0 text-sm font-semibold text-brand-deep">{active.label}</span>
+        <span className="shrink-0 text-slate-300" aria-hidden="true">›</span>
+        {[
+          ['#calculators', 'Calculator'],
+          ['#read', 'How to read it'],
+          ['#questions', 'Questions'],
+          ['#more', 'More tools'],
+        ].map(([href, label]) => (
+          <a key={href} href={href} onClick={onSamePageClick} className="shrink-0 text-sm font-semibold text-brand-deep hover:text-brand-action">{label}</a>
+        ))}
+      </div>
+    </nav>
     <section id="calculators" className="scroll-mt-24 py-10 sm:py-14">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-8">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Free calculator</p>
           <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">{active.label}</h1>
-          <p className="mt-3 text-slate-600 text-base">
-            A planning estimate you can adjust. It is not medical advice, a diagnosis, or a prescription.
-          </p>
+          <p className="mt-3 text-slate-600 text-base">{note.about}</p>
         </div>
 
         <div className="grid xl:grid-cols-[280px_minmax(0,1fr)] gap-6 items-start">
@@ -147,8 +165,41 @@ export default function Calculators() {
             <Result result={result} />
           </div>
         </div>
+
+        <div id="read" className="scroll-mt-24 max-w-3xl mt-12">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">How to read this result</h2>
+          <ol className="mt-4 space-y-3 text-slate-600">
+            <li><span className="font-bold text-brand-deep">1. </span>Enter the details you actually know. A guessed weight makes a guessed plan.</li>
+            <li><span className="font-bold text-brand-deep">2. </span>Read the estimate, then change one input if the week does not match it.</li>
+            <li><span className="font-bold text-brand-deep">3. </span>Use it as a plan. It is not a diagnosis, a prescription, or a lab test.</li>
+          </ol>
+        </div>
+
+        <div id="questions" className="scroll-mt-24 max-w-3xl mt-12">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">Questions</h2>
+          <div className="mt-4">
+            <Questions items={note.faqs} />
+          </div>
+        </div>
+
+        <div id="more" className="scroll-mt-24 mt-12">
+          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">More calculators</h2>
+          <div className="mt-4 flex flex-wrap gap-2">
+            {calculatorTools.filter((item) => item.id !== tool).map((item) => (
+              <a
+                key={item.id}
+                href={calculatorPath(item.id)}
+                onClick={onSamePageClick}
+                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-brand-deep hover:border-brand-action"
+              >
+                {item.label}
+              </a>
+            ))}
+          </div>
+        </div>
       </div>
     </section>
+    </>
   );
 }
 

@@ -34,10 +34,12 @@ export function syncTitle() {
 
 export function scrollToLocation() {
   const hash = window.location.hash.replace('#', '');
-  const onHome = window.location.pathname === '/';
-  if (onHome && hash && !hash.startsWith('calc-')) {
-    document.getElementById(hash)?.scrollIntoView();
-    return;
+  if (hash && !hash.startsWith('calc-')) {
+    const target = document.getElementById(hash);
+    if (target) {
+      target.scrollIntoView();
+      return;
+    }
   }
   window.scrollTo(0, 0);
 }
