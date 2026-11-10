@@ -77,4 +77,18 @@ export const faqs = [
     answer:
       'Yes! All users receive 3 Free AI Photo Scans every day, along with full access to water tracking, weight logs, and manual search.',
   },
+  {
+    id: 'edit-portion',
+    order: 4,
+    question: 'Can I change the portion after a scan?',
+    answer:
+      'Yes. The photo result is a starting estimate. If you know the serving is larger or smaller, edit the amount before you rely on the number.',
+  },
+  {
+    id: 'calculators',
+    order: 5,
+    question: 'Are the calculators on this website medical advice?',
+    answer:
+      'No. The calculators are planning estimates from the numbers you type. They do not diagnose a condition or set medication. Photo meal scanning happens in the Calviora app.',
+  },
 ];

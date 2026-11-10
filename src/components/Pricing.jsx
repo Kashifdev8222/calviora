@@ -88,6 +88,30 @@ export default function Pricing({ plans }) {
             );
           })}
         </div>
+
+        <div className="mt-10 overflow-x-auto rounded-3xl border border-slate-200 bg-white">
+          <table className="w-full min-w-[640px] text-left text-sm">
+            <caption className="px-5 pt-5 text-left text-lg font-extrabold text-brand-deep">Compare what each plan names</caption>
+            <thead>
+              <tr className="text-xs uppercase tracking-wide text-slate-500">
+                <th className="px-5 py-4 font-bold">Plan</th>
+                <th className="px-5 py-4 font-bold">Price</th>
+                <th className="px-5 py-4 font-bold">Included on that plan</th>
+              </tr>
+            </thead>
+            <tbody>
+              {plans.map((plan) => (
+                <tr key={`compare-${plan.id || plan.name}`} className="border-t border-slate-100">
+                  <th className="px-5 py-4 font-extrabold text-brand-deep">{plan.name}</th>
+                  <td className="px-5 py-4 font-semibold text-slate-700 whitespace-nowrap">
+                    {plan.price} {plan.period}
+                  </td>
+                  <td className="px-5 py-4 text-slate-600">{plan.features.join(' · ')}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
     </section>
   );

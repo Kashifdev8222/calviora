@@ -1,19 +1,35 @@
+import { useState } from 'react';
+import { ChevronDown } from 'lucide-react';
+
 export default function Faq({ faqs }) {
+  const [open, setOpen] = useState(0);
+
   return (
-    <section id="faq" className="scroll-mt-24 py-16 bg-brand-cloud">
-      <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-2xl mx-auto mb-10">
+    <section id="faq" className="scroll-mt-24 py-16 bg-white">
+      <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
           <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep">Questions, answered plainly</h2>
         </div>
 
-        <div className="space-y-4">
-          {faqs.map((item) => (
-            <div key={item.id || item.question} className="bg-white p-6 rounded-2xl border border-slate-200">
-              <h3 className="font-bold text-brand-deep text-base">{item.question}</h3>
-              <p className="text-slate-600 text-sm mt-2">{item.answer}</p>
-            </div>
-          ))}
+        <div className="divide-y divide-slate-200 border-y border-slate-200">
+          {faqs.map((item, index) => {
+            const expanded = open === index;
+            return (
+              <div key={item.id || item.question}>
+                <button
+                  type="button"
+                  className="w-full py-5 flex items-center justify-between gap-4 text-left"
+                  aria-expanded={expanded}
+                  onClick={() => setOpen(expanded ? -1 : index)}
+                >
+                  <span className="font-bold text-brand-deep">{item.question}</span>
+                  <ChevronDown className={`w-5 h-5 shrink-0 text-brand-action transition ${expanded ? 'rotate-180' : ''}`} />
+                </button>
+                {expanded ? <p className="pb-5 text-sm text-slate-600 leading-relaxed">{item.answer}</p> : null}
+              </div>
+            );
+          })}
         </div>
       </div>
     </section>

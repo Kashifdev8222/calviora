@@ -16,11 +16,13 @@ import { adoptCalculatorUrl, locationKey, onSamePageClick, scrollToLocation, syn
 import { toolFromPath } from './data/calculators.js';
 import { topicFromPath } from './data/topics.js';
 import TopicPage from './components/TopicPage.jsx';
+import { DayFlow, WhoFor } from './components/HomeStory.jsx';
 
 const pageJump = [
-  { href: '/#features', label: 'Features' },
+  { href: '/#routine', label: 'How it works' },
   { href: '/#goals', label: 'Goals' },
-  { href: '/#app-preview', label: 'How it works' },
+  { href: '/#who', label: 'Who it is for' },
+  { href: '/#features', label: 'Features' },
   { href: '/#pricing', label: 'Pricing' },
   { href: '/#faq', label: 'FAQ' },
   { href: '/#download', label: 'Download' },
@@ -110,7 +112,9 @@ export default function App() {
           <PageJump />
           <Hero />
           <Screenshots />
+          <DayFlow />
           <Goals />
+          <WhoFor />
           <Features />
           <AppPreview />
           <Pricing plans={plans} />
