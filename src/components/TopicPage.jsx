@@ -3,110 +3,190 @@ import Download from './Download.jsx';
 import Questions from './Questions.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
 
-const bars = [
-  ['Calories', '72%', 'bg-brand-action'],
-  ['Protein', '64%', 'bg-amber-400'],
-  ['Carbs', '48%', 'bg-sky-400'],
-  ['Fat', '30%', 'bg-rose-400'],
-];
-
 const rings = [
   { label: 'Calories', value: '72%', turn: 259, color: '#087C50' },
   { label: 'Protein', value: '64%', turn: 230, color: '#f59e0b' },
   { label: 'Water', value: '80%', turn: 288, color: '#0284c7' },
 ];
 
-function TopicVisual({ topic }) {
+const washes = ['from-emerald-100 to-white', 'from-amber-100 to-white', 'from-sky-100 to-white'];
+const pointBars = ['w-[72%] bg-brand-action', 'w-[54%] bg-amber-400', 'w-[80%] bg-sky-400'];
+
+const scenes = {
+  'ai-meal-scan': {
+    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Chicken biryani on a plate',
+    chip: 'Chicken Biryani',
+    meta: '540 kcal · Protein 28g · Carbs 62g · Fat 18g',
+  },
+  'meal-logging': {
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
+    alt: 'A meal laid out to log',
+    chip: 'Today’s diary',
+    meta: 'Breakfast · Lunch · Dinner · Snacks',
+  },
+  'activity-tracker': {
+    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Person running outdoors',
+    chip: 'Afternoon walk',
+    meta: '45 min · Next to the meal log',
+  },
+  'water-intake-tracker': {
+    image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Glass of water',
+    chip: 'Water today',
+    meta: '1.8L of a 2.5L example',
+  },
+  'ai-nutrition-coach': {
+    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80',
+    alt: 'A colorful plate of food',
+    chip: 'Next meal',
+    meta: 'Smaller plate · Protein still on it',
+  },
+  'lose-weight': {
+    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Person training to lose weight',
+    chip: 'Steady deficit',
+    meta: 'About 0.25–0.5 kg a week',
+  },
+  'gain-muscle': {
+    image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Person strength training',
+    chip: 'Protein first',
+    meta: 'Each meal shows what is still missing',
+  },
+  'maintain-weight': {
+    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Balanced meal',
+    chip: 'Close to maintenance',
+    meta: 'Meals, activity, and water together',
+  },
+  'improve-nutrition': {
+    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Colorful nutritious meal',
+    chip: 'Everyday plate',
+    meta: 'Calories and macros on homemade food',
+  },
+  'boost-energy': {
+    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Person running outdoors',
+    chip: 'Afternoon check',
+    meta: 'Meals, movement, and water',
+  },
+  'gain-weight': {
+    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80',
+    alt: 'Hearty nutritious plate',
+    chip: 'A measured surplus',
+    meta: 'Add calories with meals you can see',
+  },
+};
+
+function Rings() {
   return (
-    <div className="relative mx-auto w-full max-w-md">
-      <div className="absolute -left-8 -top-8 h-28 w-28 rounded-full bg-brand-leaf/70 blur-2xl"></div>
-      <div className="absolute -right-6 bottom-6 h-32 w-32 rounded-full bg-brand-action/25 blur-2xl"></div>
-      <div className="relative rounded-[32px] border border-slate-200 bg-white p-5 shadow-xl">
-        <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
-        <p className="mt-1 font-extrabold text-brand-deep">{topic.title}</p>
-        <div className="mt-5 grid grid-cols-3 gap-2">
-          {rings.map((ring) => (
-            <div key={ring.label} className="text-center">
-              <div
-                className="mx-auto flex h-[76px] w-[76px] items-center justify-center rounded-full"
-                style={{ background: `conic-gradient(${ring.color} ${ring.turn}deg, #E6F3EA 0deg)` }}
-              >
-                <div className="flex h-[58px] w-[58px] items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">
-                  {ring.value}
-                </div>
-              </div>
-              <p className="mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-500">{ring.label}</p>
+    <div className="grid grid-cols-3 gap-2">
+      {rings.map((ring) => (
+        <div key={ring.label} className="text-center">
+          <div
+            className="mx-auto flex h-[68px] w-[68px] items-center justify-center rounded-full"
+            style={{ background: `conic-gradient(${ring.color} ${ring.turn}deg, #E6F3EA 0deg)` }}
+          >
+            <div className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white text-[11px] font-extrabold text-brand-deep">
+              {ring.value}
             </div>
-          ))}
+          </div>
+          <p className="mt-1.5 text-[10px] font-bold uppercase tracking-wide text-slate-500">{ring.label}</p>
         </div>
-        <div className="mt-5 space-y-3">
-          {bars.map(([label, width, color]) => (
-            <div key={label}>
-              <div className="mb-1 flex justify-between text-xs font-bold text-slate-500">
-                <span>{label}</span>
-                <span>{width}</span>
-              </div>
-              <div className="h-2 rounded-full bg-slate-100">
-                <div className={`h-full rounded-full ${color}`} style={{ width }}></div>
-              </div>
-            </div>
-          ))}
-        </div>
-        <p className="mt-5 rounded-2xl bg-brand-cloud px-3 py-3 text-sm font-semibold text-brand-deep">{topic.kicker}</p>
-      </div>
+      ))}
+    </div>
+  );
+}
+
+function HeroWave() {
+  return (
+    <div className="pointer-events-none absolute inset-x-0 bottom-0 text-brand-action" aria-hidden="true">
+      <svg viewBox="0 0 1440 90" preserveAspectRatio="none" className="block h-16 w-full sm:h-24">
+        <path fill="currentColor" d="M0,58 C280,8 520,8 760,42 C1000,76 1220,92 1440,36 L1440,90 L0,90 Z" />
+      </svg>
     </div>
   );
 }
 
 export default function TopicPage({ topic }) {
+  const scene = scenes[topic.slug] || scenes['ai-meal-scan'];
+
   return (
     <main>
-      <section className="relative overflow-hidden border-b border-slate-200 bg-white">
-        <div className="pointer-events-none absolute -left-10 top-8 h-40 w-40 rounded-full bg-brand-leaf/40 blur-3xl"></div>
-        <div className="max-w-6xl mx-auto px-4 sm:px-6 pt-12 pb-12 sm:pt-16 grid lg:grid-cols-2 gap-10 items-center">
+      <section className="relative overflow-hidden pt-12 pb-28 sm:pt-16 sm:pb-36">
+        <div className="pointer-events-none absolute inset-0 bg-grid-pattern"></div>
+        <div className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-brand-leaf/40 blur-3xl"></div>
+        <HeroWave />
+        <div className="relative z-10 mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
           <div className="text-center lg:text-left">
-            <p className="inline-flex rounded-full bg-brand-soft px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-action">
-              {topic.kicker || topic.group}
+            <p className="inline-flex rounded-full border border-brand-action/20 bg-brand-soft px-3 py-1 text-xs font-bold uppercase tracking-widest text-brand-action">
+              {topic.group}
             </p>
-            <h1 className="mt-4 text-4xl sm:text-6xl font-extrabold text-brand-deep tracking-tight">{topic.title}</h1>
-            <p className="mt-5 text-base sm:text-xl text-slate-600 leading-relaxed">{topic.summary}</p>
+            <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-brand-deep sm:text-6xl">{topic.title}</h1>
+            <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-xl">{topic.summary}</p>
             <a
               href="/#download"
               onClick={onSamePageClick}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-deep px-7 py-3.5 text-sm font-extrabold text-white hover:bg-brand-action"
+              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-deep px-7 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-brand-deep/20 hover:bg-brand-action"
             >
-              Get started free <ArrowRight className="w-4 h-4" />
+              Get started free <ArrowRight className="h-4 w-4" />
             </a>
           </div>
-          <TopicVisual topic={topic} />
+
+          <div className="relative min-h-[460px] overflow-hidden rounded-[32px] bg-brand-deep shadow-2xl">
+            <img src={scene.image} alt={scene.alt} className="absolute inset-0 h-full w-full object-cover" />
+            <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/20 to-transparent"></div>
+            <div className="absolute bottom-4 left-4 right-4 rounded-3xl bg-white/95 p-4 shadow-xl">
+              <div className="mb-3 flex items-start justify-between gap-3">
+                <div>
+                  <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
+                  <p className="font-extrabold text-brand-deep">{scene.chip}</p>
+                  <p className="mt-0.5 text-xs font-semibold text-slate-500">{scene.meta}</p>
+                </div>
+              </div>
+              <Rings />
+              <p className="mt-3 rounded-2xl bg-brand-cloud px-3 py-2 text-sm font-semibold text-brand-deep">{topic.kicker}</p>
+            </div>
+          </div>
         </div>
       </section>
 
-      <section id="highlights" className="scroll-mt-24 py-12 sm:py-16">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">What you get</h2>
-          <div className="mt-6 grid sm:grid-cols-3 gap-4">
+      <section id="highlights" className="scroll-mt-24 bg-white py-14 sm:py-16">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Highlights</p>
+          <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">What you get</h2>
+          <div className="mt-6 grid gap-4 sm:grid-cols-3">
             {topic.points.map((point, index) => (
-              <article key={point.title} className="bg-white rounded-3xl border border-slate-200 p-6">
-                <div className="w-9 h-9 rounded-full bg-brand-deep text-brand-leaf font-extrabold flex items-center justify-center">
-                  {index + 1}
+              <article key={point.title} className={`rounded-3xl border border-slate-200 bg-gradient-to-b p-6 ${washes[index % washes.length]}`}>
+                <div className="flex items-center justify-between">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-deep font-extrabold text-brand-leaf">
+                    {index + 1}
+                  </div>
+                </div>
+                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white">
+                  <div className={`h-full rounded-full ${pointBars[index % pointBars.length]}`}></div>
                 </div>
                 <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{point.title}</h3>
-                <p className="mt-2 text-sm text-slate-600 leading-relaxed">{point.text}</p>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{point.text}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="guide" className="scroll-mt-24 pb-14">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6 space-y-4">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">How to use it</h2>
-          {topic.sections.map((section) => (
-            <article key={section.heading} className="bg-white rounded-3xl border border-slate-200 p-6 sm:p-8">
-              <h3 className="text-2xl font-extrabold text-brand-deep">{section.heading}</h3>
+      <section id="guide" className="scroll-mt-24 py-14 sm:py-16">
+        <div className="mx-auto max-w-3xl space-y-4 px-4 sm:px-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Guide</p>
+          <h2 className="text-3xl font-extrabold text-brand-deep sm:text-4xl">How to use it</h2>
+          {topic.sections.map((section, index) => (
+            <article key={section.heading} className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
+              <p className="text-xs font-extrabold uppercase tracking-widest text-brand-action">Step {index + 1}</p>
+              <h3 className="mt-2 text-2xl font-extrabold text-brand-deep">{section.heading}</h3>
               {section.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="mt-3 text-slate-600 leading-relaxed">
+                <p key={paragraph} className="mt-3 leading-relaxed text-slate-600">
                   {paragraph}
                 </p>
               ))}
@@ -115,27 +195,29 @@ export default function TopicPage({ topic }) {
         </div>
       </section>
 
-      <section id="questions" className="scroll-mt-24 pb-14">
-        <div className="max-w-3xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">Questions</h2>
-          <div className="mt-4">
+      <section id="questions" className="scroll-mt-24 bg-white py-14">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
+          <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">Questions</h2>
+          <div className="mt-4 rounded-3xl border border-slate-200 bg-brand-cloud px-5 sm:px-6">
             <Questions items={topic.faqs} />
           </div>
         </div>
       </section>
 
-      <section id="related" className="scroll-mt-24 pb-6">
-        <div className="max-w-5xl mx-auto px-4 sm:px-6">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">Keep going</h2>
-          <div className="mt-4 grid sm:grid-cols-3 gap-3">
+      <section id="related" className="scroll-mt-24 py-14">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Related</p>
+          <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">Keep going</h2>
+          <div className="mt-6 grid gap-3 sm:grid-cols-3">
             {topic.related.map((item) => (
               <a
                 key={item.href}
                 href={item.href}
                 onClick={onSamePageClick}
-                className="flex items-center justify-between gap-3 rounded-2xl bg-white border border-slate-200 px-4 py-4 text-sm font-bold text-brand-deep hover:border-brand-action"
+                className="flex items-center justify-between gap-3 rounded-3xl border border-slate-200 bg-white px-5 py-5 text-sm font-extrabold text-brand-deep transition hover:-translate-y-1 hover:border-brand-action hover:shadow-lg"
               >
-                {item.label} <ArrowRight className="w-4 h-4 shrink-0 text-brand-action" />
+                {item.label} <ArrowRight className="h-4 w-4 shrink-0 text-brand-action" />
               </a>
             ))}
           </div>

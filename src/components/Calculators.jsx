@@ -102,15 +102,44 @@ export default function Calculators() {
   const active = calculatorTools.find((item) => item.id === tool) || calculatorTools[0];
   const note = calculatorNotes[tool] || calculatorNotes.tdee;
 
+  const readSteps = [
+    ['1', 'Enter what you know', 'A guessed weight makes a guessed plan. Use the numbers you can actually measure.', 'from-emerald-100 to-white', 'w-[72%] bg-brand-action'],
+    ['2', 'Read the estimate', 'Change one input if the week does not match the figure on the card.', 'from-amber-100 to-white', 'w-[54%] bg-amber-400'],
+    ['3', 'Use it as a plan', 'It is a planning estimate. It is not a diagnosis, a prescription, or a lab test.', 'from-sky-100 to-white', 'w-[40%] bg-sky-400'],
+  ];
+
   return (
     <>
-    <section id="calculators" className="relative scroll-mt-24 overflow-hidden py-10 sm:py-14">
-      <div className="pointer-events-none absolute -right-10 top-0 h-48 w-48 rounded-full bg-brand-leaf/40 blur-3xl"></div>
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
-        <div className="max-w-3xl mb-8">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Free calculator</p>
-          <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">{active.label}</h1>
-          <p className="mt-3 text-slate-600 text-base">{note.about}</p>
+    <section id="calculators" className="relative scroll-mt-24 overflow-hidden pt-12 pb-16 sm:pt-16">
+      <div className="pointer-events-none absolute inset-x-0 top-0 h-80 bg-grid-pattern"></div>
+      <div className="pointer-events-none absolute -left-16 top-6 h-56 w-56 rounded-full bg-brand-leaf/40 blur-3xl"></div>
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        <div className="mb-8 grid items-end gap-6 lg:grid-cols-[minmax(0,1fr)_240px]">
+          <div className="max-w-3xl">
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Free calculator</p>
+            <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">{active.label}</h1>
+            <p className="mt-3 text-slate-600 text-base sm:text-lg">{note.about}</p>
+          </div>
+          <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-lg">
+            <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
+            <div className="mt-3 grid grid-cols-3 gap-2">
+              {[
+                ['72%', 'Calories', '#087C50', 259],
+                ['64%', 'Protein', '#f59e0b', 230],
+                ['80%', 'Water', '#0284c7', 288],
+              ].map(([value, label, color, turn]) => (
+                <div key={label} className="text-center">
+                  <div
+                    className="mx-auto flex h-14 w-14 items-center justify-center rounded-full"
+                    style={{ background: `conic-gradient(${color} ${turn}deg, #E6F3EA 0deg)` }}
+                  >
+                    <div className="flex h-10 w-10 items-center justify-center rounded-full bg-white text-[10px] font-extrabold text-brand-deep">{value}</div>
+                  </div>
+                  <p className="mt-1 text-[10px] font-bold uppercase tracking-wide text-slate-500">{label}</p>
+                </div>
+              ))}
+            </div>
+          </div>
         </div>
 
         <div className="grid xl:grid-cols-[280px_minmax(0,1fr)] gap-6 items-start">
@@ -151,31 +180,41 @@ export default function Calculators() {
           </div>
         </div>
 
-        <div id="read" className="scroll-mt-24 max-w-3xl mt-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">How to read this result</h2>
-          <ol className="mt-4 space-y-3 text-slate-600">
-            <li><span className="font-bold text-brand-deep">1. </span>Enter the details you actually know. A guessed weight makes a guessed plan.</li>
-            <li><span className="font-bold text-brand-deep">2. </span>Read the estimate, then change one input if the week does not match it.</li>
-            <li><span className="font-bold text-brand-deep">3. </span>Use it as a plan. It is not a diagnosis, a prescription, or a lab test.</li>
-          </ol>
+        <div id="read" className="scroll-mt-24 mt-12">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Guide</p>
+          <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-brand-deep">How to read this result</h2>
+          <div className="mt-5 grid gap-4 sm:grid-cols-3">
+            {readSteps.map(([n, title, text, wash, bar]) => (
+              <article key={n} className={`rounded-3xl border border-slate-200 bg-gradient-to-b p-5 ${wash}`}>
+                <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-deep font-extrabold text-brand-leaf">{n}</div>
+                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white">
+                  <div className={`h-full rounded-full ${bar}`}></div>
+                </div>
+                <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{title}</h3>
+                <p className="mt-2 text-sm leading-relaxed text-slate-600">{text}</p>
+              </article>
+            ))}
+          </div>
         </div>
 
         <div id="questions" className="scroll-mt-24 max-w-3xl mt-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">Questions</h2>
-          <div className="mt-4">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
+          <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-brand-deep">Questions</h2>
+          <div className="mt-4 rounded-3xl border border-slate-200 bg-white px-5 sm:px-6">
             <Questions items={note.faqs} />
           </div>
         </div>
 
         <div id="more" className="scroll-mt-24 mt-12">
-          <h2 className="text-2xl sm:text-3xl font-extrabold text-brand-deep">More calculators</h2>
-          <div className="mt-4 flex flex-wrap gap-2">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Related</p>
+          <h2 className="mt-2 text-2xl sm:text-3xl font-extrabold text-brand-deep">More calculators</h2>
+          <div className="mt-5 grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
             {calculatorTools.filter((item) => item.id !== tool).map((item) => (
               <a
                 key={item.id}
                 href={calculatorPath(item.id)}
                 onClick={onSamePageClick}
-                className="rounded-full border border-slate-200 bg-white px-4 py-2 text-sm font-bold text-brand-deep hover:border-brand-action"
+                className="flex items-center justify-between gap-3 rounded-2xl border border-slate-200 bg-white px-4 py-4 text-sm font-extrabold text-brand-deep transition hover:-translate-y-0.5 hover:border-brand-action hover:shadow-md"
               >
                 {item.label}
               </a>
