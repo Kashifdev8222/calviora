@@ -98,9 +98,10 @@ export default function Footer() {
       <div className="border-t border-white/10">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-5 flex flex-col gap-3 text-xs text-center sm:flex-row sm:items-center sm:justify-between sm:text-left">
           <p>&copy; 2026 Calviora Inc. All rights reserved.</p>
-          <div className="flex justify-center gap-4">
-            <a href="/privacy" onClick={onSamePageClick} className="hover:text-white">Privacy</a>
-            <a href="/terms" onClick={onSamePageClick} className="hover:text-white">Terms of Use</a>
+          <div className="flex flex-wrap justify-center gap-x-4 gap-y-2">
+            <a href="/privacy" onClick={onSamePageClick} className="hover:text-white">Privacy Policy</a>
+            <a href="/terms" onClick={onSamePageClick} className="hover:text-white">Terms & Conditions</a>
+            <a href="/delete-account" onClick={onSamePageClick} className="hover:text-white">Delete Account</a>
           </div>
         </div>
       </div>

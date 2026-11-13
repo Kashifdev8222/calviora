@@ -66,3 +66,57 @@ body {
     transition: none;
   }
 }
+
+.legal-copy .card {
+  margin-top: 1rem;
+  border-radius: 1.5rem;
+  border: 1px solid #e2e8f0;
+  background: #fff;
+  padding: 1.25rem 1.5rem;
+}
+
+.legal-copy .card:first-child {
+  margin-top: 0;
+}
+
+.legal-copy h2 {
+  font-size: 1.25rem;
+  font-weight: 800;
+  color: #034f36;
+}
+
+.legal-copy p,
+.legal-copy li {
+  margin-top: 0.75rem;
+  color: #334155;
+  line-height: 1.7;
+}
+
+.legal-copy ul {
+  margin-top: 0.75rem;
+  list-style: disc;
+  padding-left: 1.25rem;
+}
+
+.legal-copy ol {
+  margin-top: 0.75rem;
+  list-style: decimal;
+  padding-left: 1.25rem;
+}
+
+.legal-copy a {
+  color: #087c50;
+  font-weight: 700;
+}
+
+.legal-copy code {
+  font-size: 0.92em;
+}
+
+.legal-copy .alert-box,
+.legal-copy .contact-box {
+  margin-top: 1rem;
+  border-radius: 1rem;
+  background: #e6f3ea;
+  padding: 0.9rem 1rem;
+}

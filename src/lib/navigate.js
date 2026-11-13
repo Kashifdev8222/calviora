@@ -24,11 +24,15 @@ export function syncTitle() {
   syncCanonical();
   const path = window.location.pathname.replace(/\/+$/, '') || '/';
   if (path === '/privacy') {
-    document.title = 'Privacy | Calviora';
+    document.title = 'Privacy Policy | Calviora';
     return;
   }
   if (path === '/terms') {
-    document.title = 'Terms of Use | Calviora';
+    document.title = 'Terms & Conditions | Calviora';
+    return;
+  }
+  if (path === '/delete-account') {
+    document.title = 'Delete Account | Calviora';
     return;
   }
   const topic = topicFromPath(window.location.pathname);

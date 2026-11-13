@@ -116,9 +116,9 @@ export default function Pricing({ plans }) {
 
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-slate-600">
           Optional plans on the Android app are auto-renewing subscriptions sold by Google Play. There is no free trial. Payment starts when you confirm the subscription on Google Play.{' '}
-          <a href="/terms" onClick={onSamePageClick} className="font-bold text-brand-action hover:text-brand-deep">Subscription terms</a>
+          <a href="/terms" onClick={onSamePageClick} className="font-bold text-brand-action hover:text-brand-deep">Terms & Conditions</a>
           {' · '}
-          <a href="/privacy" onClick={onSamePageClick} className="font-bold text-brand-action hover:text-brand-deep">Privacy</a>
+          <a href="/privacy" onClick={onSamePageClick} className="font-bold text-brand-action hover:text-brand-deep">Privacy Policy</a>
         </p>
       </div>
     </section>

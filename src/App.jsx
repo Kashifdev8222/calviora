@@ -66,7 +66,7 @@ export default function App() {
   const bare = path.replace(/\/+$/, '') || '/';
   const topic = topicFromPath(path);
   const calculator = toolFromPath(path);
-  const legal = bare === '/privacy' || bare === '/terms' ? bare : '';
+  const legal = bare === '/privacy' || bare === '/terms' || bare === '/delete-account' ? bare : '';
 
   return (
     <>
