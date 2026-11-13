@@ -43,7 +43,7 @@ export default function Hero() {
 
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-deep leading-[1.15]">
               Eat Smart. Track Easy. <br className="hidden sm:block" />
-              <span className="text-brand-action underline decoration-brand-leaf decoration-wavy decoration-2">
+              <span className="text-brand-action">
                 Live Better.
               </span>
             </h1>
