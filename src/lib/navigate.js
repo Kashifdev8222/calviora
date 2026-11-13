@@ -22,6 +22,15 @@ export function locationKey() {
 
 export function syncTitle() {
   syncCanonical();
+  const path = window.location.pathname.replace(/\/+$/, '') || '/';
+  if (path === '/privacy') {
+    document.title = 'Privacy | Calviora';
+    return;
+  }
+  if (path === '/terms') {
+    document.title = 'Terms of Use | Calviora';
+    return;
+  }
   const topic = topicFromPath(window.location.pathname);
   if (topic) {
     document.title = `${topic.title} | Calviora`;

@@ -16,6 +16,7 @@ import { adoptCalculatorUrl, locationKey, scrollToLocation, syncTitle } from './
 import { toolFromPath } from './data/calculators.js';
 import { topicFromPath } from './data/topics.js';
 import TopicPage from './components/TopicPage.jsx';
+import Legal from './components/Legal.jsx';
 import { DayFlow, WhoFor } from './components/HomeStory.jsx';
 
 export default function App() {
@@ -62,8 +63,10 @@ export default function App() {
   }, []);
 
   const path = route.split('#')[0].split('?')[0] || '/';
+  const bare = path.replace(/\/+$/, '') || '/';
   const topic = topicFromPath(path);
   const calculator = toolFromPath(path);
+  const legal = bare === '/privacy' || bare === '/terms' ? bare : '';
 
   return (
     <>
@@ -76,6 +79,8 @@ export default function App() {
           <AskAi />
           <Download />
         </>
+      ) : legal ? (
+        <Legal path={legal} />
       ) : (
         <>
           <Hero />
