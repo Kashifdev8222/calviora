@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef } from 'react';
 import { Activity, BookOpen, Camera, Droplet, Sparkles, Zap } from 'lucide-react';
 import { FillBar, useSweep } from './RingSweep.jsx';

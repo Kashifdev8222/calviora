@@ -1,3 +1,5 @@
+'use client';
+
 import { calculatorPath, calculatorTools } from '../data/calculators.js';
 import { featurePages, featurePath, goalPages, goalPath } from '../data/topics.js';
 import { onSamePageClick } from '../lib/navigate.js';

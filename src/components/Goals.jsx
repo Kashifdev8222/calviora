@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef } from 'react';
 import { Dumbbell, Leaf, Scale, TrendingDown, TrendingUp, Zap } from 'lucide-react';
 import { goalPath } from '../data/topics.js';

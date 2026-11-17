@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 
 const SWEEP = '1.15s cubic-bezier(0.22, 0.8, 0.28, 1)';

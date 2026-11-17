@@ -1,12 +1,3 @@
 {
-  "$schema": "https://openapi.vercel.sh/vercel.json",
-  "framework": "vite",
-  "buildCommand": "npm run build",
-  "outputDirectory": "dist",
-  "rewrites": [
-    {
-      "source": "/((?!api/|\\.well-known/|llms\\.txt).*)",
-      "destination": "/index.html"
-    }
-  ]
+  "framework": "nextjs"
 }

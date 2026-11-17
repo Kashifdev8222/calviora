@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useMemo, useState } from 'react';
 import { Plus, Trash2 } from 'lucide-react';
 import {
@@ -9,7 +11,6 @@ import {
   drinks,
   foods,
   stepPaces,
-  toolFromPath,
 } from '../data/calculators.js';
 import { calculate } from '../lib/nutritionCalc.js';
 import { go, onSamePageClick } from '../lib/navigate.js';
@@ -110,8 +111,8 @@ const emptyForm = {
 
 let plateKey = 2;
 
-export default function Calculators() {
-  const [tool, setTool] = useState(() => toolFromPath(window.location.pathname) || 'tdee');
+export default function Calculators({ toolId = 'tdee' }) {
+  const [tool, setTool] = useState(toolId);
   const [form, setForm] = useState(emptyForm);
   const [plate, setPlate] = useState([
     { key: 1, foodId: 'chicken', grams: '150' },
@@ -119,13 +120,8 @@ export default function Calculators() {
   ]);
 
   useEffect(() => {
-    const sync = () => {
-      const next = toolFromPath(window.location.pathname);
-      if (next) setTool(next);
-    };
-    window.addEventListener('popstate', sync);
-    return () => window.removeEventListener('popstate', sync);
-  }, []);
+    setTool(toolId);
+  }, [toolId]);
 
   useEffect(() => {
     setForm((current) => {

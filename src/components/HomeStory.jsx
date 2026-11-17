@@ -1,3 +1,5 @@
+'use client';
+
 import { BookOpen, Camera, Clock, Dumbbell, Droplet, Sparkles, TrendingDown, TrendingUp, Zap } from 'lucide-react';
 import { FillBar, useSweep } from './RingSweep.jsx';
 import { onSamePageClick } from '../lib/navigate.js';

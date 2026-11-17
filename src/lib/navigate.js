@@ -74,19 +74,8 @@ export function adoptCalculatorUrl() {
 }
 
 export function go(path) {
-  const url = new URL(path, window.location.origin);
-  const next = `${url.pathname}${url.search}${url.hash}`;
-  const current = `${window.location.pathname}${window.location.search}${window.location.hash}`;
-  if (next !== current) window.history.pushState({}, '', next);
-  window.dispatchEvent(new PopStateEvent('popstate'));
+  if (typeof window === 'undefined') return;
+  window.location.assign(path);
 }
 
-export function onSamePageClick(event) {
-  if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  const anchor = event.currentTarget;
-  if (!anchor?.href) return;
-  const url = new URL(anchor.href);
-  if (url.origin !== window.location.origin) return;
-  event.preventDefault();
-  go(`${url.pathname}${url.search}${url.hash}`);
-}
+export function onSamePageClick() {}

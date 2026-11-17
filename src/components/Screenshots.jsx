@@ -1,3 +1,5 @@
+'use client';
+
 import { useRef } from 'react';
 import { ChevronLeft, ChevronRight, Smartphone } from 'lucide-react';
 import { useOnScreen } from './useOnScreen.js';

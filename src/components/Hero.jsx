@@ -1,3 +1,5 @@
+'use client';
+
 import { useEffect, useRef, useState } from 'react';
 import { CheckCircle, Droplet, PlayCircle, QrCode, Sparkles } from 'lucide-react';
 import { FillBar, RingSweep } from './RingSweep.jsx';

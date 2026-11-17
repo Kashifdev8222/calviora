@@ -1,5 +1,3 @@
-import { go } from '../lib/navigate.js';
-
 const pages = {
   "/privacy": {
     "title": "Privacy Policy",
@@ -18,15 +16,6 @@ const pages = {
   }
 };
 
-function onContentClick(event) {
-  const anchor = event.target.closest('a');
-  if (!anchor || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
-  const url = new URL(anchor.href, window.location.origin);
-  if (url.origin !== window.location.origin) return;
-  event.preventDefault();
-  go(url.pathname + url.search + url.hash);
-}
-
 export default function Legal({ path }) {
   const page = pages[path];
   if (!page) return null;
@@ -35,7 +24,7 @@ export default function Legal({ path }) {
       <div className="mx-auto max-w-3xl px-4 sm:px-6">
         <h1 className="text-4xl font-extrabold tracking-tight text-brand-deep sm:text-5xl">{page.title}</h1>
         <p className="mt-3 text-sm font-semibold text-slate-500">{page.subtitle}</p>
-        <div className="legal-copy mt-8" onClick={onContentClick} dangerouslySetInnerHTML={{ __html: page.html }} />
+        <div className="legal-copy mt-8" dangerouslySetInnerHTML={{ __html: page.html }} />
       </div>
     </article>
   );

@@ -1,3 +1,5 @@
+'use client';
+
 import { ArrowRight } from 'lucide-react';
 import Download from './Download.jsx';
 import Questions from './Questions.jsx';
