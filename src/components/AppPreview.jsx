@@ -1,6 +1,11 @@
+import { useRef } from 'react';
 import { Camera, Droplet } from 'lucide-react';
+import { useOnScreen } from './useOnScreen.js';
 
 export default function AppPreview() {
+  const photoRef = useRef(null);
+  const showPhoto = useOnScreen(photoRef);
+
   return (
     <section id="app-preview" className="scroll-mt-24 py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -23,13 +28,14 @@ export default function AppPreview() {
           </div>
 
           <div className="bg-brand-cloud p-5 rounded-3xl border border-slate-200 flex flex-col items-center text-center">
-            <div className="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4 relative overflow-hidden h-36 flex items-center justify-center">
-              <img
-                src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
-                alt=""
-                loading="lazy"
-                className="absolute inset-0 w-full h-full object-cover opacity-60"
-              />
+            <div ref={photoRef} className="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4 relative overflow-hidden h-36 flex items-center justify-center">
+              {showPhoto ? (
+                <img
+                  src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=400&q=80"
+                  alt=""
+                  className="absolute inset-0 w-full h-full object-cover opacity-60"
+                />
+              ) : null}
               <div className="relative z-10 w-10 h-10 rounded-full bg-brand-leaf text-brand-deep flex items-center justify-center shadow-lg">
                 <Camera className="w-5 h-5" />
               </div>

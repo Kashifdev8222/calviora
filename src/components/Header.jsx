@@ -70,7 +70,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-brand-soft/50 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
         <a href="/" onClick={(event) => { onSamePageClick(event); close(); }} className="flex items-center min-w-0 shrink">
-          <img src="/logo.jpg" alt="Calviora" className="h-14 sm:h-16 w-auto object-contain" />
+          <img src="/logo.jpg" alt="Calviora" width="64" height="64" fetchPriority="high" className="h-14 sm:h-16 w-auto object-contain" />
         </a>
 
         <nav className="hidden xl:flex items-center gap-5 2xl:gap-7 font-semibold text-sm text-slate-700 whitespace-nowrap">

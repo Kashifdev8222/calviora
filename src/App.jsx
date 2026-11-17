@@ -8,7 +8,11 @@ import { toolFromPath } from './data/calculators.js';
 import { topicFromPath } from './data/topics.js';
 
 const loadHomeRest = () => import('./components/HomeRest.jsx');
-if ((window.location.pathname.replace(/\/+$/, '') || '/') === '/') loadHomeRest();
+if ((window.location.pathname.replace(/\/+$/, '') || '/') === '/') {
+  window.addEventListener('load', () => {
+    loadHomeRest();
+  }, { once: true });
+}
 const HomeRest = lazy(loadHomeRest);
 const TopicPage = lazy(() => import('./components/TopicPage.jsx'));
 const Calculators = lazy(() => import('./components/Calculators.jsx'));

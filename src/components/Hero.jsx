@@ -1,5 +1,7 @@
+import { useRef } from 'react';
 import { CheckCircle, Droplet, PlayCircle, QrCode, Sparkles } from 'lucide-react';
 import { FillBar, RingSweep } from './RingSweep.jsx';
+import { useOnScreen } from './useOnScreen.js';
 
 const sampleRings = [
   { label: 'Calories', value: '72%', pct: 72, color: '#087C50' },
@@ -21,6 +23,9 @@ function SampleRing({ label, value, pct, color }) {
 }
 
 export default function Hero() {
+  const plateRef = useRef(null);
+  const showPlate = useOnScreen(plateRef);
+
   return (
     <section className="relative overflow-hidden pt-12 pb-28 md:pt-20 md:pb-36">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
@@ -104,18 +109,21 @@ export default function Hero() {
                   </span>
                 </div>
 
-                <div className="my-auto relative rounded-2xl overflow-hidden border-2 border-brand-action shadow-lg group">
-                  <img
-                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=480&q=60"
-                    alt="Biryani Dish"
-                    width="480"
-                    height="320"
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full h-44 object-cover"
-                  />
+                <div ref={plateRef} className="my-auto relative rounded-2xl overflow-hidden border-2 border-brand-action shadow-lg group bg-brand-soft">
+                  {showPlate ? (
+                    <img
+                      src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=480&q=60"
+                      alt="Biryani Dish"
+                      width="480"
+                      height="320"
+                      decoding="async"
+                      className="w-full h-44 object-cover"
+                    />
+                  ) : (
+                    <div className="h-44 w-full" />
+                  )}
                   <div className="absolute inset-0 bg-brand-deep/30 flex items-center justify-center">
-                    <div className="bg-white/95 backdrop-blur-md px-4 py-2 rounded-xl text-center shadow-lg border border-brand-action/20">
+                    <div className="bg-white/95 px-4 py-2 rounded-xl text-center shadow-lg border border-brand-action/20">
                       <div className="flex items-center gap-1.5 text-brand-action text-xs font-extrabold">
                         <CheckCircle className="w-4 h-4" /> Chicken Biryani
                       </div>

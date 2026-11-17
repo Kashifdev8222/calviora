@@ -1,5 +1,6 @@
 import { useRef } from 'react';
 import { ChevronLeft, ChevronRight, Smartphone } from 'lucide-react';
+import { useOnScreen } from './useOnScreen.js';
 
 const shots = [
   { src: '/screenshots/daily-progress.jpeg', alt: 'Calviora home screen with calories eaten today', caption: 'Today’s log' },
@@ -17,6 +18,8 @@ const shots = [
 
 export default function Screenshots() {
   const containerRef = useRef(null);
+  const sectionRef = useRef(null);
+  const showShots = useOnScreen(sectionRef);
 
   const scrollScreens = (direction) => {
     containerRef.current?.scrollBy({
@@ -26,7 +29,7 @@ export default function Screenshots() {
   };
 
   return (
-    <section id="app-screenshots" className="scroll-mt-24 overflow-hidden border-y border-brand-soft bg-gradient-to-b from-brand-cloud via-white to-brand-cloud py-16">
+    <section ref={sectionRef} id="app-screenshots" className="scroll-mt-24 overflow-hidden border-y border-brand-soft bg-gradient-to-b from-brand-cloud via-white to-brand-cloud py-16">
       <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
         <div className="mx-auto mb-10 max-w-3xl text-center">
           <span className="mb-3 inline-flex items-center gap-1.5 rounded-full bg-brand-soft px-3 py-1 text-xs font-bold uppercase tracking-wider text-brand-action">
@@ -61,15 +64,18 @@ export default function Screenshots() {
           <div ref={containerRef} className="flex w-full min-w-0 gap-5 overflow-x-auto scroll-smooth px-12 py-6 hide-scrollbar">
             {shots.map((shot) => (
               <figure key={shot.src} className="w-[240px] shrink-0 sm:w-[280px]">
-                <img
-                  src={shot.src}
-                  alt={shot.alt}
-                  width="576"
-                  height="1280"
-                  loading="lazy"
-                  decoding="async"
-                  className="w-full rounded-[28px] border border-slate-200 bg-white shadow-xl"
-                />
+                {showShots ? (
+                  <img
+                    src={shot.src}
+                    alt={shot.alt}
+                    width="576"
+                    height="1280"
+                    decoding="async"
+                    className="w-full rounded-[28px] border border-slate-200 bg-white shadow-xl"
+                  />
+                ) : (
+                  <div className="aspect-[576/1280] w-full rounded-[28px] border border-slate-200 bg-white shadow-xl" />
+                )}
                 <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{shot.caption}</figcaption>
               </figure>
             ))}

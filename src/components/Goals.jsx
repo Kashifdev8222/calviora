@@ -1,6 +1,8 @@
+import { useRef } from 'react';
 import { Dumbbell, Leaf, Scale, TrendingDown, TrendingUp, Zap } from 'lucide-react';
 import { goalPath } from '../data/topics.js';
 import { onSamePageClick } from '../lib/navigate.js';
+import { useOnScreen } from './useOnScreen.js';
 
 const goals = [
   {
@@ -60,8 +62,11 @@ const goals = [
 ];
 
 export default function Goals() {
+  const sectionRef = useRef(null);
+  const showPhotos = useOnScreen(sectionRef);
+
   return (
-    <section id="goals" className="scroll-mt-24 py-16 sm:py-20 bg-white">
+    <section ref={sectionRef} id="goals" className="scroll-mt-24 py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Goals</p>
@@ -82,7 +87,9 @@ export default function Goals() {
                 className="group overflow-hidden rounded-3xl border border-slate-200 bg-white hover:-translate-y-1 hover:shadow-lg transition duration-300"
               >
                 <div className="relative h-56 overflow-hidden">
-                  <img src={goal.image} alt={goal.alt} loading="lazy" className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  {showPhotos ? (
+                    <img src={goal.image} alt={goal.alt} className="h-full w-full object-cover transition duration-500 group-hover:scale-105" />
+                  ) : null}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/25 to-transparent"></div>
                   <div className={`absolute left-4 top-4 flex h-10 w-10 items-center justify-center rounded-xl bg-white ${goal.iconWrap}`}>
                     <Icon className="w-5 h-5" />

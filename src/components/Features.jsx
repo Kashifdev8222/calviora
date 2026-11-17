@@ -1,7 +1,9 @@
+import { useRef } from 'react';
 import { Activity, BookOpen, Camera, Droplet, Sparkles, Zap } from 'lucide-react';
 import { FillBar, useSweep } from './RingSweep.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
 import { featurePath } from '../data/topics.js';
+import { useOnScreen } from './useOnScreen.js';
 
 const features = [
   {
@@ -83,6 +85,8 @@ const features = [
 
 export default function Features() {
   const play = useSweep('features');
+  const photoRef = useRef(null);
+  const showPhoto = useOnScreen(photoRef);
 
   return (
     <section id="features" className="scroll-mt-24 py-16 sm:py-20 bg-brand-cloud">
@@ -123,16 +127,17 @@ export default function Features() {
                     <span className="font-bold text-brand-action">{lead.footerRight}</span>
                   </div>
                 </div>
-                <div className="relative min-h-[280px] bg-brand-deep">
-                  <img
-                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=60"
-                    alt="Chicken biryani on a plate"
-                    width="800"
-                    height="600"
-                    loading="lazy"
-                    decoding="async"
-                    className="absolute inset-0 h-full w-full object-cover"
-                  />
+                <div ref={photoRef} className="relative min-h-[280px] bg-brand-deep">
+                  {showPhoto ? (
+                    <img
+                      src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=60"
+                      alt="Chicken biryani on a plate"
+                      width="800"
+                      height="600"
+                      decoding="async"
+                      className="absolute inset-0 h-full w-full object-cover"
+                    />
+                  ) : null}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/85 via-brand-deep/10 to-transparent"></div>
                   <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 p-4 shadow-xl">
                     <p className="text-sm font-extrabold text-brand-deep">Chicken Biryani</p>
