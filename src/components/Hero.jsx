@@ -110,8 +110,12 @@ export default function Hero() {
 
                 <div className="my-auto relative rounded-2xl overflow-hidden border-2 border-brand-action shadow-lg group">
                   <img
-                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=600&q=80"
+                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=480&q=60"
                     alt="Biryani Dish"
+                    width="480"
+                    height="320"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full h-44 object-cover"
                   />
                   <div className="absolute inset-0 bg-brand-deep/30 flex items-center justify-center">

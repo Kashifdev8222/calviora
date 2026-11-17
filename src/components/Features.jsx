@@ -125,8 +125,12 @@ export default function Features() {
                 </div>
                 <div className="relative min-h-[280px] bg-brand-deep">
                   <img
-                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=80"
+                    src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=60"
                     alt="Chicken biryani on a plate"
+                    width="800"
+                    height="600"
+                    loading="lazy"
+                    decoding="async"
                     className="absolute inset-0 h-full w-full object-cover"
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/85 via-brand-deep/10 to-transparent"></div>

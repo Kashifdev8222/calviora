@@ -1,23 +1,20 @@
-import { useEffect, useLayoutEffect, useState } from 'react';
+import { lazy, Suspense, useEffect, useLayoutEffect, useState } from 'react';
 import Header from './components/Header.jsx';
 import Hero from './components/Hero.jsx';
-import Screenshots from './components/Screenshots.jsx';
-import Goals from './components/Goals.jsx';
-import Features from './components/Features.jsx';
-import AppPreview from './components/AppPreview.jsx';
-import Pricing from './components/Pricing.jsx';
-import Faq from './components/Faq.jsx';
-import Calculators from './components/Calculators.jsx';
-import AskAi from './components/AskAi.jsx';
-import Download from './components/Download.jsx';
 import Footer from './components/Footer.jsx';
 import { plans as defaultPlans, faqs as defaultFaqs } from '../shared/content.js';
 import { adoptCalculatorUrl, locationKey, scrollToLocation, syncTitle } from './lib/navigate.js';
 import { toolFromPath } from './data/calculators.js';
 import { topicFromPath } from './data/topics.js';
-import TopicPage from './components/TopicPage.jsx';
-import Legal from './components/Legal.jsx';
-import { DayFlow, WhoFor } from './components/HomeStory.jsx';
+
+const loadHomeRest = () => import('./components/HomeRest.jsx');
+if ((window.location.pathname.replace(/\/+$/, '') || '/') === '/') loadHomeRest();
+const HomeRest = lazy(loadHomeRest);
+const TopicPage = lazy(() => import('./components/TopicPage.jsx'));
+const Calculators = lazy(() => import('./components/Calculators.jsx'));
+const AskAi = lazy(() => import('./components/AskAi.jsx'));
+const Download = lazy(() => import('./components/Download.jsx'));
+const Legal = lazy(() => import('./components/Legal.jsx'));
 
 export default function App() {
   const [route, setRoute] = useState(locationKey);
@@ -72,28 +69,25 @@ export default function App() {
     <>
       <Header />
       {topic ? (
-        <TopicPage topic={topic} />
+        <Suspense fallback={<div className="min-h-[50vh] bg-brand-cloud" />}>
+          <TopicPage topic={topic} />
+        </Suspense>
       ) : calculator ? (
-        <>
+        <Suspense fallback={<div className="min-h-[50vh] bg-brand-cloud" />}>
           <Calculators />
           <AskAi />
           <Download />
-        </>
+        </Suspense>
       ) : legal ? (
-        <Legal path={legal} />
+        <Suspense fallback={<div className="min-h-[50vh] bg-brand-cloud" />}>
+          <Legal path={legal} />
+        </Suspense>
       ) : (
         <>
           <Hero />
-          <Screenshots />
-          <DayFlow />
-          <Goals />
-          <WhoFor />
-          <Features />
-          <AppPreview />
-          <Pricing plans={plans} />
-          <Faq faqs={faqs} />
-          <AskAi />
-          <Download />
+          <Suspense fallback={null}>
+            <HomeRest plans={plans} faqs={faqs} />
+          </Suspense>
         </>
       )}
       <Footer />

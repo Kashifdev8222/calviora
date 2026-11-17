@@ -61,7 +61,15 @@ export default function Screenshots() {
           <div ref={containerRef} className="flex w-full min-w-0 gap-5 overflow-x-auto scroll-smooth px-12 py-6 hide-scrollbar">
             {shots.map((shot) => (
               <figure key={shot.src} className="w-[240px] shrink-0 sm:w-[280px]">
-                <img src={shot.src} alt={shot.alt} className="w-full rounded-[28px] border border-slate-200 bg-white shadow-xl" />
+                <img
+                  src={shot.src}
+                  alt={shot.alt}
+                  width="576"
+                  height="1280"
+                  loading="lazy"
+                  decoding="async"
+                  className="w-full rounded-[28px] border border-slate-200 bg-white shadow-xl"
+                />
                 <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{shot.caption}</figcaption>
               </figure>
             ))}

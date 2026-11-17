@@ -291,6 +291,10 @@ export default function TopicPage({ topic }) {
                   <img
                     src={shot.src}
                     alt={shot.alt}
+                    width="576"
+                    height="1280"
+                    loading="lazy"
+                    decoding="async"
                     className="w-full rounded-[28px] border border-slate-200 bg-white shadow-xl"
                   />
                   <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{shot.caption}</figcaption>
