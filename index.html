@@ -31,33 +31,6 @@
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
     <link rel="preload" as="image" href="/logo-sm.jpg" fetchpriority="high" />
     <link rel="ard" href="/.well-known/ard.json" type="application/json" />
-    <style>
-      #boot,#boot *{box-sizing:border-box}
-      #boot{position:fixed;inset:0;z-index:80;overflow:hidden;background:#f6fbf7;color:#1a2e26;font-family:"Plus Jakarta Sans","Segoe UI",sans-serif}
-      #boot a{color:inherit;text-decoration:none}
-      #boot .promo{display:flex;justify-content:center;gap:12px;background:#034f36;color:#fff;font-size:12px;font-weight:600;padding:8px 16px;text-align:center}
-      #boot .promo a{color:#b0ea48;text-decoration:underline;text-underline-offset:4px}
-      #boot .bar{height:80px;display:flex;align-items:center;justify-content:space-between;padding:0 16px;background:#fff;border-bottom:1px solid #e6f3ea}
-      #boot .logo{height:56px;width:auto}
-      #boot .go{display:inline-flex;align-items:center;gap:6px;background:#034f36;color:#b0ea48;font-weight:700;font-size:14px;border-radius:999px;padding:10px 14px}
-      #boot .menu{width:40px;height:40px;border-radius:999px;border:1px solid rgba(8,124,80,.2);background:#fff}
-      #boot .hero{padding:48px 16px 0;text-align:center}
-      #boot .badge{display:inline-flex;align-items:center;gap:8px;background:#e6f3ea;color:#034f36;border:1px solid rgba(8,124,80,.2);border-radius:999px;font-size:12px;font-weight:600;padding:8px 16px}
-      #boot .dot{width:8px;height:8px;border-radius:999px;background:#b0ea48}
-      #boot h1{margin:24px 0 0;font-size:36px;line-height:1.15;font-weight:800;letter-spacing:-.02em;color:#034f36}
-      #boot h1 span{color:#087c50}
-      #boot p{margin:24px 0 0;font-size:18px;line-height:1.5;font-weight:500;color:#475569}
-      #boot .btn{display:flex;align-items:center;justify-content:center;margin-top:12px;border-radius:999px;padding:14px 16px;font-weight:800}
-      #boot .btn.solid{margin-top:32px;background:#034f36;color:#fff}
-      #boot .btn.ghost{background:#fff;color:#334155;border:1px solid #e2e8f0;font-weight:700}
-      #boot .pills{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin-top:32px}
-      #boot .pill{background:#fff;border:1px solid #e2e8f0;border-radius:999px;padding:6px 12px;font-size:12px}
-      #boot .pill b{color:#034f36;font-size:14px}
-      #boot .rings{display:flex;justify-content:center;gap:24px;margin-top:28px}
-      #boot .ring{width:72px;height:72px;border-radius:50%;display:flex;align-items:center;justify-content:center}
-      #boot .ring i{width:56px;height:56px;border-radius:50%;background:#fff;display:flex;align-items:center;justify-content:center;font-style:normal;font-size:12px;font-weight:800;color:#034f36}
-      #boot .label{margin:14px 0 0;font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#64748b}
-    </style>
   </head>
   <body class="antialiased text-slate-800">
     <noscript>
@@ -69,32 +42,6 @@
         title="Google Tag Manager"
       ></iframe>
     </noscript>
-    <div id="boot">
-      <div class="promo"><span>Start free with 3 AI scans a day</span><a href="/#download">Get the app</a></div>
-      <div class="bar">
-        <img class="logo" src="/logo-sm.jpg" alt="Calviora" width="128" height="128" />
-        <a class="go" href="/#download">Get Started →</a>
-        <div class="menu"></div>
-      </div>
-      <div class="hero">
-        <div class="badge"><span class="dot"></span>AI Food Scan &amp; South Asian Dish Recognition</div>
-        <h1>Eat Smart. Track Easy.<br /><span>Live Better.</span></h1>
-        <p>Snap a photo of your plate—whether it's Biryani, Avocado Toast, or a homemade curry—and let Calviora AI calculate your calories, macros &amp; nutrition in seconds.</p>
-        <a class="btn solid" href="#download">Get started free</a>
-        <a class="btn ghost" href="#app-preview">See how it works</a>
-        <div class="pills">
-          <span class="pill"><b>18,500+</b> Foods recognized</span>
-          <span class="pill"><b>98%</b> Estimate accuracy</span>
-          <span class="pill"><b>3 free</b> AI scans a day</span>
-        </div>
-        <p class="label">Sample day</p>
-        <div class="rings">
-          <div class="ring" style="background:conic-gradient(#087c50 259deg,#e6f3ea 0)"><i>72%</i></div>
-          <div class="ring" style="background:conic-gradient(#f59e0b 230deg,#e6f3ea 0)"><i>64%</i></div>
-          <div class="ring" style="background:conic-gradient(#0284c7 288deg,#e6f3ea 0)"><i>80%</i></div>
-        </div>
-      </div>
-    </div>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>
