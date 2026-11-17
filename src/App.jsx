@@ -26,6 +26,10 @@ export default function App() {
   const [faqs, setFaqs] = useState(defaultFaqs);
 
   useLayoutEffect(() => {
+    document.getElementById('boot')?.remove();
+  }, []);
+
+  useLayoutEffect(() => {
     const remember = () => setRoute(locationKey());
     window.addEventListener('popstate', remember);
     window.addEventListener('hashchange', remember);
