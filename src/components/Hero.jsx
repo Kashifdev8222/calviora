@@ -84,7 +84,7 @@ export default function Hero() {
             </div>
 
             <div className="mt-8">
-              <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
+              <p className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Sample day</p>
               <div className="mt-3 flex items-start justify-center gap-6 xl:justify-start">
                 {sampleRings.map((ring) => (
                   <SampleRing key={ring.label} {...ring} play={play} />
@@ -100,10 +100,10 @@ export default function Hero() {
               <div className="bg-brand-cloud flex-1 rounded-[32px] p-4 flex flex-col justify-between overflow-hidden relative border border-slate-200">
                 <div className="flex items-center justify-between pb-3 border-b border-slate-200">
                   <div>
-                    <div className="text-[10px] text-slate-400 font-bold uppercase">Today</div>
+                    <div className="text-[10px] text-slate-600 font-bold uppercase">Today</div>
                     <div className="text-sm font-bold text-brand-deep">Dashboard</div>
                   </div>
-                  <span className="px-2 py-1 bg-brand-soft text-brand-action text-[10px] font-bold rounded-full">
+                  <span className="px-2 py-1 bg-brand-soft text-brand-deep text-[10px] font-bold rounded-full">
                     3 Free Scans
                   </span>
                 </div>

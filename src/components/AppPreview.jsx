@@ -13,12 +13,12 @@ export default function AppPreview() {
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 pb-6">
           <div className="bg-brand-cloud p-5 rounded-3xl border border-slate-200 flex flex-col items-center text-center">
             <div className="w-full bg-slate-900 rounded-2xl p-3 text-white mb-4">
-              <div className="w-12 h-12 rounded-full bg-brand-action mx-auto flex items-center justify-center font-bold text-brand-leaf text-lg mb-2">
+              <div className="w-12 h-12 rounded-full bg-brand-action mx-auto flex items-center justify-center font-bold text-white text-lg mb-2">
                 75%
               </div>
               <div className="text-xs font-bold">Calculating Plan...</div>
             </div>
-            <h4 className="font-bold text-brand-deep text-base">1. Personalized Plan</h4>
+            <h3 className="font-bold text-brand-deep text-base">1. Personalized Plan</h3>
             <p className="text-xs text-slate-500 mt-1">AI creates your customized calorie & macro budget instantly.</p>
           </div>
 
@@ -34,7 +34,7 @@ export default function AppPreview() {
                 <Camera className="w-5 h-5" />
               </div>
             </div>
-            <h4 className="font-bold text-brand-deep text-base">2. Photo AI Scan</h4>
+            <h3 className="font-bold text-brand-deep text-base">2. Photo AI Scan</h3>
             <p className="text-xs text-slate-500 mt-1">Point camera at your meal. AI detects food and portions.</p>
           </div>
 
@@ -47,7 +47,7 @@ export default function AppPreview() {
                 <span>Protein: 46g</span>
               </div>
             </div>
-            <h4 className="font-bold text-brand-deep text-base">3. Daily Dashboard</h4>
+            <h3 className="font-bold text-brand-deep text-base">3. Daily Dashboard</h3>
             <p className="text-xs text-slate-500 mt-1">See your remaining calories and nutrients live.</p>
           </div>
 
@@ -61,7 +61,7 @@ export default function AppPreview() {
                 <Droplet className="w-3 h-3 fill-current" />
               </div>
             </div>
-            <h4 className="font-bold text-brand-deep text-base">4. Habit Tracking</h4>
+            <h3 className="font-bold text-brand-deep text-base">4. Habit Tracking</h3>
             <p className="text-xs text-slate-500 mt-1">Log water, weight check-ins & activity seamlessly.</p>
           </div>
 
@@ -72,7 +72,7 @@ export default function AppPreview() {
               </div>
               <div className="text-xs font-bold text-amber-300">Streak Achieved!</div>
             </div>
-            <h4 className="font-bold text-brand-deep text-base">5. Streaks & Progress</h4>
+            <h3 className="font-bold text-brand-deep text-base">5. Streaks & Progress</h3>
             <p className="text-xs text-slate-500 mt-1">Build daily consistency with habit milestone awards.</p>
           </div>
         </div>

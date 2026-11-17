@@ -11,7 +11,7 @@ const options = [
   {
     name: 'Ask Claude',
     href: `https://claude.ai/new?q=${prompt}`,
-    className: 'bg-[#c96442] text-white hover:bg-[#b65536]',
+    className: 'bg-[#6f2c1a] text-white hover:bg-[#542114]',
   },
   {
     name: 'Ask Perplexity',

@@ -5,7 +5,7 @@
   "outputDirectory": "dist",
   "rewrites": [
     {
-      "source": "/((?!api/).*)",
+      "source": "/((?!api/|\\.well-known/|llms\\.txt).*)",
       "destination": "/index.html"
     }
   ]

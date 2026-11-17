@@ -1,0 +1,49 @@
+{
+  "entries": [
+    {
+      "identifier": "urn:air:calviora.app:page:home",
+      "displayName": "Calviora",
+      "type": "text/html",
+      "url": "https://calviora.app/",
+      "description": "AI calorie counter and food scanner. Snap a meal photo for estimated calories and macros, and track water, activity, and goals.",
+      "representativeQueries": [
+        "Calviora calorie tracker",
+        "AI food scanner app",
+        "Calviora download"
+      ]
+    },
+    {
+      "identifier": "urn:air:calviora.app:page:privacy",
+      "displayName": "Calviora Privacy Policy",
+      "type": "text/html",
+      "url": "https://calviora.app/privacy",
+      "description": "What Calviora collects, what stays on the phone, and how an account is deleted.",
+      "representativeQueries": [
+        "Calviora privacy policy",
+        "Does Calviora store meal photos"
+      ]
+    },
+    {
+      "identifier": "urn:air:calviora.app:page:terms",
+      "displayName": "Calviora Terms & Conditions",
+      "type": "text/html",
+      "url": "https://calviora.app/terms",
+      "description": "Subscription terms, AI scan allowances, and how the Calviora app may be used.",
+      "representativeQueries": [
+        "Calviora subscription terms",
+        "Calviora free scan limit"
+      ]
+    },
+    {
+      "identifier": "urn:air:calviora.app:page:delete-account",
+      "displayName": "Delete a Calviora account",
+      "type": "text/html",
+      "url": "https://calviora.app/delete-account",
+      "description": "Delete a Calviora account in the app or request deletion by email.",
+      "representativeQueries": [
+        "Delete Calviora account",
+        "Calviora data deletion"
+      ]
+    }
+  ]
+}

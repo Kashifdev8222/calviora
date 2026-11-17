@@ -1,0 +1,22 @@
+# Calviora
+
+> Calviora is an AI calorie counter and food scanner app. A photo of a meal returns estimated calories and macros. The app also tracks water, activity, and goals, and starts free with 3 AI scans a day.
+
+## Pages
+
+- [Home](https://calviora.app/): Product overview, plans, and app download
+- [AI Meal Scan](https://calviora.app/features/ai-meal-scan): Photo estimates for a plate
+- [Meal Logging](https://calviora.app/features/meal-logging): Breakfast, lunch, dinner, and snacks in one diary
+- [Activity Tracker](https://calviora.app/features/activity-tracker): Steps and workouts next to meals
+- [Water Intake Tracker](https://calviora.app/features/water-intake-tracker): A daily water log
+- [AI Nutrition Coach](https://calviora.app/features/ai-nutrition-coach): Coaching on portions and the next meal
+- [Lose Weight](https://calviora.app/goals/lose-weight): A measured calorie deficit
+- [Gain Muscle](https://calviora.app/goals/gain-muscle): Protein and training next to meals
+- [Maintain Weight](https://calviora.app/goals/maintain-weight): Intake close to what you burn
+- [Improve Nutrition](https://calviora.app/goals/improve-nutrition): Calories and macros on everyday plates
+- [Boost Energy](https://calviora.app/goals/boost-energy): Meals, movement, and water together
+- [Gain Weight](https://calviora.app/goals/gain-weight): A measured calorie surplus
+- [TDEE Calculator](https://calviora.app/calculators/tdee-calculator): Estimated daily calories
+- [Privacy Policy](https://calviora.app/privacy): What the app stores and who processes it
+- [Terms & Conditions](https://calviora.app/terms): Subscriptions, scan allowances, and use of the app
+- [Delete Account](https://calviora.app/delete-account): How to delete a Calviora account

@@ -68,6 +68,7 @@ export default function App() {
   return (
     <>
       <Header />
+      <main>
       {topic ? (
         <Suspense fallback={<div className="min-h-[50vh] bg-brand-cloud" />}>
           <TopicPage topic={topic} />
@@ -90,6 +91,7 @@ export default function App() {
           </Suspense>
         </>
       )}
+      </main>
       <Footer />
     </>
   );
