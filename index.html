@@ -29,7 +29,6 @@
     <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32.png" />
     <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16.png" />
     <link rel="apple-touch-icon" href="/apple-touch-icon.png" />
-    <link rel="preload" as="image" href="/logo-sm.jpg" fetchpriority="high" />
     <link rel="ard" href="/.well-known/ard.json" type="application/json" />
   </head>
   <body class="antialiased text-slate-800">
@@ -42,6 +41,93 @@
         title="Google Tag Manager"
       ></iframe>
     </noscript>
+    <div id="boot" class="xl:hidden" aria-hidden="true" style="position:fixed;inset:0;z-index:80;overflow:hidden;background:#f6fbf7">
+      <div class="bg-brand-deep text-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 min-h-10 py-2 flex flex-wrap items-center justify-center gap-x-3 gap-y-1 text-center text-xs sm:text-sm font-semibold">
+          <span>Start free with 3 AI scans a day</span>
+          <a href="/#download" class="underline decoration-brand-leaf underline-offset-4 text-brand-leaf whitespace-nowrap">Get the app</a>
+        </div>
+      </div>
+      <header class="border-b border-brand-soft/50 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
+          <a href="/" class="flex items-center min-w-0 shrink">
+            <img src="data:image/jpeg;base64,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" alt="" width="128" height="128" class="h-14 sm:h-16 w-auto object-contain" />
+          </a>
+          <div class="flex items-center gap-2 sm:gap-3 shrink-0">
+            <a href="/#download" class="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-6 py-2.5 rounded-full bg-brand-deep text-brand-leaf font-bold text-sm shadow-lg shadow-brand-deep/20 whitespace-nowrap">
+              Get Started
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-4 h-4" aria-hidden="true"><path d="M5 12h14"/><path d="m12 5 7 7-7 7"/></svg>
+            </a>
+            <span class="inline-flex items-center justify-center w-10 h-10 rounded-full border border-brand-action/20 text-brand-deep bg-white">
+              <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5" aria-hidden="true"><path d="M4 12h16"/><path d="M4 18h16"/><path d="M4 6h16"/></svg>
+            </span>
+          </div>
+        </div>
+      </header>
+      <section class="relative overflow-hidden pt-12">
+        <div class="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div class="text-center">
+            <div class="inline-flex max-w-full items-center justify-center gap-2 px-4 py-2 rounded-full bg-brand-soft text-brand-deep font-semibold text-xs sm:text-sm mb-6 border border-brand-action/20 text-left">
+              <span class="flex h-2 w-2 shrink-0 rounded-full bg-brand-leaf"></span>
+              <span>AI Food Scan &amp; South Asian Dish Recognition</span>
+            </div>
+            <h1 class="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-deep leading-[1.15]">
+              Eat Smart. Track Easy. <br class="hidden sm:block" />
+              <span class="text-brand-action">Live Better.</span>
+            </h1>
+            <p class="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto font-medium">
+              Snap a photo of your plate—whether it's Biryani, Avocado Toast, or a homemade curry—and let Calviora AI
+              calculate your calories, macros &amp; nutrition in seconds.
+            </p>
+            <div class="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3">
+              <a href="#download" class="w-full sm:w-auto px-7 py-3.5 rounded-full bg-brand-deep text-white font-extrabold text-sm sm:text-base shadow-xl shadow-brand-deep/20 flex items-center justify-center gap-2 text-center">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-brand-leaf" aria-hidden="true"><path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.936A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .963 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.581a.5.5 0 0 1 0 .964L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.963 0z"/><path d="M20 3v4"/><path d="M22 5h-4"/><path d="M4 17v2"/><path d="M5 18H3"/></svg>
+                Get started free
+              </a>
+              <a href="#app-preview" class="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white border border-slate-200 text-slate-700 font-bold text-sm sm:text-base flex items-center justify-center gap-2">
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="w-5 h-5 text-brand-action" aria-hidden="true"><circle cx="12" cy="12" r="10"/><polygon points="10 8 16 12 10 16 10 8"/></svg>
+                See how it works
+              </a>
+            </div>
+            <div class="mt-8 flex flex-wrap items-center justify-center gap-2">
+              <div class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1.5 shadow-sm"><span class="text-sm font-extrabold text-brand-deep">18,500+</span><span class="text-xs font-medium text-slate-500">Foods recognized</span></div>
+              <div class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1.5 shadow-sm"><span class="text-sm font-extrabold text-brand-deep">98%</span><span class="text-xs font-medium text-slate-500">Estimate accuracy</span></div>
+              <div class="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1.5 shadow-sm"><span class="text-sm font-extrabold text-brand-deep">3 free</span><span class="text-xs font-medium text-slate-500">AI scans a day</span></div>
+            </div>
+            <div class="mt-8">
+              <p class="text-[11px] font-bold uppercase tracking-widest text-slate-600">Sample day</p>
+              <div class="mt-3 flex items-start justify-center gap-6">
+                <div class="text-center">
+                  <div class="ring-sweep is-instant mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full" style="--ring-color:#087C50;--ring-turn:259.2deg">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">72%</div>
+                  </div>
+                  <p class="mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-500">Calories</p>
+                </div>
+                <div class="text-center">
+                  <div class="ring-sweep is-instant mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full" style="--ring-color:#f59e0b;--ring-turn:230.4deg">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">64%</div>
+                  </div>
+                  <p class="mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-500">Protein</p>
+                </div>
+                <div class="text-center">
+                  <div class="ring-sweep is-instant mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full" style="--ring-color:#0284c7;--ring-turn:288deg">
+                    <div class="flex h-14 w-14 items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">80%</div>
+                  </div>
+                  <p class="mt-2 text-[11px] font-bold uppercase tracking-wide text-slate-500">Water</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </div>
+    <script>
+      if ((location.pathname.replace(/\/+$/, '') || '/') !== '/') {
+        var boot = document.getElementById('boot');
+        if (boot) boot.remove();
+      }
+    </script>
     <div id="root"></div>
     <script type="module" src="/src/main.jsx"></script>
   </body>

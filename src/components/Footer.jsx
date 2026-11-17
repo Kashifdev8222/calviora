@@ -55,7 +55,7 @@ export default function Footer() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
         <div>
           <a href="/" onClick={onSamePageClick} className="inline-flex">
-            <img src="/logo-sm.jpg" alt="Calviora" width="128" height="128" className="h-16 w-auto rounded-xl bg-white" />
+            <img src="/logo-sm.jpg" alt="Calviora" width="128" height="128" loading="lazy" decoding="async" className="h-16 w-auto rounded-xl bg-white" />
           </a>
           <p className="mt-4 text-sm leading-relaxed max-w-xs">Track meals, water, and activity. Eat with a clearer picture of the day.</p>
           <div className="mt-5 flex gap-2">

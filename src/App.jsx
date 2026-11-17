@@ -25,6 +25,10 @@ export default function App() {
   const [plans, setPlans] = useState(defaultPlans);
   const [faqs, setFaqs] = useState(defaultFaqs);
 
+  useEffect(() => {
+    document.getElementById('boot')?.remove();
+  }, []);
+
   useLayoutEffect(() => {
     const remember = () => setRoute(locationKey());
     window.addEventListener('popstate', remember);

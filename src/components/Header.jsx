@@ -2,6 +2,7 @@ import { useEffect, useState } from 'react';
 import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
 import { calculatorPath, calculatorTools } from '../data/calculators.js';
 import { featurePages, featurePath, goalPages, goalPath } from '../data/topics.js';
+import { logoSrc } from '../lib/logo.js';
 import { onSamePageClick } from '../lib/navigate.js';
 
 const menus = [
@@ -70,7 +71,7 @@ export default function Header() {
     <header className="sticky top-0 z-50 border-b border-brand-soft/50 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
         <a href="/" onClick={(event) => { onSamePageClick(event); close(); }} className="flex items-center min-w-0 shrink">
-          <img src="/logo-sm.jpg" alt="Calviora" width="128" height="128" fetchPriority="high" className="h-14 sm:h-16 w-auto object-contain" />
+          <img src={logoSrc} alt="Calviora" width="128" height="128" className="h-14 sm:h-16 w-auto object-contain" />
         </a>
 
         <nav className="hidden xl:flex items-center gap-5 2xl:gap-7 font-semibold text-sm text-slate-700 whitespace-nowrap">
