@@ -2,4 +2,3 @@ User-agent: *
 Allow: /
 
 Sitemap: https://calviora.app/sitemap.xml
-Agentmap: https://calviora.app/.well-known/ard.json

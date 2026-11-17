@@ -54,6 +54,11 @@ body {
   transition: --ring-turn 1.15s cubic-bezier(0.22, 0.8, 0.28, 1);
 }
 
+.ring-sweep.is-instant,
+.fill-bar.is-instant {
+  transition: none;
+}
+
 .ring-sweep.is-reset {
   transition: none;
 }

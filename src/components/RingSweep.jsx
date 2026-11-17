@@ -18,7 +18,7 @@ function reducedMotion() {
   return window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 }
 
-export function RingSweep({ pct, color, play, className, children }) {
+export function RingSweep({ pct, color, play, instant, className, children }) {
   const ref = useRef(null);
   const amount = Math.max(0, Math.min(100, pct)) * 3.6;
 
@@ -26,9 +26,9 @@ export function RingSweep({ pct, color, play, className, children }) {
     const el = ref.current;
     if (!el) return;
     el.style.setProperty('--ring-color', color);
-    if (!play || reducedMotion()) {
+    if (instant || !play || reducedMotion()) {
       el.style.transition = 'none';
-      el.style.setProperty('--ring-turn', play || reducedMotion() ? `${amount}deg` : '0deg');
+      el.style.setProperty('--ring-turn', instant || play || reducedMotion() ? `${amount}deg` : '0deg');
       return;
     }
     const frame = window.requestAnimationFrame(() => {
@@ -36,16 +36,20 @@ export function RingSweep({ pct, color, play, className, children }) {
       el.style.setProperty('--ring-turn', `${amount}deg`);
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [amount, color, play]);
+  }, [amount, color, instant, play]);
 
   return (
-    <div ref={ref} className={`ring-sweep ${className || ''}`} style={{ '--ring-color': color }}>
+    <div
+      ref={ref}
+      className={`ring-sweep ${instant ? 'is-instant' : ''} ${className || ''}`}
+      style={instant ? { '--ring-color': color, '--ring-turn': `${amount}deg` } : { '--ring-color': color }}
+    >
       {children}
     </div>
   );
 }
 
-export function FillBar({ pct, color, play }) {
+export function FillBar({ pct, color, play, instant }) {
   const ref = useRef(null);
   const amount = Math.max(0, Math.min(100, pct));
 
@@ -53,9 +57,9 @@ export function FillBar({ pct, color, play }) {
     const el = ref.current;
     if (!el) return;
     el.style.background = color;
-    if (!play || reducedMotion()) {
+    if (instant || !play || reducedMotion()) {
       el.style.transition = 'none';
-      el.style.width = play || reducedMotion() ? `${amount}%` : '0%';
+      el.style.width = instant || play || reducedMotion() ? `${amount}%` : '0%';
       return;
     }
     const frame = window.requestAnimationFrame(() => {
@@ -63,7 +67,13 @@ export function FillBar({ pct, color, play }) {
       el.style.width = `${amount}%`;
     });
     return () => window.cancelAnimationFrame(frame);
-  }, [amount, color, play]);
+  }, [amount, color, instant, play]);
 
-  return <div ref={ref} className="fill-bar" style={{ background: color }} />;
+  return (
+    <div
+      ref={ref}
+      className={`fill-bar ${instant ? 'is-instant' : ''}`}
+      style={instant ? { background: color, width: `${amount}%` } : { background: color }}
+    />
+  );
 }

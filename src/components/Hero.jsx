@@ -1,5 +1,5 @@
 import { CheckCircle, Droplet, PlayCircle, QrCode, Sparkles } from 'lucide-react';
-import { FillBar, RingSweep, useSweep } from './RingSweep.jsx';
+import { FillBar, RingSweep } from './RingSweep.jsx';
 
 const sampleRings = [
   { label: 'Calories', value: '72%', pct: 72, color: '#087C50' },
@@ -7,10 +7,10 @@ const sampleRings = [
   { label: 'Water', value: '80%', pct: 80, color: '#0284c7' },
 ];
 
-function SampleRing({ label, value, pct, color, play }) {
+function SampleRing({ label, value, pct, color }) {
   return (
     <div className="text-center">
-      <RingSweep pct={pct} color={color} play={play} className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full">
+      <RingSweep pct={pct} color={color} play instant className="mx-auto flex h-[72px] w-[72px] items-center justify-center rounded-full">
         <div className="flex h-14 w-14 items-center justify-center rounded-full bg-white text-xs font-extrabold text-brand-deep">
           {value}
         </div>
@@ -21,13 +21,9 @@ function SampleRing({ label, value, pct, color, play }) {
 }
 
 export default function Hero() {
-  const play = useSweep('home');
-
   return (
     <section className="relative overflow-hidden pt-12 pb-28 md:pt-20 md:pb-36">
       <div className="absolute inset-0 bg-grid-pattern pointer-events-none"></div>
-      <div className="pointer-events-none absolute -left-16 top-10 h-56 w-56 rounded-full bg-brand-leaf/50 blur-3xl"></div>
-      <div className="pointer-events-none absolute right-0 top-24 h-72 w-72 rounded-full bg-brand-action/20 blur-3xl"></div>
       <div className="pointer-events-none absolute inset-x-0 bottom-0 text-brand-action" aria-hidden="true">
         <svg viewBox="0 0 1440 90" preserveAspectRatio="none" className="block h-16 w-full sm:h-24">
           <path fill="currentColor" d="M0,58 C280,8 520,8 760,42 C1000,76 1220,92 1440,36 L1440,90 L0,90 Z" />
@@ -37,7 +33,7 @@ export default function Hero() {
         <div className="grid xl:grid-cols-12 gap-12 items-center">
           <div className="xl:col-span-7 text-center xl:text-left">
             <div className="inline-flex max-w-full items-center justify-center gap-2 px-4 py-2 rounded-full bg-brand-soft text-brand-deep font-semibold text-xs sm:text-sm mb-6 border border-brand-action/20 text-left">
-              <span className="flex h-2 w-2 shrink-0 rounded-full bg-brand-leaf animate-pulse"></span>
+              <span className="flex h-2 w-2 shrink-0 rounded-full bg-brand-leaf"></span>
               <span>AI Food Scan & South Asian Dish Recognition</span>
             </div>
 
@@ -87,7 +83,7 @@ export default function Hero() {
               <p className="text-[11px] font-bold uppercase tracking-widest text-slate-600">Sample day</p>
               <div className="mt-3 flex items-start justify-center gap-6 xl:justify-start">
                 {sampleRings.map((ring) => (
-                  <SampleRing key={ring.label} {...ring} play={play} />
+                  <SampleRing key={ring.label} {...ring} />
                 ))}
               </div>
             </div>
@@ -134,7 +130,7 @@ export default function Hero() {
                     <span className="text-brand-action">1,420 / 1,960 kcal</span>
                   </div>
                   <div className="w-full bg-slate-100 h-2 rounded-full overflow-hidden">
-                    <FillBar pct={72} color="#087C50" play={play} />
+                    <FillBar pct={72} color="#087C50" play instant />
                   </div>
                 </div>
               </div>

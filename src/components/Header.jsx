@@ -67,7 +67,7 @@ export default function Header() {
         </a>
       </div>
     </div>
-    <header className="sticky top-0 z-50 glass-card border-b border-brand-soft/50 bg-white/80">
+    <header className="sticky top-0 z-50 border-b border-brand-soft/50 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between gap-3">
         <a href="/" onClick={(event) => { onSamePageClick(event); close(); }} className="flex items-center min-w-0 shrink">
           <img src="/logo.jpg" alt="Calviora" className="h-14 sm:h-16 w-auto object-contain" />
