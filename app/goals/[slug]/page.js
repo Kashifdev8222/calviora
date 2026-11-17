@@ -17,7 +17,6 @@ export async function generateMetadata({ params }) {
   return {
     title: topic.title,
     description: topic.summary,
-    alternates: { canonical: `/goals/${topic.slug}` },
   };
 }
 

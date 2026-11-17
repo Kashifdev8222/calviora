@@ -1,3 +1,4 @@
+import { headers } from 'next/headers';
 import '../src/index.css';
 import Header from '../src/components/Header.jsx';
 import Footer from '../src/components/Footer.jsx';
@@ -34,10 +35,14 @@ export const viewport = {
   themeColor: '#034F36',
 };
 
-export default function RootLayout({ children }) {
+export default async function RootLayout({ children }) {
+  const path = (await headers()).get('x-pathname') || '/';
+  const canonical = path === '/' ? 'https://calviora.app/' : `https://calviora.app${path}`;
+
   return (
     <html lang="en">
       <head>
+        <link rel="canonical" href={canonical} />
         <link rel="ard" href="/.well-known/ard.json" type="application/json" />
       </head>
       <body className="antialiased text-slate-800">

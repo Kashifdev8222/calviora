@@ -20,7 +20,6 @@ export async function generateMetadata({ params }) {
   return {
     title: tool.label,
     description: calculatorNotes[id]?.about || tool.label,
-    alternates: { canonical: `/calculators/${tool.slug}` },
   };
 }
 
