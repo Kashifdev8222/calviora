@@ -59,6 +59,7 @@ export default function Faq({ faqs }) {
               );
             })}
           </div>
+          {open < 0 && answerHeight > 0 && <div aria-hidden="true" style={{ height: answerHeight }} />}
         </div>
       </div>
     </section>
