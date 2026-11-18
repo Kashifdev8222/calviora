@@ -134,7 +134,7 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto xl:mx-0 font-medium">
-              Snap a photo of your plate—whether it's Biryani, Avocado Toast, or a homemade curry—and let Calviora AI
+              Snap a photo of your plate, whether it's Biryani, Avocado Toast, or a homemade curry, and let Calviora AI
               calculate your calories, macros & nutrition in seconds.
             </p>
 

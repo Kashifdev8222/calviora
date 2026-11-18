@@ -193,7 +193,7 @@ export default function Features() {
             </div>
           </div>
           <a
-            href="/#pricing"
+            href="/#download"
             onClick={onSamePageClick}
             className="w-full sm:w-auto px-6 py-3 rounded-full bg-brand-leaf text-brand-deep font-extrabold text-sm hover:bg-white transition text-center whitespace-nowrap"
           >

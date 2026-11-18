@@ -41,7 +41,7 @@ export default function Screenshots() {
             Designed to make healthy eating effortless
           </h2>
           <p className="mt-3 text-base font-medium text-slate-600 sm:text-lg">
-            Take a look inside Calviora — from instant AI food scans to streak achievements.
+            Take a look inside Calviora, from instant AI food scans to streak achievements.
           </p>
         </div>
 

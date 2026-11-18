@@ -84,9 +84,20 @@ export default function Pricing({ plans }) {
                     ))}
                   </ul>
                 </div>
-                <a href={plan.href || '#download'} className={style.cta}>
+                <a
+                  href={plan.href || '/#download'}
+                  className={style.cta}
+                  {...(String(plan.href || '').startsWith('http')
+                    ? { target: '_blank', rel: 'noopener noreferrer' }
+                    : {})}
+                >
                   {plan.cta}
                 </a>
+                {String(plan.href || '').startsWith('http') ? (
+                  <span className={`mt-2 block text-center text-[10px] font-semibold ${plan.variant === 'quarterly' ? 'text-brand-leaf' : 'text-slate-500'}`}>
+                    Continues on Google Play
+                  </span>
+                ) : null}
               </div>
             );
           })}

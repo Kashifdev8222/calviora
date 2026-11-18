@@ -42,6 +42,7 @@ export default async function RootLayout({ children }) {
   return (
     <html lang="en">
       <head>
+        <link rel="preload" href="/fonts/plus-jakarta-sans-latin.woff2" as="font" type="font/woff2" crossOrigin="anonymous" />
         <link rel="canonical" href={canonical} />
         <link rel="ard" href="/.well-known/ard.json" type="application/json" />
       </head>

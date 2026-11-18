@@ -8,17 +8,17 @@ function AppleMark() {
 
 function PlayMark() {
   return (
-    <svg className="w-6 h-6 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
-      <path fill="#4285F4" d="M3.2 20.6c.2.4.6.6 1 .5l9.4-5.4-2.2-2.2-8.2 7.1z" />
-      <path fill="#34A853" d="M21.4 10.6l-3.4-2-3.6 3.4 3.6 3.4 3.5-2c.8-.5.8-1.8-.1-2.3z" />
-      <path fill="#FBBC04" d="M4.2 3.4c-.3.3-.5.7-.5 1.2v14.8l8.3-8.2L4.2 3.4z" />
-      <path fill="#EA4335" d="M13.6 12 4.2 3.4l9.4 5.4 3.4 2-3.4 1.2z" />
+    <svg className="h-7 w-7 shrink-0" viewBox="0 0 24 24" aria-hidden="true">
+      <path fill="#4285F4" d="M3.1 20.7c.2.4.6.5 1 .4l9.2-5.3-2.4-2.4-7.8 7.3z" />
+      <path fill="#34A853" d="M20.6 10.3 16.8 8.1 13.2 12l3.6 3.9 3.8-2.2c.7-.4.7-1.4 0-1.8z" />
+      <path fill="#FBBC04" d="M4.1 2.9c-.4.3-.6.8-.6 1.3v15.6l8.1-8.1L4.1 2.9z" />
+      <path fill="#EA4335" d="M13.2 12 4.1 2.9l9.2 5.3 3.5 2.1-3.6 1.7z" />
     </svg>
   );
 }
 
 const badgeClass =
-  'inline-flex items-center gap-3 h-14 px-4 rounded-lg bg-black text-white border border-white/10 shadow-lg hover:bg-slate-900 transition w-full sm:w-auto justify-center';
+  'inline-flex h-[58px] w-[210px] items-center gap-3 rounded-xl border border-white/15 bg-black px-4 text-white shadow-lg transition hover:-translate-y-0.5 hover:bg-slate-900';
 
 const APP_STORE_URL = 'https://apps.apple.com/us/app/calviora-ai-calorie-tracker/id6764837841';
 const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ';
@@ -32,7 +32,7 @@ export default function Download() {
         <h2 className="text-3xl sm:text-5xl font-extrabold leading-tight">Ready to transform your health habits?</h2>
         <p className="text-brand-soft text-lg mt-4 max-w-xl mx-auto">Download Calviora today and claim your 3 free AI food scans.</p>
 
-        <div className="mt-8 flex flex-col sm:flex-row flex-wrap justify-center gap-3">
+        <div className="mt-8 flex flex-col items-center sm:flex-row flex-wrap justify-center gap-3">
           <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={badgeClass} aria-label="Download on the App Store">
             <AppleMark />
             <span className="text-left leading-none">

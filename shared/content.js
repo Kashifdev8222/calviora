@@ -14,7 +14,7 @@ export const plans = [
     description: 'Perfect for casual calorie checking.',
     features: ['3 Free AI Scans Daily', 'Basic Food Search', 'Water Tracker'],
     cta: 'Start Free',
-    href: '#download',
+    href: '/#download',
   },
   {
     id: 'monthly',
@@ -26,7 +26,7 @@ export const plans = [
     description: 'Ideal for focused 30-day goals.',
     features: ['40 AI Scans / Month', 'Barcode Scanner', 'Macro Analytics'],
     cta: 'Subscribe Monthly',
-    href: '#download',
+    href: 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ',
   },
   {
     id: 'quarterly',
@@ -38,7 +38,7 @@ export const plans = [
     description: 'Great value for habit formation.',
     features: ['120 AI Scans / Quarter', 'Full Desi Food Library', 'Intermittent Fasting Timers'],
     cta: 'Get Quarterly Plan',
-    href: '#download',
+    href: 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ',
     badge: 'Most Popular',
   },
   {
@@ -51,7 +51,7 @@ export const plans = [
     description: 'Maximum savings for serious trackers.',
     features: ['400 AI Scans / Year', 'Priority AI Processing', 'Unlimited Manual Search'],
     cta: 'Get Annual Pass',
-    href: '#download',
+    href: 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ',
   },
 ];
 
