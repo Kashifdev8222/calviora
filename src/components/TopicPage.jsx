@@ -52,29 +52,73 @@ const waterChart = {
 };
 
 const screenBySlug = {
-  'ai-meal-scan': { ...dayLog, pill: 'AI Meal Scan', caption: 'AI Meal Scan' },
-  'meal-logging': { ...dayLog, pill: "Today's log" },
-  'activity-tracker': {
-    src: '/screenshots/activities.jpeg',
-    alt: 'Calviora activities with calories burned per minute',
-    caption: 'Activities',
-    pill: 'Activities',
+  'ai-meal-scan': {
+    src: '/screenshots/phone-history.png',
+    alt: 'Calviora History screen with 559 of 1,801 kcal, 48g protein, 22g carbs, and 31g fat',
+    caption: 'AI Meal Scan',
+    pill: 'AI Meal Scan',
+    framed: false,
     chart: {
-      kind: 'bars',
-      title: '0 kcal',
-      caption: 'Burned today',
-      max: 8,
-      items: [
-        { label: 'Archery', value: 4 },
-        { label: 'Aqua Aerobics', value: 6 },
-        { label: 'Badminton', value: 7 },
-        { label: 'Ballet', value: 6 },
-        { label: 'Barrel Racing', value: 8 },
+      kind: 'donut',
+      center: '559',
+      unit: 'kcal',
+      slices: [
+        { label: 'Protein 48g', share: 192, color: '#fb923c' },
+        { label: 'Carbs 22g', share: 88, color: '#34d399' },
+        { label: 'Fat 31g', share: 279, color: '#c4b5fd' },
       ],
     },
   },
-  'water-intake-tracker': { ...waterChart, pill: 'Water Tracker', caption: 'Water Tracker' },
-  'ai-nutrition-coach': { ...planChart, pill: 'Your plan' },
+  'meal-logging': {
+    src: '/screenshots/phone-meal.png',
+    alt: 'Grilled chicken salad with avocado, 410 kcal, 41g protein, 9g carbs, and 22g fat',
+    caption: 'Meal Logging',
+    pill: 'Meal Logging',
+    framed: false,
+    chart: {
+      kind: 'donut',
+      center: '410',
+      unit: 'kcal',
+      slices: [
+        { label: 'Protein 41g', share: 164, color: '#087C50' },
+        { label: 'Carbs 9g', share: 36, color: '#94a3b8' },
+        { label: 'Fat 22g', share: 198, color: '#fb923c' },
+      ],
+    },
+  },
+  'activity-tracker': {
+    src: '/screenshots/phone-activity.png',
+    alt: 'Calviora activity tracker with 6,420 steps, 64 percent of 10,000',
+    caption: 'Activity Tracker',
+    pill: 'Activity Tracker',
+    framed: false,
+    chart: { kind: 'ring', pct: 64, center: '6,420', unit: 'steps', label: '64% of 10,000', color: '#087C50' },
+  },
+  'water-intake-tracker': {
+    src: '/screenshots/phone-history.png',
+    alt: 'Calviora History screen showing 0.8 L of water logged',
+    caption: 'Water Tracker',
+    pill: 'Water Tracker',
+    framed: false,
+    chart: { kind: 'ring', pct: 32, center: '0.8', unit: 'L', label: '0.8 L logged', color: '#0284c7' },
+  },
+  'ai-nutrition-coach': {
+    src: '/screenshots/phone-meal.png',
+    alt: 'A scanned meal, grilled chicken salad with avocado, estimated at 410 kcal',
+    caption: 'AI Nutrition Coach',
+    pill: 'AI Coach',
+    framed: false,
+    chart: {
+      kind: 'donut',
+      center: '410',
+      unit: 'kcal',
+      slices: [
+        { label: 'Protein 41g', share: 164, color: '#087C50' },
+        { label: 'Carbs 9g', share: 36, color: '#94a3b8' },
+        { label: 'Fat 22g', share: 198, color: '#fb923c' },
+      ],
+    },
+  },
   'lose-weight': { ...planChart, pill: 'Lose Weight' },
   'gain-muscle': { ...dayLog, pill: 'Gain Muscle', caption: 'Protein on the day' },
   'maintain-weight': {
@@ -274,15 +318,22 @@ function ScreenChart({ chart }) {
 
 function ScreenStage({ screen }) {
   return (
-    <div className="relative mx-auto w-full max-w-[560px]">
-      <div className="mb-3 flex justify-center sm:hidden">
+    <div className="relative mx-auto flex w-full max-w-[640px] items-center justify-center gap-2 sm:gap-4">
+      <div className="z-20 shrink-0 scale-90 sm:scale-100">
         <ScreenChart chart={screen.chart} />
       </div>
-      <div className="flex items-start justify-center">
-        <div className="relative z-20 mr-[-28px] mt-2 hidden shrink-0 sm:block">
-          <ScreenChart chart={screen.chart} />
-        </div>
-        <figure className="relative z-10 w-[210px] sm:mt-14 sm:w-[240px]">
+      <figure className="relative z-10 w-[188px] shrink-0 sm:w-[260px]">
+        {screen.framed === false ? (
+          <img
+            src={screen.src}
+            alt={screen.alt}
+            width="768"
+            height="1024"
+            loading="lazy"
+            decoding="async"
+            className="h-auto w-full drop-shadow-2xl"
+          />
+        ) : (
           <div className="rounded-[2.2rem] border-[8px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl">
             <img
               src={screen.src}
@@ -294,12 +345,12 @@ function ScreenStage({ screen }) {
               className="block w-full rounded-[1.6rem] bg-white"
             />
           </div>
-          <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{screen.caption}</figcaption>
-        </figure>
-        <p className="relative z-20 ml-3 mt-10 max-w-[132px] rounded-full bg-[#ff5a67] px-4 py-2 text-center text-sm font-extrabold leading-snug text-white shadow-lg sm:mt-40">
-          {screen.pill}
-        </p>
-      </div>
+        )}
+        <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{screen.caption}</figcaption>
+      </figure>
+      <p className="z-20 max-w-[108px] shrink-0 rounded-full bg-[#ff5a67] px-3 py-2 text-center text-xs font-extrabold leading-snug text-white shadow-lg sm:max-w-[132px] sm:px-4 sm:text-sm">
+        {screen.pill}
+      </p>
     </div>
   );
 }
