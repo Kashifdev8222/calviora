@@ -18,7 +18,7 @@ export default function Faq({ faqs }) {
       <div className="max-w-3xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-10">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
-          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep">Questions, answered plainly</h2>
+          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep">Common Questions About The Calviora AI Calorie Counter App</h2>
         </div>
 
         <div className="relative border-y border-slate-200">

@@ -11,9 +11,9 @@ export const plans = [
     name: 'Free Starter',
     price: '$0',
     period: '/ forever',
-    description: 'Perfect for casual calorie checking.',
-    features: ['3 Free AI Scans Daily', 'Basic Food Search', 'Water Tracker'],
-    cta: 'Start Free',
+    description: 'A relaxed way to track every day.',
+    features: ['3 AI scans daily', 'Water tracker', 'Basic food search'],
+    cta: 'Begin Free',
     href: '/#download',
   },
   {
@@ -23,9 +23,9 @@ export const plans = [
     name: 'Monthly Pass',
     price: '$1.99',
     period: '/ month',
-    description: 'Ideal for focused 30-day goals.',
-    features: ['40 AI Scans / Month', 'Barcode Scanner', 'Macro Analytics'],
-    cta: 'Subscribe Monthly',
+    description: 'For people who track often.',
+    features: ['40 AI scans a month', 'Barcode scanner', 'Macro analysis'],
+    cta: 'Get Monthly',
     href: 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ',
   },
   {
@@ -35,9 +35,9 @@ export const plans = [
     name: 'Quarterly Pass',
     price: '$4.99',
     period: '/ 3 months',
-    description: 'Great value for habit formation.',
-    features: ['120 AI Scans / Quarter', 'Full Desi Food Library', 'Intermittent Fasting Timers'],
-    cta: 'Get Quarterly Plan',
+    description: 'For turning tracking into a routine.',
+    features: ['120 AI scans a quarter', 'Full food library', 'Intermittent fasting timers'],
+    cta: 'Get Quarterly',
     href: 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ',
     badge: 'Most Popular',
   },
@@ -48,47 +48,73 @@ export const plans = [
     name: 'Annual Best Savings',
     price: '$17.99',
     period: '/ year',
-    description: 'Maximum savings for serious trackers.',
-    features: ['400 AI Scans / Year', 'Priority AI Processing', 'Unlimited Manual Search'],
-    cta: 'Get Annual Pass',
+    description: 'For people in it for the long run.',
+    features: ['400 AI scans a year', 'Priority AI processing', 'Unlimited meal search'],
+    cta: 'Get Annual',
     href: 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ',
   },
 ];
 
 export const faqs = [
   {
-    id: 'ai-scan',
+    id: 'scan-meal',
     order: 1,
-    question: "How does Calviora's AI Food Scan work?",
+    question: 'What Happens When I Scan A Meal?',
     answer:
-      'Simply open the camera inside Calviora and take a clear photo of your meal. Our trained visual recognition AI detects the items, estimates the portion size, and outputs calories, protein, carbs, and fat breakdown.',
+      'You take a photo. The AI identifies the food and estimates calories, protein, carbs and fat. You can review the result and edit it before saving.',
   },
   {
-    id: 'desi',
+    id: 'desi-dishes',
     order: 2,
-    question: 'Does Calviora recognize Pakistani & South Asian dishes?',
+    question: 'Will It Understand Biryani, Karahi And Other Desi Dishes?',
     answer:
-      'Yes! Unlike traditional apps that struggle with complex homemade dishes, Calviora is specifically tuned to recognize South Asian foods like Biryani, Roti, Naan, Karahi, Daal, and regional snacks.',
+      'Calviora is built to recognize many common South Asian dishes, along with everyday foods from other cuisines. If an estimate looks off, adjust the portion.',
   },
   {
-    id: 'free',
+    id: 'pay',
     order: 3,
-    question: 'Can I use Calviora for free?',
-    answer:
-      'Yes! All users receive 3 Free AI Photo Scans every day, along with full access to water tracking, weight logs, and manual search.',
+    question: 'Do I Have To Pay?',
+    answer: 'No. The free plan gives you 3 AI scans a day. You can upgrade later if you want more.',
   },
   {
-    id: 'edit-portion',
+    id: 'wrong-estimate',
     order: 4,
-    question: 'Can I change the portion after a scan?',
+    question: 'What If The Estimate Looks Wrong?',
     answer:
-      'Yes. The photo result is a starting estimate. If you know the serving is larger or smaller, edit the amount before you rely on the number.',
+      'Photo estimates can miss things like extra oil or a bigger portion. Edit the meal so your log matches what you really ate.',
   },
   {
-    id: 'calculators',
+    id: 'medical',
     order: 5,
-    question: 'Are the calculators on this website medical advice?',
+    question: 'Is This Medical Advice?',
     answer:
-      'No. The calculators are planning estimates from the numbers you type. They do not diagnose a condition or set medication. Photo meal scanning happens in the Calviora app.',
+      'No. Calviora and the calculators on this site give general estimates. If you have a health condition or a special diet, talk to a doctor or registered dietitian.',
+  },
+  {
+    id: 'macros',
+    order: 6,
+    question: 'Does Calviora Track Macros?',
+    answer: 'Yes. Every scan shows protein, carbs and fat, and your dashboard adds them up for the day.',
+  },
+  {
+    id: 'accuracy',
+    order: 7,
+    question: 'How Close Are AI Calorie Estimates?',
+    answer:
+      "They're estimates, not lab results. Sauces, oil and portion size can change the numbers, which is why every meal can be edited.",
+  },
+  {
+    id: 'free-app',
+    order: 8,
+    question: 'Is Calviora A Free Calorie Counter App?',
+    answer:
+      'Yes. The Free Starter plan is $0 forever and includes 3 AI scans every day, with paid plans available if you want more scans.',
+  },
+  {
+    id: 'nutritionist',
+    order: 9,
+    question: 'Can Calviora Replace A Nutritionist?',
+    answer:
+      "No. Calviora's AI Nutrition Coach offers general tips based on your logged meals, but it isn't a substitute for advice from a doctor or registered dietitian.",
   },
 ];

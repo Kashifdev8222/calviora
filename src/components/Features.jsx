@@ -12,9 +12,8 @@ const features = [
     slug: 'ai-meal-scan',
     title: 'AI Meal Scan',
     badge: 'Instant Scan',
-    copy: 'Snap a photo of your plate. Calviora estimates the portion, calories, and macros in seconds.',
-    footerLeft: 'Auto-detect calories',
-    footerRight: '3 free scans/day',
+    copy: 'Take a photo of your plate and get estimated calories and macros. It works as an AI food scanner, a photo calorie counter and an AI macro tracking app in one.',
+    points: ['Calories, protein, carbs and fat for each meal', 'Edit the portion after the scan', 'Barcode scanning for packaged food', '3 free scans every day'],
     Icon: Camera,
     icon: 'bg-gradient-to-br from-emerald-400 to-brand-action text-brand-dark shadow-emerald-500/20',
     badgeClass: 'bg-emerald-500/20 text-emerald-300 border-emerald-500/30',
@@ -27,9 +26,8 @@ const features = [
     slug: 'meal-logging',
     title: 'Meal Logging',
     badge: 'Daily Diary',
-    copy: 'Save breakfast, lunch, dinner, and snacks in one diary so your day stays easy to review.',
-    footerLeft: 'Photo or manual log',
-    footerRight: 'Macros included',
+    copy: 'Keep a simple food diary for breakfast, lunch, dinner and snacks. Add meals with a photo or type them in.',
+    points: ['Photo or manual entry', 'Macros saved with every meal'],
     Icon: BookOpen,
     icon: 'bg-gradient-to-br from-amber-400 to-orange-500 text-amber-950 shadow-amber-500/20',
     badgeClass: 'bg-amber-500/20 text-amber-300 border-amber-500/30',
@@ -42,9 +40,8 @@ const features = [
     slug: 'activity-tracker',
     title: 'Activity Tracker',
     badge: 'Move More',
-    copy: 'Log steps and workouts so the calories you burn sit next to the calories you eat.',
-    footerLeft: 'Steps and workouts',
-    footerRight: 'Net calorie view',
+    copy: 'Record your steps and workouts to see how much you moved compared to how much you ate.',
+    points: ['Steps and workouts together', 'Calories burned shown next to calories eaten'],
     Icon: Activity,
     icon: 'bg-gradient-to-br from-sky-400 to-blue-600 text-white shadow-sky-500/20',
     badgeClass: 'bg-sky-500/20 text-sky-300 border-sky-500/30',
@@ -57,9 +54,8 @@ const features = [
     slug: 'water-intake-tracker',
     title: 'Water Intake Tracker',
     badge: 'Stay Hydrated',
-    copy: 'Tap to log glasses through the day and see how close you are to your hydration goal.',
-    footerLeft: 'Daily water goal',
-    footerRight: '2.5L example',
+    copy: 'Tap once each time you drink a glass. Watch the bar fill toward your daily water goal.',
+    points: ['Personal daily water goal', 'One tap logging'],
     Icon: Droplet,
     icon: 'bg-gradient-to-br from-cyan-400 to-sky-600 text-white shadow-cyan-500/20',
     badgeClass: 'bg-cyan-500/20 text-cyan-200 border-cyan-500/30',
@@ -72,9 +68,8 @@ const features = [
     slug: 'ai-nutrition-coach',
     title: 'AI Nutrition Coach',
     badge: 'Guidance',
-    copy: 'Get plain-language coaching on portions, protein, and the next meal that fits your goal.',
-    footerLeft: 'Goal-aware tips',
-    footerRight: 'Ask anytime',
+    copy: 'Ask in plain words what to eat next or how to balance your day. The coach looks at your logged meals before it answers.',
+    points: ['Ideas for your next meal', 'Simple tips on portions and habits'],
     Icon: Sparkles,
     icon: 'bg-gradient-to-br from-purple-400 to-indigo-600 text-white shadow-purple-500/20',
     badgeClass: 'bg-purple-500/20 text-purple-300 border-purple-500/30',
@@ -96,10 +91,10 @@ export default function Features() {
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Features</p>
           <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight leading-tight">
-            Everything you need for smart nutrition
+            What You Get Inside The Calviora AI Calorie Counter App
           </h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            Scan meals, log food, track activity and water, and get coaching without juggling extra apps.
+            Five tools that work together, so you don't need a separate app for each one.
           </p>
         </div>
 
@@ -124,10 +119,11 @@ export default function Features() {
                   </div>
                   <h3 className="mb-2 text-3xl font-extrabold text-brand-deep">{lead.title}</h3>
                   <p className="text-sm leading-relaxed text-slate-600 sm:text-base">{lead.copy}</p>
-                  <div className="mt-5 flex items-center justify-between gap-2 border-t border-slate-100 pt-4 text-xs">
-                    <span className="font-semibold text-slate-500">{lead.footerLeft}</span>
-                    <span className="font-bold text-brand-action">{lead.footerRight}</span>
-                  </div>
+                  <ul className="mt-5 space-y-1 border-t border-slate-100 pt-4 text-sm font-semibold text-brand-action">
+                    {lead.points.map((point) => (
+                      <li key={point}>{point}</li>
+                    ))}
+                  </ul>
                 </div>
                 <div ref={photoRef} className="relative min-h-[280px] bg-brand-deep">
                   {showPhoto ? (
@@ -170,10 +166,11 @@ export default function Features() {
                       </div>
                       <h3 className="mb-2 text-xl font-extrabold text-brand-deep">{feature.title}</h3>
                       <p className="text-sm leading-relaxed text-slate-600">{feature.copy}</p>
-                      <div className="mt-5 flex items-center justify-between gap-2 border-t border-slate-100 pt-4 text-xs">
-                        <span className="font-semibold text-slate-500">{feature.footerLeft}</span>
-                        <span className="font-bold text-brand-action">{feature.footerRight}</span>
-                      </div>
+                      <ul className="mt-5 space-y-1 border-t border-slate-100 pt-4 text-sm font-semibold text-brand-action">
+                        {feature.points.map((point) => (
+                          <li key={point}>{point}</li>
+                        ))}
+                      </ul>
                     </a>
                   );
                 })}
@@ -188,8 +185,8 @@ export default function Features() {
               <Zap className="w-6 h-6" />
             </div>
             <div>
-              <h4 className="text-lg font-bold">No credit card required to start</h4>
-              <p className="text-sm text-brand-soft mt-0.5">Try the app with 3 free AI food scans every day.</p>
+              <h4 className="text-lg font-bold">Try It Before You Pay Anything</h4>
+              <p className="text-sm text-brand-soft mt-0.5">Your free plan includes 3 AI scans every day.</p>
             </div>
           </div>
           <a
@@ -197,7 +194,7 @@ export default function Features() {
             onClick={onSamePageClick}
             className="w-full sm:w-auto px-6 py-3 rounded-full bg-brand-leaf text-brand-deep font-extrabold text-sm hover:bg-white transition text-center whitespace-nowrap"
           >
-            Try 3 free scans
+            Scan A Meal Now
           </a>
         </div>
       </div>

@@ -5,8 +5,8 @@ import Footer from '../src/components/Footer.jsx';
 import Analytics from '../src/components/Analytics.jsx';
 import LegacyRedirect from '../src/components/LegacyRedirect.jsx';
 
-const HOME_TITLE = 'Calviora | AI Calorie Counter and Food Scanner App';
-const HOME_DESCRIPTION = 'Snap a photo of your meal and get estimated calories and macros in seconds. Track water, activity and goals. Start free with 3 AI scans a day.';
+const HOME_TITLE = 'AI Calorie Counter App With Food Photo Scanner | Calviora';
+const HOME_DESCRIPTION = 'Calviora is an AI calorie counter app that scans desi and global meals for instant calories and macros. Start free with 3 AI scans a day.';
 
 export const metadata = {
   metadataBase: new URL('https://calviora.app'),

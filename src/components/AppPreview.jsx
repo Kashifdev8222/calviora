@@ -12,9 +12,9 @@ export default function AppPreview() {
     <section id="app-preview" className="scroll-mt-24 py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-2xl mx-auto mb-12">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">How it works</p>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-brand-deep mt-3">Start with the meal in front of you</h2>
-          <p className="mt-4 text-slate-600">Scan, log, and check the day. One small habit at a time, not a second job.</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Getting Started</p>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-brand-deep mt-3">How Your First Week With Calviora Looks</h2>
+          <p className="mt-4 text-slate-600">Small daily actions add up. Here's what to expect.</p>
         </div>
 
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-6 pb-6">
@@ -25,8 +25,8 @@ export default function AppPreview() {
               </div>
               <div className="text-xs font-bold">Calculating Plan...</div>
             </div>
-            <h3 className="font-bold text-brand-deep text-base">1. Personalized Plan</h3>
-            <p className="text-xs text-slate-500 mt-1">AI creates your customized calorie & macro budget instantly.</p>
+            <h3 className="font-bold text-brand-deep text-base">1. Set Your Goal</h3>
+            <p className="text-xs text-slate-500 mt-1">Tell Calviora what you're aiming for. It sets your daily calorie and macro targets.</p>
           </div>
 
           <div className="bg-brand-cloud p-5 rounded-3xl border border-slate-200 flex flex-col items-center text-center">
@@ -42,8 +42,8 @@ export default function AppPreview() {
                 <Camera className="w-5 h-5" />
               </div>
             </div>
-            <h3 className="font-bold text-brand-deep text-base">2. Photo AI Scan</h3>
-            <p className="text-xs text-slate-500 mt-1">Point camera at your meal. AI detects food and portions.</p>
+            <h3 className="font-bold text-brand-deep text-base">2. Scan Your Meals</h3>
+            <p className="text-xs text-slate-500 mt-1">Photograph what you eat and check each estimate. Adjust the portion when needed.</p>
           </div>
 
           <div className="bg-brand-cloud p-5 rounded-3xl border border-slate-200 flex flex-col items-center text-center">
@@ -55,8 +55,8 @@ export default function AppPreview() {
                 <span>Protein: 46g</span>
               </div>
             </div>
-            <h3 className="font-bold text-brand-deep text-base">3. Daily Dashboard</h3>
-            <p className="text-xs text-slate-500 mt-1">See your remaining calories and nutrients live.</p>
+            <h3 className="font-bold text-brand-deep text-base">3. Check Your Dashboard</h3>
+            <p className="text-xs text-slate-500 mt-1">One screen shows your calories, macros, water and activity.</p>
           </div>
 
           <div className="bg-brand-cloud p-5 rounded-3xl border border-slate-200 flex flex-col items-center text-center">
@@ -69,8 +69,8 @@ export default function AppPreview() {
                 <Droplet className="w-3 h-3 fill-current" />
               </div>
             </div>
-            <h3 className="font-bold text-brand-deep text-base">4. Habit Tracking</h3>
-            <p className="text-xs text-slate-500 mt-1">Log water, weight check-ins & activity seamlessly.</p>
+            <h3 className="font-bold text-brand-deep text-base">4. Build The Habit</h3>
+            <p className="text-xs text-slate-500 mt-1">Log a little every day until it feels automatic.</p>
           </div>
 
           <div className="bg-brand-cloud p-5 rounded-3xl border border-slate-200 flex flex-col items-center text-center">
@@ -80,8 +80,8 @@ export default function AppPreview() {
               </div>
               <div className="text-xs font-bold text-amber-300">Streak Achieved!</div>
             </div>
-            <h3 className="font-bold text-brand-deep text-base">5. Streaks & Progress</h3>
-            <p className="text-xs text-slate-500 mt-1">Build daily consistency with habit milestone awards.</p>
+            <h3 className="font-bold text-brand-deep text-base">5. Keep Your Streak</h3>
+            <p className="text-xs text-slate-500 mt-1">Show up daily and watch your progress grow week after week.</p>
           </div>
         </div>
       </div>

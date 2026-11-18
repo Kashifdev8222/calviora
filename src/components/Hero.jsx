@@ -1,7 +1,8 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
-import { CheckCircle, Droplet, PlayCircle, QrCode, Sparkles } from 'lucide-react';
+import { CheckCircle, Droplet, QrCode } from 'lucide-react';
+import StoreBadges from './StoreBadges.jsx';
 import { FillBar, RingSweep } from './RingSweep.jsx';
 import { useOnScreen } from './useOnScreen.js';
 
@@ -121,49 +122,21 @@ export default function Hero() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         <div className="grid xl:grid-cols-12 gap-12 items-center">
           <div className="xl:col-span-7 text-center xl:text-left">
-            <div className="inline-flex max-w-full items-center justify-center gap-2 px-4 py-2 rounded-full bg-brand-soft text-brand-deep font-semibold text-xs sm:text-sm mb-6 border border-brand-action/20 text-left">
-              <span className="flex h-2 w-2 shrink-0 rounded-full bg-brand-leaf"></span>
-              <span>AI Food Scan & South Asian Dish Recognition</span>
-            </div>
-
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight text-brand-deep leading-[1.15]">
-              Eat Smart. Track Easy. <br className="hidden sm:block" />
-              <span className="text-brand-action">
-                Live Better.
-              </span>
+              AI Calorie Counter App For Every Plate You Eat
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto xl:mx-0 font-medium">
-              Snap a photo of your plate, whether it's Biryani, Avocado Toast, or a homemade curry, and let Calviora AI
-              calculate your calories, macros & nutrition in seconds.
+              Calviora is an AI calorie counter app that turns a photo of your meal, from biryani to avocado toast, into estimated calories and macros in seconds. Start free with 3 AI scans a day.
             </p>
 
-            <div className="mt-8 flex flex-col sm:flex-row items-center justify-center xl:justify-start gap-3">
-              <a
-                href="#download"
-                className="w-full sm:w-auto px-7 py-3.5 rounded-full bg-brand-deep text-white font-extrabold text-sm sm:text-base hover:bg-brand-action transition shadow-xl shadow-brand-deep/20 flex items-center justify-center gap-2 text-center"
-              >
-                <Sparkles className="w-5 h-5 text-brand-leaf" />
-                Get started free
-              </a>
-              <a
-                href="#app-preview"
-                className="w-full sm:w-auto px-6 py-3.5 rounded-full bg-white border border-slate-200 text-slate-700 font-bold text-sm sm:text-base hover:border-brand-action transition flex items-center justify-center gap-2"
-              >
-                <PlayCircle className="w-5 h-5 text-brand-action" />
-                See how it works
-              </a>
-            </div>
+            <StoreBadges className="mt-8 justify-center xl:justify-start" />
+            <p className="mt-4 text-sm font-medium text-slate-500">Try the free plan first. Upgrade only if you need more scans.</p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center xl:justify-start gap-2">
-              {[
-                ['18,500+', 'Foods recognized'],
-                ['98%', 'Estimate accuracy'],
-                ['3 free', 'AI scans a day'],
-              ].map(([value, label]) => (
-                <div key={label} className="inline-flex items-center gap-2 rounded-full bg-white border border-slate-200 px-3 py-1.5 shadow-sm">
-                  <span className="text-sm font-extrabold text-brand-deep">{value}</span>
-                  <span className="text-xs font-medium text-slate-500">{label}</span>
+              {['3 Free Scans Every Day', 'South Asian Dishes Recognized', 'Free Plan Available'].map((label) => (
+                <div key={label} className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm">
+                  <span className="text-xs font-bold text-brand-deep sm:text-sm">{label}</span>
                 </div>
               ))}
             </div>

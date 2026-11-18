@@ -5,10 +5,10 @@ import { ChevronLeft, ChevronRight, Smartphone } from 'lucide-react';
 import { useOnScreen } from './useOnScreen.js';
 
 const shots = [
-  { src: '/screenshots/daily-progress.jpeg', alt: 'Calviora home screen with calories eaten today', caption: 'Today’s log' },
-  { src: '/screenshots/ai-food-scan.jpeg', alt: 'Calviora quick add with AI Food Scan', caption: 'AI Food Scan' },
-  { src: '/screenshots/meal-times.jpeg', alt: 'Breakfast, lunch, and dinner times in Calviora', caption: 'Meal times' },
-  { src: '/screenshots/personal-plan.jpeg', alt: 'Calviora personal plan with daily energy and meal split', caption: 'Your plan' },
+  { src: '/screenshots/daily-progress.jpeg', alt: 'Calviora home screen with calories eaten today', caption: "Today's Log: See your meals, calories and macros for the day." },
+  { src: '/screenshots/ai-food-scan.jpeg', alt: 'Calviora quick add with AI Food Scan', caption: 'AI Food Scan: Point your camera at your plate and get an estimate.' },
+  { src: '/screenshots/meal-times.jpeg', alt: 'Breakfast, lunch, and dinner times in Calviora', caption: 'Meal Reminders: Get a nudge around the times you usually eat.' },
+  { src: '/screenshots/personal-plan.jpeg', alt: 'Calviora personal plan with daily energy and meal split', caption: 'Your Plan: See your daily calorie target and how it splits across meals.' },
   { src: '/screenshots/hydration.jpeg', alt: 'Calviora hydration screen', caption: 'Hydration' },
   { src: '/screenshots/activities.jpeg', alt: 'Calviora activity list', caption: 'Activities' },
   { src: '/screenshots/diet-type.jpeg', alt: 'Diet types in Calviora', caption: 'Diet type' },
@@ -38,10 +38,10 @@ export default function Screenshots() {
             <Smartphone className="h-4 w-4" /> Calviora Experience
           </span>
           <h2 className="text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl lg:text-5xl">
-            Designed to make healthy eating effortless
+            See How Calviora Fits Into Your Day
           </h2>
           <p className="mt-3 text-base font-medium text-slate-600 sm:text-lg">
-            Take a look inside Calviora, from instant AI food scans to streak achievements.
+            From a quick food scan to your daily streak, here's a look inside the AI calorie counter app.
           </p>
         </div>
 

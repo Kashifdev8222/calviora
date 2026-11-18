@@ -7,8 +7,8 @@ import { onSamePageClick } from '../lib/navigate.js';
 const steps = [
   {
     n: '1',
-    title: 'Scan the plate',
-    text: 'A photo returns an estimate of calories, protein, carbs, and fat. Change the portion if the serving looks off.',
+    title: 'Take A Photo',
+    text: 'Aim your camera at your meal. Calviora estimates the calories, protein, carbs and fat. If a portion looks wrong, you can fix it.',
     href: '/features/ai-meal-scan',
     label: 'AI Meal Scan',
     Icon: Camera,
@@ -18,8 +18,8 @@ const steps = [
   },
   {
     n: '2',
-    title: 'Save the meal',
-    text: 'Breakfast, lunch, dinner, and snacks stay in one diary, so one heavy plate does not hide the rest of the day.',
+    title: 'Add It To Your Day',
+    text: 'Put the meal under breakfast, lunch, dinner or snacks. Your daily total updates right away.',
     href: '/features/meal-logging',
     label: 'Meal Logging',
     Icon: BookOpen,
@@ -29,8 +29,8 @@ const steps = [
   },
   {
     n: '3',
-    title: 'Ask what to change',
-    text: 'The coach talks about portions, protein, and the next meal that still fits the goal you picked.',
+    title: 'Get A Second Opinion',
+    text: "Ask the AI Nutrition Coach what to eat next. It answers using the meals you've already logged.",
     href: '/features/ai-nutrition-coach',
     label: 'AI Nutrition Coach',
     Icon: Sparkles,
@@ -40,10 +40,10 @@ const steps = [
   },
   {
     n: '4',
-    title: 'Check the rest of the day',
-    text: 'Water and activity sit beside the food log, so the day is more than a calorie total.',
+    title: 'Watch The Full Picture',
+    text: 'Water and activity sit beside your food, so your whole day is easy to read.',
     href: '/features/water-intake-tracker',
-    label: 'Water and activity',
+    label: 'Water And Activity',
     Icon: Droplet,
     wash: 'from-sky-100 to-white',
     pct: 80,
@@ -53,44 +53,44 @@ const steps = [
 
 const audiences = [
   {
-    title: 'Homemade plates',
-    text: 'Curry, rice, eggs, and leftovers rarely come with a label. A photo is the faster start.',
-    points: ['South Asian dishes included', 'Portion stays editable'],
+    title: 'Home Cooked Meals',
+    text: "Rice, roti, dal and curry are everyday food for many of us. Calviora recognizes South Asian dishes, and you can correct the portion if it's off.",
+    points: ['South Asian dishes recognized', 'Correct the portion if it is off'],
     Icon: Camera,
     iconWrap: 'bg-emerald-100 text-emerald-700',
   },
   {
-    title: 'Losing weight',
-    text: 'See what is already eaten before the next meal, while the choice is still easy to change.',
-    points: ['A steady deficit', 'Meals you can measure'],
+    title: 'Weight Loss Weeks',
+    text: "Know what a meal costs you while it's still on your plate, not at midnight.",
+    points: ['Count it while it is on the plate', 'No midnight catch-up'],
     Icon: TrendingDown,
     iconWrap: 'bg-rose-100 text-rose-600',
   },
   {
-    title: 'Training days',
-    text: 'Protein is easier to hit when each meal shows what is still missing.',
-    points: ['Protein next to the plate', 'Workouts in the same view'],
+    title: 'Gym Days',
+    text: "See your protein meal by meal, so you know if you're close to your target.",
+    points: ['Protein meal by meal', 'See if you are close'],
     Icon: Dumbbell,
     iconWrap: 'bg-amber-100 text-amber-700',
   },
   {
-    title: 'Busy days',
-    text: 'Log close to the meal. A usual breakfast does not need a new search every morning.',
-    points: ['Photo or typed food', 'A diary you can review'],
+    title: 'Packed Schedules',
+    text: "Skip the typing. One photo takes seconds, and you're back to your day.",
+    points: ['Skip the typing', 'One photo takes seconds'],
     Icon: Clock,
     iconWrap: 'bg-sky-100 text-sky-700',
   },
   {
-    title: 'Low-energy afternoons',
-    text: 'Meals, movement, and water in one place make a slump easier to notice.',
-    points: ['Hydration goal', 'Activity beside food'],
+    title: 'Slow Afternoons',
+    text: 'Look back at your meals, water and movement to find out what might be draining you.',
+    points: ['Meals, water, and movement', 'Find what is draining you'],
     Icon: Zap,
     iconWrap: 'bg-yellow-100 text-yellow-700',
   },
   {
-    title: 'Gaining on purpose',
-    text: 'Add calories with meals you can measure, instead of guessing that you ate enough.',
-    points: ['A higher target', 'The same scan and log'],
+    title: 'Building Up',
+    text: "If you're trying to eat more, tracking shows you if you really are.",
+    points: ['Eat more on purpose', 'See if you really are'],
     Icon: TrendingUp,
     iconWrap: 'bg-orange-100 text-orange-700',
   },
@@ -103,10 +103,10 @@ export function DayFlow() {
     <section id="routine" className="scroll-mt-24 py-16 sm:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">How it works</p>
-          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">Scan, log, ask, adjust</h2>
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">How It Works</p>
+          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">How Does The Calviora AI Calorie Counter App Work?</h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            Start with the meal in front of you. Calviora turns that plate into a number you can correct, then a day you can see.
+            You eat. Calviora does the counting. You decide what to change.
           </p>
         </div>
 
@@ -140,14 +140,14 @@ export function DayFlow() {
         <div className="mt-8 grid lg:grid-cols-2 gap-4">
           <article className="rounded-3xl bg-brand-cloud border border-slate-200 p-5 sm:p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-slate-500">Example question</p>
-            <p className="mt-3 font-bold text-brand-deep">Lunch was heavy. What should dinner look like?</p>
+            <p className="mt-3 font-bold text-brand-deep">I Had A Big Lunch. What Should I Eat Tonight?</p>
           </article>
           <article className="rounded-3xl bg-brand-deep text-white p-5 sm:p-6">
             <p className="text-xs font-bold uppercase tracking-widest text-brand-leaf">Example answer</p>
             <p className="mt-3 leading-relaxed">
-              Keep dinner smaller and put protein on the plate. Scan that plate in the app if you want to see whether protein is still short.
+              Go lighter tonight and build your plate around protein and vegetables. Log it, then check how your day adds up.
             </p>
-            <p className="mt-4 text-xs text-brand-soft">An example of the coach. The live chat is in the app, not on this page.</p>
+            <p className="mt-4 text-xs text-brand-soft">Example only. Coach replies are general tips, not medical advice.</p>
           </article>
         </div>
       </div>
@@ -160,9 +160,9 @@ export function WhoFor() {
     <section id="who" className="scroll-mt-24 py-16 sm:py-20 bg-brand-cloud">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Who it is for</p>
-          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">Built around the meal you actually eat</h2>
-          <p className="mt-4 text-slate-600 text-base sm:text-lg">The scan, the log, and the coach change with the reason you opened the app.</p>
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Who It's For</p>
+          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">Who Is The Calviora AI Calorie Counter App Made For?</h2>
+          <p className="mt-4 text-slate-600 text-base sm:text-lg">Calviora is built for how people actually eat, not just salads and smoothies.</p>
         </div>
         <div className="mt-10 grid sm:grid-cols-2 xl:grid-cols-3 gap-4">
           {audiences.map((item) => {

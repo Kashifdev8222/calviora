@@ -52,11 +52,11 @@ export default function Pricing({ plans }) {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <span className="text-xs font-bold text-brand-action uppercase tracking-widest bg-brand-soft px-3 py-1 rounded-full">
-            Transparent Pricing
+            Pricing
           </span>
-          <h2 className="text-3xl sm:text-5xl font-extrabold text-brand-deep mt-3">Simple plans for every budget</h2>
+          <h2 className="text-3xl sm:text-5xl font-extrabold text-brand-deep mt-3">Calviora Pricing: Plans That Start At Free</h2>
           <p className="mt-4 text-slate-600 text-base">
-            Start with 3 free AI scans daily or unlock higher volume for continuous tracking.
+            Begin with 3 scans a day. Pay only when you want more.
           </p>
         </div>
 
@@ -128,10 +128,11 @@ export default function Pricing({ plans }) {
         </div>
 
         <p className="mx-auto mt-8 max-w-3xl text-center text-sm leading-relaxed text-slate-600">
-          Optional plans on the Android app are auto-renewing subscriptions sold by Google Play. There is no free trial. Payment starts when you confirm the subscription on Google Play.{' '}
-          <a href="/terms" onClick={onSamePageClick} className="font-bold text-brand-action hover:text-brand-deep">Terms & Conditions</a>
-          {' · '}
+          On Android, paid plans renew automatically and are billed through Google Play. Please read our{' '}
+          <a href="/terms" onClick={onSamePageClick} className="font-bold text-brand-action hover:text-brand-deep">Terms and Conditions</a>
+          {' and '}
           <a href="/privacy" onClick={onSamePageClick} className="font-bold text-brand-action hover:text-brand-deep">Privacy Policy</a>
+          {' for details.'}
         </p>
       </div>
     </section>

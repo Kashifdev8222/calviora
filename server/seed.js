@@ -6,9 +6,8 @@ let seeded = false;
 
 export async function ensureSeed() {
   if (seeded) return;
-  const planCount = await Plan.countDocuments();
-  if (planCount === 0) await Plan.insertMany(plans);
-  const faqCount = await Faq.countDocuments();
-  if (faqCount === 0) await Faq.insertMany(faqs);
+  await Promise.all(plans.map((plan) => Plan.updateOne({ id: plan.id }, { $set: plan }, { upsert: true })));
+  await Faq.deleteMany({ id: { $nin: faqs.map((faq) => faq.id) } });
+  await Promise.all(faqs.map((faq) => Faq.updateOne({ id: faq.id }, { $set: faq }, { upsert: true })));
   seeded = true;
 }

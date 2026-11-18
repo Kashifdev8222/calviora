@@ -10,7 +10,7 @@ const goals = [
   {
     slug: 'lose-weight',
     title: 'Lose Weight',
-    copy: 'Stay in a steady calorie deficit with meal scans that take the guesswork out of portions.',
+    copy: 'Keep a modest calorie gap without guessing portions. A photo makes every meal quick to count.',
     image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=500&q=80',
     alt: 'Person training to lose weight',
     iconWrap: 'bg-rose-100 text-rose-600',
@@ -19,7 +19,7 @@ const goals = [
   {
     slug: 'gain-muscle',
     title: 'Gain Muscle',
-    copy: 'Hit your protein target each day so training and recovery have the fuel they need.',
+    copy: 'Track protein first. Then check carbs and fat so your training days have enough fuel.',
     image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=500&q=80',
     alt: 'Person strength training',
     iconWrap: 'bg-amber-100 text-amber-600',
@@ -28,7 +28,7 @@ const goals = [
   {
     slug: 'maintain-weight',
     title: 'Maintain Weight',
-    copy: 'Keep intake close to what you burn, with a clear view of meals, activity, and water.',
+    copy: 'Balance what you eat with how much you move. Food, activity and water stay in one view.',
     image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=500&q=80',
     alt: 'Balanced meal for weight maintenance',
     iconWrap: 'bg-sky-100 text-sky-600',
@@ -37,7 +37,7 @@ const goals = [
   {
     slug: 'improve-nutrition',
     title: 'Improve Nutrition',
-    copy: 'See calories and macros on everyday plates, including homemade and South Asian dishes.',
+    copy: "See what's really in your usual meals, from home cooked curry to restaurant favorites.",
     image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80',
     alt: 'Colorful nutritious meal',
     iconWrap: 'bg-emerald-100 text-emerald-600',
@@ -46,7 +46,7 @@ const goals = [
   {
     slug: 'boost-energy',
     title: 'Boost Energy',
-    copy: 'Balance meals, movement, and hydration so afternoon slumps are easier to avoid.',
+    copy: 'Spot patterns between meals, water and movement when your energy dips.',
     image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=500&q=80',
     alt: 'Person running outdoors',
     iconWrap: 'bg-yellow-100 text-yellow-600',
@@ -55,7 +55,7 @@ const goals = [
   {
     slug: 'gain-weight',
     title: 'Gain Weight',
-    copy: 'Add calories on purpose and track them, so gaining happens with meals you can measure.',
+    copy: "Eat more on purpose. Tracking shows you whether you're really hitting your calorie target.",
     image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=500&q=80',
     alt: 'Hearty nutritious plate',
     iconWrap: 'bg-orange-100 text-orange-600',
@@ -72,9 +72,9 @@ export default function Goals() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="max-w-3xl mb-10">
           <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Goals</p>
-          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight text-brand-deep">Reach your goals, your way</h2>
+          <h2 className="mt-3 text-3xl sm:text-5xl font-extrabold tracking-tight text-brand-deep">Pick A Goal And Calviora Does The Math</h2>
           <p className="mt-4 text-slate-600 text-base sm:text-lg">
-            Lose weight, gain muscle, maintain, or simply eat with more energy. Calviora adapts the plan to the goal you pick.
+            Tell us what you're aiming for. You'll get daily calorie and macro targets to match, like a diet planning app that fits around your meals.
           </p>
         </div>
 

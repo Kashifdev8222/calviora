@@ -2,6 +2,7 @@
 
 import { ArrowRight } from 'lucide-react';
 import Download from './Download.jsx';
+import StoreBadges from './StoreBadges.jsx';
 import Questions from './Questions.jsx';
 import { FillBar, RingSweep, useSweep } from './RingSweep.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
@@ -282,14 +283,17 @@ export default function TopicPage({ topic }) {
       </section>
 
       {shots.length ? (
-        <section id="in-the-app" className="scroll-mt-24 overflow-hidden py-14 sm:py-16">
-          <div className="mx-auto max-w-5xl px-4 sm:px-6">
-            <p className="text-xs font-bold uppercase tracking-widest text-brand-action">In the app</p>
-            <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">See it on this screen</h2>
-            <p className="mt-3 max-w-2xl text-slate-600">Screens from Calviora for {topic.title}.</p>
-            <div className="mt-8 flex flex-wrap justify-center gap-8">
+        <section id="in-the-app" className="scroll-mt-24 overflow-hidden bg-brand-cloud py-14 sm:py-16">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
+            <div className="text-center lg:text-left">
+              <p className="text-xs font-bold uppercase tracking-widest text-brand-action">In the app</p>
+              <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">See it on this screen</h2>
+              <p className="mt-3 text-slate-600">Screens from Calviora for {topic.title}.</p>
+              <StoreBadges className="mt-6 justify-center lg:justify-start" />
+            </div>
+            <div className="relative mx-auto flex w-full max-w-xl justify-center gap-4 rounded-[32px] bg-white px-4 py-8 shadow-xl">
               {shots.map((shot) => (
-                <figure key={shot.src} className="w-full max-w-[280px]">
+                <figure key={shot.src} className="w-full max-w-[240px]">
                   <img
                     src={shot.src}
                     alt={shot.alt}
@@ -297,7 +301,7 @@ export default function TopicPage({ topic }) {
                     height="1280"
                     loading="lazy"
                     decoding="async"
-                    className="w-full rounded-[28px] border border-slate-200 bg-white shadow-xl"
+                    className="w-full rounded-[28px] border border-slate-200 bg-brand-cloud shadow-lg"
                   />
                   <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{shot.caption}</figcaption>
                 </figure>
