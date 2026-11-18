@@ -9,48 +9,90 @@ import { onSamePageClick } from '../lib/navigate.js';
 
 const washes = ['from-emerald-100 to-white', 'from-amber-100 to-white', 'from-sky-100 to-white'];
 
-const shotsBySlug = {
-  'ai-meal-scan': [
-    { src: '/screenshots/ai-food-scan.jpeg', alt: 'Calviora quick add with AI Food Scan', caption: 'AI Food Scan' },
-  ],
-  'meal-logging': [
-    { src: '/screenshots/daily-progress.jpeg', alt: 'Calviora daily progress with calories eaten', caption: 'Today’s log' },
-    { src: '/screenshots/meal-times.jpeg', alt: 'Breakfast, lunch, and dinner times in Calviora', caption: 'Meal times' },
-  ],
-  'activity-tracker': [
-    { src: '/screenshots/activities.jpeg', alt: 'Calviora activity list with calories per minute', caption: 'Activities' },
-  ],
-  'water-intake-tracker': [
-    { src: '/screenshots/hydration.jpeg', alt: 'Calviora hydration screen with a water glass', caption: 'Hydration' },
-  ],
-  'ai-nutrition-coach': [
-    { src: '/screenshots/personal-plan.jpeg', alt: 'Calviora personal plan with daily energy and meal split', caption: 'Your plan' },
-    { src: '/screenshots/daily-progress.jpeg', alt: 'Calviora home screen with a note about the day', caption: 'A note on the day' },
-  ],
-  'lose-weight': [
-    { src: '/screenshots/goal-lose-weight.jpeg', alt: 'Lose Weight selected in Calviora goals', caption: 'Lose Weight' },
-    { src: '/screenshots/personal-plan.jpeg', alt: 'A Calviora plan set for losing weight', caption: 'The plan' },
-  ],
-  'gain-muscle': [
-    { src: '/screenshots/goals.jpeg', alt: 'Gain Muscle listed in Calviora goals', caption: 'Gain Muscle' },
-    { src: '/screenshots/daily-progress.jpeg', alt: 'Protein shown beside calories in Calviora', caption: 'Protein on the day' },
-  ],
-  'maintain-weight': [
-    { src: '/screenshots/bmi-summary.jpeg', alt: 'Calviora summary with weight in a normal range', caption: 'Hold the range' },
-    { src: '/screenshots/daily-progress.jpeg', alt: 'Daily calories against the goal in Calviora', caption: 'Close to the goal' },
-  ],
-  'improve-nutrition': [
-    { src: '/screenshots/diet-type.jpeg', alt: 'Diet types in Calviora, including balanced and high protein', caption: 'Diet type' },
-    { src: '/screenshots/daily-progress.jpeg', alt: 'Calories, carbs, protein, and fat in Calviora', caption: 'Macros on the plate' },
-  ],
-  'boost-energy': [
-    { src: '/screenshots/hydration.jpeg', alt: 'Calviora hydration tracker', caption: 'Water through the day' },
-    { src: '/screenshots/meal-times.jpeg', alt: 'Meal times spread through the day in Calviora', caption: 'Meals spread out' },
-  ],
-  'gain-weight': [
-    { src: '/screenshots/goal-gain-weight.jpeg', alt: 'Calviora target weight showing kilograms to gain', caption: 'A higher target' },
-    { src: '/screenshots/goals.jpeg', alt: 'Gain Weight listed in Calviora goals', caption: 'Gain Weight' },
-  ],
+const dayLog = {
+  src: '/screenshots/daily-progress.jpeg',
+  alt: 'Calviora daily progress showing 110 of 1,351 kcal, with carbs, protein, and fat',
+  caption: "Today's log",
+  pill: '110 / 1,351 kcal',
+  chart: {
+    kind: 'donut',
+    center: '110',
+    unit: 'kcal',
+    slices: [
+      { label: 'Carbs 22g', share: 88, color: '#8b5cf6' },
+      { label: 'Protein 4g', share: 16, color: '#34d399' },
+      { label: 'Fat 1g', share: 9, color: '#fb923c' },
+    ],
+  },
+};
+
+const planChart = {
+  src: '/screenshots/personal-plan.jpeg',
+  alt: 'Calviora personal plan with 1,351 kcal, 84g protein, 169g carbs, and 38g fat',
+  caption: 'Your plan',
+  pill: '84g · 169g · 38g',
+  chart: {
+    kind: 'donut',
+    center: '1,351',
+    unit: 'kcal',
+    slices: [
+      { label: 'Protein 84g', share: 336, color: '#ef4444' },
+      { label: 'Carbs 169g', share: 676, color: '#f59e0b' },
+      { label: 'Fat 38g', share: 342, color: '#3b82f6' },
+    ],
+  },
+};
+
+const waterChart = {
+  src: '/screenshots/hydration.jpeg',
+  alt: 'Calviora hydration screen with 250 ml logged, 9 percent of 2,930 ml',
+  caption: 'Hydration',
+  pill: '9% of daily goal',
+  chart: { kind: 'ring', pct: 9, center: '250', unit: 'ml', label: '250 / 2,930 ml', color: '#0284c7' },
+};
+
+const screenBySlug = {
+  'ai-meal-scan': dayLog,
+  'meal-logging': dayLog,
+  'activity-tracker': {
+    src: '/screenshots/activities.jpeg',
+    alt: 'Calviora activities with calories burned per minute',
+    caption: 'Activities',
+    pill: '0 kcal burned today',
+    chart: {
+      kind: 'bars',
+      title: '0 kcal',
+      caption: 'Burned today',
+      max: 8,
+      items: [
+        { label: 'Archery', value: 4 },
+        { label: 'Aqua Aerobics', value: 6 },
+        { label: 'Badminton', value: 7 },
+        { label: 'Ballet', value: 6 },
+        { label: 'Barrel Racing', value: 8 },
+      ],
+    },
+  },
+  'water-intake-tracker': waterChart,
+  'ai-nutrition-coach': planChart,
+  'lose-weight': planChart,
+  'gain-muscle': dayLog,
+  'maintain-weight': {
+    src: '/screenshots/bmi-summary.jpeg',
+    alt: 'Calviora summary with a BMI of 20.8, height 170 cm, and weight 60 kg',
+    caption: 'Your summary',
+    pill: 'Normal',
+    chart: { kind: 'scale', value: 20.8, min: 15, max: 40, center: '20.8', unit: 'BMI', ends: ['15', '40'], note: '170 cm · 60.0 kg' },
+  },
+  'improve-nutrition': dayLog,
+  'boost-energy': waterChart,
+  'gain-weight': {
+    src: '/screenshots/goal-gain-weight.jpeg',
+    alt: 'Calviora target weight set to 65 kg, 5 kg to gain',
+    caption: 'Target weight',
+    pill: '5 kg to gain',
+    chart: { kind: 'scale', value: 65, min: 60, max: 70, center: '65', unit: 'kg', ends: ['60', '70'], note: '5 kg to gain' },
+  },
 };
 
 const metersBySlug = {
@@ -213,10 +255,119 @@ function HeroWave() {
   );
 }
 
+function MacroDonut({ center, unit, slices }) {
+  const total = slices.reduce((sum, slice) => sum + slice.share, 0) || 1;
+  let cursor = 0;
+  const stops = slices.map((slice) => {
+    const start = (cursor / total) * 100;
+    cursor += slice.share;
+    const end = (cursor / total) * 100;
+    return `${slice.color} ${start}% ${end}%`;
+  });
+  const places = ['-left-1 -top-3', '-right-2 top-1', '-bottom-3 left-3'];
+
+  return (
+    <div className="relative h-40 w-40">
+      <div className="h-full w-full rounded-full shadow-lg" style={{ background: `conic-gradient(${stops.join(', ')})` }} aria-hidden="true" />
+      <div className="absolute inset-[18px] flex flex-col items-center justify-center rounded-full bg-white text-center">
+        <span className="text-2xl font-extrabold leading-none text-slate-900">{center}</span>
+        <span className="mt-1 text-[11px] font-bold text-slate-500">{unit}</span>
+      </div>
+      {slices.map((slice, index) => (
+        <span
+          key={slice.label}
+          className={`absolute whitespace-nowrap rounded-full px-2 py-0.5 text-[10px] font-extrabold text-white shadow ${places[index]}`}
+          style={{ background: slice.color }}
+        >
+          {slice.label}
+        </span>
+      ))}
+    </div>
+  );
+}
+
+function ProgressRing({ pct, center, unit, label, color }) {
+  const radius = 54;
+  const circumference = 2 * Math.PI * radius;
+  const dash = (Math.max(0, Math.min(100, pct)) / 100) * circumference;
+  return (
+    <div className="w-40 text-center">
+      <div className="relative mx-auto h-40 w-40">
+        <svg viewBox="0 0 140 140" className="h-full w-full -rotate-90" aria-hidden="true">
+          <circle cx="70" cy="70" r={radius} fill="white" stroke="#e2e8f0" strokeWidth="12" />
+          <circle
+            cx="70"
+            cy="70"
+            r={radius}
+            fill="none"
+            stroke={color}
+            strokeWidth="12"
+            strokeLinecap="round"
+            strokeDasharray={`${dash} ${circumference - dash}`}
+          />
+        </svg>
+        <div className="absolute inset-0 flex flex-col items-center justify-center">
+          <span className="text-3xl font-extrabold leading-none text-slate-900">{center}</span>
+          <span className="mt-1 text-[11px] font-bold text-slate-500">{unit}</span>
+        </div>
+      </div>
+      <p className="mt-2 text-xs font-extrabold text-brand-deep">{label}</p>
+    </div>
+  );
+}
+
+function RateBars({ title, caption, max, items }) {
+  return (
+    <div className="w-56 rounded-3xl bg-white p-4 shadow-xl">
+      <p className="text-2xl font-extrabold leading-none text-slate-900">{title}</p>
+      <p className="mt-1 text-[11px] font-bold text-slate-500">{caption}</p>
+      <ul className="mt-3 space-y-2">
+        {items.map((item) => (
+          <li key={item.label}>
+            <div className="flex items-center justify-between gap-2 text-[11px] font-bold text-slate-600">
+              <span>{item.label}</span>
+              <span>{item.value} kcal / min</span>
+            </div>
+            <div className="mt-1 h-1.5 overflow-hidden rounded-full bg-slate-100">
+              <div className="h-full rounded-full bg-brand-action" style={{ width: `${(item.value / max) * 100}%` }} />
+            </div>
+          </li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function ScaleBar({ value, min, max, center, unit, ends, note }) {
+  const pct = Math.max(0, Math.min(100, ((value - min) / (max - min)) * 100));
+  return (
+    <div className="w-56 rounded-3xl bg-white p-4 shadow-xl">
+      <p className="text-3xl font-extrabold leading-none text-slate-900">
+        {center} <span className="text-sm font-bold text-slate-500">{unit}</span>
+      </p>
+      <div className="relative mt-4 h-2 rounded-full bg-gradient-to-r from-sky-400 via-brand-leaf to-orange-400">
+        <span className="absolute top-1/2 h-4 w-1 -translate-x-1/2 -translate-y-1/2 rounded-full bg-brand-deep" style={{ left: `${pct}%` }} />
+      </div>
+      <div className="mt-1 flex justify-between text-[10px] font-bold text-slate-500">
+        <span>{ends[0]}</span>
+        <span>{ends[1]}</span>
+      </div>
+      {note ? <p className="mt-2 text-xs font-extrabold text-brand-action">{note}</p> : null}
+    </div>
+  );
+}
+
+function ScreenChart({ chart }) {
+  if (chart.kind === 'donut') return <MacroDonut {...chart} />;
+  if (chart.kind === 'ring') return <ProgressRing {...chart} />;
+  if (chart.kind === 'bars') return <RateBars {...chart} />;
+  return <ScaleBar {...chart} />;
+}
+
 export default function TopicPage({ topic }) {
   const scene = scenes[topic.slug] || scenes['ai-meal-scan'];
   const meters = metersBySlug[topic.slug] || metersBySlug['ai-meal-scan'];
-  const shots = shotsBySlug[topic.slug] || [];
+  const screen = screenBySlug[topic.slug];
   const play = useSweep(topic.slug);
 
   return (
@@ -232,13 +383,7 @@ export default function TopicPage({ topic }) {
             </p>
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-brand-deep sm:text-6xl">{topic.title}</h1>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-xl">{topic.summary}</p>
-            <a
-              href="/#download"
-              onClick={onSamePageClick}
-              className="mt-8 inline-flex items-center gap-2 rounded-full bg-brand-deep px-7 py-3.5 text-sm font-extrabold text-white shadow-xl shadow-brand-deep/20 hover:bg-brand-action"
-            >
-              Get started free <ArrowRight className="h-4 w-4" />
-            </a>
+            <StoreBadges className="mt-8 justify-center lg:justify-start" />
           </div>
 
           <div className="relative min-h-[460px] overflow-hidden rounded-[32px] bg-brand-deep shadow-2xl">
@@ -282,8 +427,8 @@ export default function TopicPage({ topic }) {
         </div>
       </section>
 
-      {shots.length ? (
-        <section id="in-the-app" className="scroll-mt-24 overflow-hidden bg-brand-cloud py-14 sm:py-16">
+      {screen ? (
+        <section id="in-the-app" className="scroll-mt-24 bg-brand-cloud py-14 sm:py-16">
           <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
             <div className="text-center lg:text-left">
               <p className="text-xs font-bold uppercase tracking-widest text-brand-action">In the app</p>
@@ -291,21 +436,25 @@ export default function TopicPage({ topic }) {
               <p className="mt-3 text-slate-600">Screens from Calviora for {topic.title}.</p>
               <StoreBadges className="mt-6 justify-center lg:justify-start" />
             </div>
-            <div className="relative mx-auto flex w-full max-w-xl justify-center gap-4 rounded-[32px] bg-white px-4 py-8 shadow-xl">
-              {shots.map((shot) => (
-                <figure key={shot.src} className="w-full max-w-[240px]">
-                  <img
-                    src={shot.src}
-                    alt={shot.alt}
-                    width="576"
-                    height="1280"
-                    loading="lazy"
-                    decoding="async"
-                    className="w-full rounded-[28px] border border-slate-200 bg-brand-cloud shadow-lg"
-                  />
-                  <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{shot.caption}</figcaption>
-                </figure>
-              ))}
+            <div className="relative mx-auto w-full max-w-md">
+              <div className="relative z-20 mb-[-42px] ml-1 w-fit sm:ml-4">
+                <ScreenChart chart={screen.chart} />
+              </div>
+              <p className="absolute right-0 top-6 z-20 max-w-[150px] rounded-full bg-white px-3 py-2 text-center text-xs font-extrabold text-brand-deep shadow-lg">
+                {screen.pill}
+              </p>
+              <figure>
+                <img
+                  src={screen.src}
+                  alt={screen.alt}
+                  width="576"
+                  height="1280"
+                  loading="lazy"
+                  decoding="async"
+                  className="relative z-10 mx-auto w-[230px] rounded-[28px] shadow-2xl sm:w-[250px]"
+                />
+                <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{screen.caption}</figcaption>
+              </figure>
             </div>
           </div>
         </section>

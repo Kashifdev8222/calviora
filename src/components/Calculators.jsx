@@ -15,6 +15,7 @@ import {
 import { calculate } from '../lib/nutritionCalc.js';
 import { go, onSamePageClick } from '../lib/navigate.js';
 import Questions from './Questions.jsx';
+import StoreBadges from './StoreBadges.jsx';
 import { FillBar, RingSweep, useSweep } from './RingSweep.jsx';
 
 const fieldClass =
@@ -177,6 +178,7 @@ export default function Calculators({ toolId = 'tdee' }) {
             <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Free calculator</p>
             <h1 className="mt-2 text-3xl sm:text-5xl font-extrabold text-brand-deep tracking-tight">{active.label}</h1>
             <p className="mt-3 text-slate-600 text-base sm:text-lg">{note.about}</p>
+            <StoreBadges className="mt-6 justify-start" />
           </div>
           <div className="rounded-3xl border border-slate-200 bg-white p-4 shadow-lg">
             <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">This result</p>

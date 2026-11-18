@@ -1,7 +1,9 @@
 'use client';
 
 import { useEffect, useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { ArrowRight, ChevronDown, Menu, X } from 'lucide-react';
+import StoreBadges from './StoreBadges.jsx';
 import { calculatorPath, calculatorTools } from '../data/calculators.js';
 import { featurePages, featurePath, goalPages, goalPath } from '../data/topics.js';
 import { logoSrc } from '../lib/logo.js';
@@ -26,6 +28,8 @@ const menus = [
 ];
 
 export default function Header() {
+  const path = usePathname() || '/';
+  const innerPage = path !== '/';
   const [open, setOpen] = useState(false);
   const [menu, setMenu] = useState('');
   const close = () => {
@@ -93,13 +97,17 @@ export default function Header() {
           >
             3 Free AI Scans
           </a>
-          <a
-            href="/#download"
-            onClick={(event) => { onSamePageClick(event); close(); }}
-            className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-6 py-2.5 rounded-full bg-brand-deep text-brand-leaf font-bold text-sm hover:bg-brand-dark transition shadow-lg shadow-brand-deep/20 whitespace-nowrap"
-          >
-            Get Started <ArrowRight className="w-4 h-4" />
-          </a>
+          {innerPage ? (
+            <StoreBadges compact />
+          ) : (
+            <a
+              href="/#download"
+              onClick={(event) => { onSamePageClick(event); close(); }}
+              className="inline-flex items-center gap-1.5 sm:gap-2 px-3.5 sm:px-6 py-2.5 rounded-full bg-brand-deep text-brand-leaf font-bold text-sm hover:bg-brand-dark transition shadow-lg shadow-brand-deep/20 whitespace-nowrap"
+            >
+              Get Started <ArrowRight className="w-4 h-4" />
+            </a>
+          )}
           <button
             type="button"
             className="xl:hidden inline-flex items-center justify-center w-10 h-10 rounded-full border border-brand-action/20 text-brand-deep bg-white"
