@@ -26,10 +26,15 @@ const compactClass =
 export const APP_STORE_URL = 'https://apps.apple.com/us/app/calviora-ai-calorie-tracker/id6764837841';
 export const PLAY_STORE_URL = 'https://play.google.com/store/apps/details?id=com.calorie.vibe.ai&hl=en_NZ';
 
-export default function StoreBadges({ className = '', compact = false }) {
+export default function StoreBadges({ className = '', compact = false, stacked = false }) {
   const itemClass = compact ? compactClass : badgeClass;
+  const layout = compact
+    ? 'flex flex-row items-center gap-1.5'
+    : stacked
+      ? 'flex flex-col items-center gap-3 lg:items-start'
+      : 'flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap';
   return (
-    <div className={`${compact ? 'flex flex-row items-center gap-1.5' : 'flex flex-col items-center gap-3 sm:flex-row sm:flex-wrap'} ${className}`}>
+    <div className={`${layout} ${className}`}>
       <a href={APP_STORE_URL} target="_blank" rel="noopener noreferrer" className={itemClass} aria-label="Download on the App Store">
         <AppleMark className={compact ? 'h-4 w-4' : 'h-6 w-6'} />
         {compact ? (

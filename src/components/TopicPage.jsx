@@ -4,7 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import Download from './Download.jsx';
 import StoreBadges from './StoreBadges.jsx';
 import Questions from './Questions.jsx';
-import { FillBar, RingSweep, useSweep } from './RingSweep.jsx';
+import { FillBar, useSweep } from './RingSweep.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
 
 const washes = ['from-emerald-100 to-white', 'from-amber-100 to-white', 'from-sky-100 to-white'];
@@ -52,13 +52,13 @@ const waterChart = {
 };
 
 const screenBySlug = {
-  'ai-meal-scan': dayLog,
-  'meal-logging': dayLog,
+  'ai-meal-scan': { ...dayLog, pill: 'AI Meal Scan', caption: 'AI Meal Scan' },
+  'meal-logging': { ...dayLog, pill: "Today's log" },
   'activity-tracker': {
     src: '/screenshots/activities.jpeg',
     alt: 'Calviora activities with calories burned per minute',
     caption: 'Activities',
-    pill: '0 kcal burned today',
+    pill: 'Activities',
     chart: {
       kind: 'bars',
       title: '0 kcal',
@@ -73,10 +73,10 @@ const screenBySlug = {
       ],
     },
   },
-  'water-intake-tracker': waterChart,
-  'ai-nutrition-coach': planChart,
-  'lose-weight': planChart,
-  'gain-muscle': dayLog,
+  'water-intake-tracker': { ...waterChart, pill: 'Water Tracker', caption: 'Water Tracker' },
+  'ai-nutrition-coach': { ...planChart, pill: 'Your plan' },
+  'lose-weight': { ...planChart, pill: 'Lose Weight' },
+  'gain-muscle': { ...dayLog, pill: 'Gain Muscle', caption: 'Protein on the day' },
   'maintain-weight': {
     src: '/screenshots/bmi-summary.jpeg',
     alt: 'Calviora summary with a BMI of 20.8, height 170 cm, and weight 60 kg',
@@ -84,8 +84,8 @@ const screenBySlug = {
     pill: 'Normal',
     chart: { kind: 'scale', value: 20.8, min: 15, max: 40, center: '20.8', unit: 'BMI', ends: ['15', '40'], note: '170 cm · 60.0 kg' },
   },
-  'improve-nutrition': dayLog,
-  'boost-energy': waterChart,
+  'improve-nutrition': { ...dayLog, pill: 'Daily macros', caption: 'Macros on the plate' },
+  'boost-energy': { ...waterChart, pill: 'Hydration' },
   'gain-weight': {
     src: '/screenshots/goal-gain-weight.jpeg',
     alt: 'Calviora target weight set to 65 kg, 5 kg to gain',
@@ -153,98 +153,6 @@ const metersBySlug = {
   ],
 };
 
-const scenes = {
-  'ai-meal-scan': {
-    image: 'https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Chicken biryani on a plate',
-    chip: 'Chicken Biryani',
-    meta: '540 kcal · Protein 28g · Carbs 62g · Fat 18g',
-  },
-  'meal-logging': {
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
-    alt: 'A meal laid out to log',
-    chip: 'Today’s diary',
-    meta: 'Breakfast · Lunch · Dinner · Snacks',
-  },
-  'activity-tracker': {
-    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Person running outdoors',
-    chip: 'Afternoon walk',
-    meta: '45 min · Next to the meal log',
-  },
-  'water-intake-tracker': {
-    image: 'https://images.unsplash.com/photo-1548839140-29a749e1cf4d?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Glass of water',
-    chip: 'Water today',
-    meta: '1.8L of a 2.5L example',
-  },
-  'ai-nutrition-coach': {
-    image: 'https://images.unsplash.com/photo-1512621776951-a57141f2eefd?auto=format&fit=crop&w=1200&q=80',
-    alt: 'A colorful plate of food',
-    chip: 'Next meal',
-    meta: 'Smaller plate · Protein still on it',
-  },
-  'lose-weight': {
-    image: 'https://images.unsplash.com/photo-1517838277536-f5f99be501cd?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Person training to lose weight',
-    chip: 'Steady deficit',
-    meta: 'About 0.25–0.5 kg a week',
-  },
-  'gain-muscle': {
-    image: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Person strength training',
-    chip: 'Protein first',
-    meta: 'Each meal shows what is still missing',
-  },
-  'maintain-weight': {
-    image: 'https://images.unsplash.com/photo-1490645935967-10de6ba17061?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Balanced meal',
-    chip: 'Close to maintenance',
-    meta: 'Meals, activity, and water together',
-  },
-  'improve-nutrition': {
-    image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Colorful nutritious meal',
-    chip: 'Everyday plate',
-    meta: 'Calories and macros on homemade food',
-  },
-  'boost-energy': {
-    image: 'https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Person running outdoors',
-    chip: 'Afternoon check',
-    meta: 'Meals, movement, and water',
-  },
-  'gain-weight': {
-    image: 'https://images.unsplash.com/photo-1546069901-ba9599a7e63c?auto=format&fit=crop&w=1200&q=80',
-    alt: 'Hearty nutritious plate',
-    chip: 'A measured surplus',
-    meta: 'Add calories with meals you can see',
-  },
-};
-
-function Rings({ meters, play }) {
-  return (
-    <div className="grid grid-cols-3 gap-2">
-      {meters.map((ring) => (
-        <div key={ring.label} className="text-center">
-          <RingSweep
-            pct={ring.pct}
-            color={ring.color}
-            play={play}
-            className="mx-auto flex h-[68px] w-[68px] items-center justify-center rounded-full"
-          >
-            <div className="flex h-[52px] w-[52px] items-center justify-center rounded-full bg-white text-[11px] font-extrabold text-brand-deep">
-              {ring.value}
-            </div>
-          </RingSweep>
-          <p className="mt-1.5 text-[10px] font-bold uppercase tracking-wide text-slate-500">{ring.label}</p>
-          <p className="text-[10px] font-semibold text-brand-deep">{ring.figure}</p>
-        </div>
-      ))}
-    </div>
-  );
-}
-
 function HeroWave() {
   return (
     <div className="pointer-events-none absolute inset-x-0 bottom-0 text-brand-action" aria-hidden="true">
@@ -267,9 +175,9 @@ function MacroDonut({ center, unit, slices }) {
   const places = ['-left-1 -top-3', '-right-2 top-1', '-bottom-3 left-3'];
 
   return (
-    <div className="relative h-40 w-40">
+    <div className="relative h-36 w-36">
       <div className="h-full w-full rounded-full shadow-lg" style={{ background: `conic-gradient(${stops.join(', ')})` }} aria-hidden="true" />
-      <div className="absolute inset-[18px] flex flex-col items-center justify-center rounded-full bg-white text-center">
+      <div className="absolute inset-4 flex flex-col items-center justify-center rounded-full bg-white text-center">
         <span className="text-2xl font-extrabold leading-none text-slate-900">{center}</span>
         <span className="mt-1 text-[11px] font-bold text-slate-500">{unit}</span>
       </div>
@@ -291,8 +199,8 @@ function ProgressRing({ pct, center, unit, label, color }) {
   const circumference = 2 * Math.PI * radius;
   const dash = (Math.max(0, Math.min(100, pct)) / 100) * circumference;
   return (
-    <div className="w-40 text-center">
-      <div className="relative mx-auto h-40 w-40">
+    <div className="w-36 text-center">
+      <div className="relative mx-auto h-36 w-36">
         <svg viewBox="0 0 140 140" className="h-full w-full -rotate-90" aria-hidden="true">
           <circle cx="70" cy="70" r={radius} fill="white" stroke="#e2e8f0" strokeWidth="12" />
           <circle
@@ -311,7 +219,7 @@ function ProgressRing({ pct, center, unit, label, color }) {
           <span className="mt-1 text-[11px] font-bold text-slate-500">{unit}</span>
         </div>
       </div>
-      <p className="mt-2 text-xs font-extrabold text-brand-deep">{label}</p>
+      <p className="mx-auto mt-2 max-w-[9rem] text-center text-[11px] font-extrabold leading-tight text-brand-deep">{label}</p>
     </div>
   );
 }
@@ -364,15 +272,46 @@ function ScreenChart({ chart }) {
   return <ScaleBar {...chart} />;
 }
 
+function ScreenStage({ screen }) {
+  return (
+    <div className="relative mx-auto w-full max-w-[560px]">
+      <div className="mb-3 flex justify-center sm:hidden">
+        <ScreenChart chart={screen.chart} />
+      </div>
+      <div className="flex items-start justify-center">
+        <div className="relative z-20 mr-[-28px] mt-2 hidden shrink-0 sm:block">
+          <ScreenChart chart={screen.chart} />
+        </div>
+        <figure className="relative z-10 w-[210px] sm:mt-14 sm:w-[240px]">
+          <div className="rounded-[2.2rem] border-[8px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl">
+            <img
+              src={screen.src}
+              alt={screen.alt}
+              width="576"
+              height="1280"
+              loading="lazy"
+              decoding="async"
+              className="block w-full rounded-[1.6rem] bg-white"
+            />
+          </div>
+          <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{screen.caption}</figcaption>
+        </figure>
+        <p className="relative z-20 ml-3 mt-10 max-w-[132px] rounded-full bg-[#ff5a67] px-4 py-2 text-center text-sm font-extrabold leading-snug text-white shadow-lg sm:mt-40">
+          {screen.pill}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 export default function TopicPage({ topic }) {
-  const scene = scenes[topic.slug] || scenes['ai-meal-scan'];
   const meters = metersBySlug[topic.slug] || metersBySlug['ai-meal-scan'];
   const screen = screenBySlug[topic.slug];
   const play = useSweep(topic.slug);
 
   return (
     <main>
-      <section className="relative overflow-hidden pt-12 pb-28 sm:pt-16 sm:pb-36">
+      <section className="relative overflow-x-clip pt-12 pb-20 sm:pt-16 sm:pb-24">
         <div className="pointer-events-none absolute inset-0 bg-grid-pattern"></div>
         <div className="pointer-events-none absolute -left-16 top-8 h-56 w-56 rounded-full bg-brand-leaf/40 blur-3xl"></div>
         <HeroWave />
@@ -383,24 +322,10 @@ export default function TopicPage({ topic }) {
             </p>
             <h1 className="mt-4 text-4xl font-extrabold tracking-tight text-brand-deep sm:text-6xl">{topic.title}</h1>
             <p className="mt-5 text-base leading-relaxed text-slate-600 sm:text-xl">{topic.summary}</p>
-            <StoreBadges className="mt-8 justify-center lg:justify-start" />
+            <StoreBadges stacked className="mt-8 justify-center lg:justify-start" />
           </div>
 
-          <div className="relative min-h-[460px] overflow-hidden rounded-[32px] bg-brand-deep shadow-2xl">
-            <img src={scene.image} alt={scene.alt} className="absolute inset-0 h-full w-full object-cover" />
-            <div className="absolute inset-0 bg-gradient-to-t from-brand-deep via-brand-deep/20 to-transparent"></div>
-            <div className="absolute bottom-4 left-4 right-4 rounded-3xl bg-white/95 p-4 shadow-xl">
-              <div className="mb-3 flex items-start justify-between gap-3">
-                <div>
-                  <p className="text-[11px] font-bold uppercase tracking-widest text-slate-400">Sample day</p>
-                  <p className="font-extrabold text-brand-deep">{scene.chip}</p>
-                  <p className="mt-0.5 text-xs font-semibold text-slate-500">{scene.meta}</p>
-                </div>
-              </div>
-              <Rings meters={meters} play={play} />
-              <p className="mt-3 rounded-2xl bg-brand-cloud px-3 py-2 text-sm font-semibold text-brand-deep">{topic.kicker}</p>
-            </div>
-          </div>
+          {screen ? <ScreenStage screen={screen} /> : null}
         </div>
       </section>
 
@@ -426,39 +351,6 @@ export default function TopicPage({ topic }) {
           </div>
         </div>
       </section>
-
-      {screen ? (
-        <section id="in-the-app" className="scroll-mt-24 bg-brand-cloud py-14 sm:py-16">
-          <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
-            <div className="text-center lg:text-left">
-              <p className="text-xs font-bold uppercase tracking-widest text-brand-action">In the app</p>
-              <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">See it on this screen</h2>
-              <p className="mt-3 text-slate-600">Screens from Calviora for {topic.title}.</p>
-              <StoreBadges className="mt-6 justify-center lg:justify-start" />
-            </div>
-            <div className="relative mx-auto w-full max-w-md">
-              <div className="relative z-20 mb-[-42px] ml-1 w-fit sm:ml-4">
-                <ScreenChart chart={screen.chart} />
-              </div>
-              <p className="absolute right-0 top-6 z-20 max-w-[150px] rounded-full bg-white px-3 py-2 text-center text-xs font-extrabold text-brand-deep shadow-lg">
-                {screen.pill}
-              </p>
-              <figure>
-                <img
-                  src={screen.src}
-                  alt={screen.alt}
-                  width="576"
-                  height="1280"
-                  loading="lazy"
-                  decoding="async"
-                  className="relative z-10 mx-auto w-[230px] rounded-[28px] shadow-2xl sm:w-[250px]"
-                />
-                <figcaption className="mt-3 text-center text-sm font-extrabold text-brand-deep">{screen.caption}</figcaption>
-              </figure>
-            </div>
-          </div>
-        </section>
-      ) : null}
 
       <section id="guide" className="scroll-mt-24 py-14 sm:py-16">
         <div className="mx-auto max-w-3xl space-y-4 px-4 sm:px-6">

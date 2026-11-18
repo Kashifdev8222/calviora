@@ -33,7 +33,7 @@ function PhoneMock() {
         width="512"
         height="1024"
         decoding="async"
-        className="relative z-10 h-auto w-[250px] min-[420px]:w-72 sm:w-80 drop-shadow-2xl"
+        className="relative z-10 h-auto w-[210px] min-[420px]:w-[240px] sm:w-[270px] drop-shadow-2xl"
       />
 
       <div className="absolute top-0 right-0 xl:-top-6 xl:-right-4 bg-white p-3 sm:p-4 rounded-2xl shadow-xl border border-slate-100 flex items-center gap-3 z-20 max-w-[168px] sm:max-w-none">
