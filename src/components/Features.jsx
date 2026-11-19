@@ -129,7 +129,7 @@ export default function Features() {
                   {showPhoto ? (
                     <img
                       src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=60"
-                      alt="Chicken rice bowl"
+                      alt="Chicken biryani on a plate"
                       width="800"
                       height="600"
                       decoding="async"
