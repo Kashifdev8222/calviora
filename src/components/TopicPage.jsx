@@ -9,47 +9,25 @@ import { onSamePageClick } from '../lib/navigate.js';
 
 const washes = ['from-emerald-100 to-white', 'from-amber-100 to-white', 'from-sky-100 to-white'];
 
-const dayLog = {
-  src: '/screenshots/daily-progress.jpeg',
-  alt: 'Calviora daily progress showing 110 of 1,351 kcal, with carbs, protein, and fat',
-  caption: "Today's log",
-  pill: '110 / 1,351 kcal',
-  chart: {
-    kind: 'donut',
-    center: '110',
-    unit: 'kcal',
-    slices: [
-      { label: 'Carbs 22g', share: 88, color: '#8b5cf6' },
-      { label: 'Protein 4g', share: 16, color: '#34d399' },
-      { label: 'Fat 1g', share: 9, color: '#fb923c' },
-    ],
-  },
+const goalStep = {
+  kind: 'ring',
+  pct: 60,
+  center: '6',
+  unit: 'of 10',
+  label: 'Step 6 of 10',
+  color: '#087C50',
 };
 
-const planChart = {
-  src: '/screenshots/personal-plan.jpeg',
-  alt: 'Calviora personal plan with 1,351 kcal, 84g protein, 169g carbs, and 38g fat',
-  caption: 'Your plan',
-  pill: '84g · 169g · 38g',
-  chart: {
-    kind: 'donut',
-    center: '1,351',
-    unit: 'kcal',
-    slices: [
-      { label: 'Protein 84g', share: 336, color: '#ef4444' },
-      { label: 'Carbs 169g', share: 676, color: '#f59e0b' },
-      { label: 'Fat 38g', share: 342, color: '#3b82f6' },
-    ],
-  },
-};
-
-const waterChart = {
-  src: '/screenshots/hydration.jpeg',
-  alt: 'Calviora hydration screen with 250 ml logged, 9 percent of 2,930 ml',
-  caption: 'Hydration',
-  pill: '9% of daily goal',
-  chart: { kind: 'ring', pct: 9, center: '250', unit: 'ml', label: '250 / 2,930 ml', color: '#0284c7' },
-};
+function goalPhone(file, title) {
+  return {
+    src: `/screenshots/${file}`,
+    alt: `Calviora goal screen with ${title} selected`,
+    caption: title,
+    pill: title,
+    framed: false,
+    chart: goalStep,
+  };
+}
 
 const screenBySlug = {
   'ai-meal-scan': {
@@ -119,24 +97,12 @@ const screenBySlug = {
       ],
     },
   },
-  'lose-weight': { ...planChart, pill: 'Lose Weight' },
-  'gain-muscle': { ...dayLog, pill: 'Gain Muscle', caption: 'Protein on the day' },
-  'maintain-weight': {
-    src: '/screenshots/bmi-summary.jpeg',
-    alt: 'Calviora summary with a BMI of 20.8, height 170 cm, and weight 60 kg',
-    caption: 'Your summary',
-    pill: 'Normal',
-    chart: { kind: 'scale', value: 20.8, min: 15, max: 40, center: '20.8', unit: 'BMI', ends: ['15', '40'], note: '170 cm · 60.0 kg' },
-  },
-  'improve-nutrition': { ...dayLog, pill: 'Daily macros', caption: 'Macros on the plate' },
-  'boost-energy': { ...waterChart, pill: 'Hydration' },
-  'gain-weight': {
-    src: '/screenshots/goal-gain-weight.jpeg',
-    alt: 'Calviora target weight set to 65 kg, 5 kg to gain',
-    caption: 'Target weight',
-    pill: '5 kg to gain',
-    chart: { kind: 'scale', value: 65, min: 60, max: 70, center: '65', unit: 'kg', ends: ['60', '70'], note: '5 kg to gain' },
-  },
+  'lose-weight': goalPhone('phone-lose-weight.png', 'Lose Weight'),
+  'gain-muscle': goalPhone('phone-gain-muscle.png', 'Gain Muscle'),
+  'maintain-weight': goalPhone('phone-maintain-weight.png', 'Maintain Weight'),
+  'improve-nutrition': goalPhone('phone-improve-nutrition.png', 'Improve Nutrition'),
+  'boost-energy': goalPhone('phone-boost-energy.png', 'Boost Energy'),
+  'gain-weight': goalPhone('phone-gain-weight.png', 'Gain Weight'),
 };
 
 const metersBySlug = {
