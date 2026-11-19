@@ -1,10 +1,31 @@
 'use client';
 
-import { ArrowRight } from 'lucide-react';
+import { ArrowRight, Camera, Check, Droplets, Footprints, MessageCircle, Utensils } from 'lucide-react';
 import Download from './Download.jsx';
 import StoreBadges from './StoreBadges.jsx';
 import Questions from './Questions.jsx';
+import { featurePages, featurePath, goalPages } from '../data/topics.js';
 import { onSamePageClick } from '../lib/navigate.js';
+
+const featureIcons = {
+  'ai-meal-scan': Camera,
+  'meal-logging': Utensils,
+  'activity-tracker': Footprints,
+  'water-intake-tracker': Droplets,
+  'ai-nutrition-coach': MessageCircle,
+};
+
+function relatedNote(href) {
+  const slug = String(href).split('/').filter(Boolean).pop();
+  const match = [...featurePages, ...goalPages].find((item) => item.slug === slug);
+  return match?.kicker || '';
+}
+
+function leadAndRest(paragraph) {
+  const split = paragraph.indexOf('. ');
+  if (split < 0) return { lead: paragraph, rest: '' };
+  return { lead: paragraph.slice(0, split + 1), rest: paragraph.slice(split + 2) };
+}
 
 const goalStep = {
   kind: 'ring',
@@ -283,13 +304,14 @@ export default function TopicPage({ topic }) {
         </div>
       </section>
 
-      <section className="bg-white py-16 sm:py-20">
+      <section className="bg-white py-16 sm:py-24">
         <div className="mx-auto max-w-6xl px-4 sm:px-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">{topic.group}</p>
-          <h2 className="mt-2 max-w-2xl text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl">{topic.kicker}</h2>
-          <div className="mt-10 grid gap-5 md:grid-cols-3">
+          <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight text-brand-deep sm:text-5xl">
+            {topic.kicker}
+          </h2>
+          <div className="mt-12 grid gap-5 md:grid-cols-3">
             {topic.points.map((point) => (
-              <article key={point.title} className="rounded-3xl border border-slate-200 bg-brand-cloud p-6 sm:p-8">
+              <article key={point.title} className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
                 <h3 className="text-xl font-extrabold text-brand-deep">{point.title}</h3>
                 <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">{point.text}</p>
               </article>
@@ -298,45 +320,108 @@ export default function TopicPage({ topic }) {
         </div>
       </section>
 
-      {topic.sections.map((section, index) => (
-        <section key={section.heading} className={index % 2 === 0 ? 'bg-brand-cloud' : 'bg-white'}>
-          <div className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12 lg:gap-16">
-            <h2 className="text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl lg:col-span-5">{section.heading}</h2>
-            <div className="space-y-4 lg:col-span-7">
-              {section.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="text-base leading-relaxed text-slate-600 sm:text-lg">
-                  {paragraph}
-                </p>
-              ))}
+      {topic.sections[0] ? (
+        <section className="bg-brand-cloud py-16 sm:py-24">
+          <div className="mx-auto grid max-w-6xl items-center gap-10 px-4 sm:px-6 lg:grid-cols-2">
+            <div>
+              <h2 className="text-3xl font-extrabold tracking-tight text-brand-deep sm:text-5xl">{topic.sections[0].heading}</h2>
+              <div className="mt-6 space-y-4">
+                {topic.sections[0].paragraphs.map((paragraph) => (
+                  <p key={paragraph} className="text-base leading-relaxed text-slate-600 sm:text-lg">
+                    {paragraph}
+                  </p>
+                ))}
+              </div>
+            </div>
+            {screen ? (
+              <img
+                src={screen.src}
+                alt={screen.alt}
+                width="768"
+                height="1024"
+                loading="lazy"
+                decoding="async"
+                className="mx-auto h-auto w-[220px] drop-shadow-2xl sm:w-[280px]"
+              />
+            ) : null}
+          </div>
+        </section>
+      ) : null}
+
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="mx-auto max-w-3xl text-center text-3xl font-extrabold tracking-tight text-slate-950 sm:text-5xl">
+            How Calviora helps you <span className="text-brand-action">{topic.title}</span>
+          </h2>
+          <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
+            {featurePages.map((feature) => {
+              const Icon = featureIcons[feature.slug] || Camera;
+              return (
+                <article key={feature.slug} className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 sm:p-7">
+                  <Icon className="h-6 w-6 text-brand-action" aria-hidden="true" />
+                  <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{feature.title}</h3>
+                  <p className="mt-2 flex-1 text-sm leading-relaxed text-slate-600">{feature.points[0].text}</p>
+                  <a href={featurePath(feature.slug)} onClick={onSamePageClick} className="mt-5 text-sm font-extrabold text-brand-action">
+                    Learn more
+                  </a>
+                </article>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {topic.sections[1] ? (
+        <section className="bg-white pb-16 sm:pb-24">
+          <div className="mx-auto max-w-3xl px-4 sm:px-6">
+            <h2 className="text-3xl font-extrabold tracking-tight text-brand-deep sm:text-5xl">{topic.sections[1].heading}</h2>
+            <div className="mt-8">
+              {topic.sections[1].paragraphs.map((paragraph) => {
+                const { lead, rest } = leadAndRest(paragraph);
+                return (
+                  <div key={paragraph} className="flex gap-4 border-t border-slate-200 py-6">
+                    <span className="mt-0.5 flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-brand-action text-white">
+                      <Check className="h-4 w-4" aria-hidden="true" />
+                    </span>
+                    <div>
+                      <h3 className="text-lg font-extrabold text-brand-deep">{lead}</h3>
+                      {rest ? <p className="mt-1 leading-relaxed text-slate-600">{rest}</p> : null}
+                    </div>
+                  </div>
+                );
+              })}
             </div>
           </div>
         </section>
-      ))}
+      ) : null}
 
-      <section id="questions" className="scroll-mt-24 bg-brand-cloud py-16 sm:py-20">
-        <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-start">
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl">Questions</h2>
-            <div className="mt-6 rounded-3xl border border-slate-200 bg-white px-5 sm:px-6">
-              <Questions items={topic.faqs} />
-            </div>
+      <section id="questions" className="scroll-mt-24 bg-brand-cloud py-16 sm:py-24">
+        <div className="mx-auto max-w-3xl px-4 sm:px-6">
+          <h2 className="text-center text-3xl font-extrabold tracking-tight text-brand-deep sm:text-5xl">Questions</h2>
+          <div className="mt-8 rounded-3xl bg-white px-5 sm:px-8">
+            <Questions items={topic.faqs} />
           </div>
-          <div>
-            <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Related</p>
-            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl">Keep going</h2>
-            <div className="mt-6 grid gap-3">
-              {topic.related.map((item) => (
-                <a
-                  key={item.href}
-                  href={item.href}
-                  onClick={onSamePageClick}
-                  className="flex items-center justify-between gap-3 rounded-3xl border border-slate-200 bg-white px-5 py-5 text-sm font-extrabold text-brand-deep transition hover:-translate-y-0.5 hover:border-brand-action hover:shadow-lg"
-                >
-                  {item.label} <ArrowRight className="h-4 w-4 shrink-0 text-brand-action" />
-                </a>
-              ))}
-            </div>
+        </div>
+      </section>
+
+      <section className="bg-white py-16 sm:py-24">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <h2 className="text-center text-3xl font-extrabold tracking-tight text-brand-deep sm:text-5xl">Keep going</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {topic.related.map((item) => (
+              <a
+                key={item.href}
+                href={item.href}
+                onClick={onSamePageClick}
+                className="flex flex-col rounded-3xl border border-slate-200 bg-white p-6 transition hover:-translate-y-0.5 hover:border-brand-action hover:shadow-lg"
+              >
+                <span className="text-lg font-extrabold text-brand-deep">{item.label}</span>
+                {relatedNote(item.href) ? <span className="mt-2 text-sm leading-relaxed text-slate-600">{relatedNote(item.href)}</span> : null}
+                <span className="mt-5 inline-flex items-center gap-1 text-sm font-extrabold text-brand-action">
+                  Learn more <ArrowRight className="h-4 w-4" />
+                </span>
+              </a>
+            ))}
           </div>
         </div>
       </section>
