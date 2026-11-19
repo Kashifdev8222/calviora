@@ -4,10 +4,7 @@ import { ArrowRight } from 'lucide-react';
 import Download from './Download.jsx';
 import StoreBadges from './StoreBadges.jsx';
 import Questions from './Questions.jsx';
-import { FillBar, useSweep } from './RingSweep.jsx';
 import { onSamePageClick } from '../lib/navigate.js';
-
-const washes = ['from-emerald-100 to-white', 'from-amber-100 to-white', 'from-sky-100 to-white'];
 
 const goalStep = {
   kind: 'ring',
@@ -103,64 +100,6 @@ const screenBySlug = {
   'improve-nutrition': goalPhone('phone-improve-nutrition.png', 'Improve Nutrition'),
   'boost-energy': goalPhone('phone-boost-energy.png', 'Boost Energy'),
   'gain-weight': goalPhone('phone-gain-weight.png', 'Gain Weight'),
-};
-
-const metersBySlug = {
-  'ai-meal-scan': [
-    { label: 'Protein', value: '21%', figure: '28g', pct: 21, color: '#087C50' },
-    { label: 'Carbs', value: '46%', figure: '62g', pct: 46, color: '#f59e0b' },
-    { label: 'Fat', value: '30%', figure: '18g', pct: 30, color: '#e11d48' },
-  ],
-  'meal-logging': [
-    { label: 'Calories', value: '85%', figure: '1,860 kcal', pct: 85, color: '#087C50' },
-    { label: 'Protein', value: '77%', figure: '92g', pct: 77, color: '#f59e0b' },
-    { label: 'Water', value: '64%', figure: '1.6L', pct: 64, color: '#0284c7' },
-  ],
-  'activity-tracker': [
-    { label: 'Steps', value: '84%', figure: '8,400', pct: 84, color: '#087C50' },
-    { label: 'Workout', value: '60%', figure: '45 min', pct: 60, color: '#f59e0b' },
-    { label: 'Meals', value: '70%', figure: '3 logged', pct: 70, color: '#0284c7' },
-  ],
-  'water-intake-tracker': [
-    { label: 'Water', value: '72%', figure: '1.8L', pct: 72, color: '#0284c7' },
-    { label: 'Meals', value: '58%', figure: '2 logged', pct: 58, color: '#087C50' },
-    { label: 'Steps', value: '40%', figure: '4,200', pct: 40, color: '#f59e0b' },
-  ],
-  'ai-nutrition-coach': [
-    { label: 'Left', value: '46%', figure: '920 kcal', pct: 46, color: '#087C50' },
-    { label: 'Protein', value: '71%', figure: '86g', pct: 71, color: '#f59e0b' },
-    { label: 'Water', value: '55%', figure: '1.4L', pct: 55, color: '#0284c7' },
-  ],
-  'lose-weight': [
-    { label: 'Intake', value: '78%', figure: '1,720 kcal', pct: 78, color: '#087C50' },
-    { label: 'Protein', value: '88%', figure: '118g', pct: 88, color: '#f59e0b' },
-    { label: 'Water', value: '63%', figure: '1.6L', pct: 63, color: '#0284c7' },
-  ],
-  'gain-muscle': [
-    { label: 'Protein', value: '94%', figure: '156g', pct: 94, color: '#f59e0b' },
-    { label: 'Calories', value: '91%', figure: '2,640 kcal', pct: 91, color: '#087C50' },
-    { label: 'Water', value: '68%', figure: '2.1L', pct: 68, color: '#0284c7' },
-  ],
-  'maintain-weight': [
-    { label: 'Calories', value: '99%', figure: '2,180 kcal', pct: 99, color: '#087C50' },
-    { label: 'Protein', value: '80%', figure: '110g', pct: 80, color: '#f59e0b' },
-    { label: 'Water', value: '74%', figure: '1.9L', pct: 74, color: '#0284c7' },
-  ],
-  'improve-nutrition': [
-    { label: 'Plants', value: '86%', figure: '5 colors', pct: 86, color: '#087C50' },
-    { label: 'Protein', value: '69%', figure: '98g', pct: 69, color: '#f59e0b' },
-    { label: 'Calories', value: '73%', figure: '1,940 kcal', pct: 73, color: '#0284c7' },
-  ],
-  'boost-energy': [
-    { label: 'Water', value: '92%', figure: '2.3L', pct: 92, color: '#0284c7' },
-    { label: 'Meals', value: '61%', figure: '1,540 kcal', pct: 61, color: '#087C50' },
-    { label: 'Move', value: '48%', figure: '35 min', pct: 48, color: '#f59e0b' },
-  ],
-  'gain-weight': [
-    { label: 'Calories', value: '96%', figure: '2,680 kcal', pct: 96, color: '#087C50' },
-    { label: 'Protein', value: '82%', figure: '140g', pct: 82, color: '#f59e0b' },
-    { label: 'Meals', value: '90%', figure: '4 logged', pct: 90, color: '#0284c7' },
-  ],
 };
 
 function HeroWave() {
@@ -322,9 +261,7 @@ function ScreenStage({ screen }) {
 }
 
 export default function TopicPage({ topic }) {
-  const meters = metersBySlug[topic.slug] || metersBySlug['ai-meal-scan'];
   const screen = screenBySlug[topic.slug];
-  const play = useSweep(topic.slug);
 
   return (
     <main>
@@ -346,72 +283,60 @@ export default function TopicPage({ topic }) {
         </div>
       </section>
 
-      <section id="highlights" className="scroll-mt-24 bg-white py-14 sm:py-16">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Highlights</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">What you get</h2>
-          <div className="mt-6 grid gap-4 sm:grid-cols-3">
-            {topic.points.map((point, index) => (
-              <article key={point.title} className={`rounded-3xl border border-slate-200 bg-gradient-to-b p-6 ${washes[index % washes.length]}`}>
-                <div className="flex items-center justify-between">
-                  <div className="flex h-9 w-9 items-center justify-center rounded-full bg-brand-deep font-extrabold text-brand-leaf">
-                    {index + 1}
-                  </div>
-                </div>
-                <div className="mt-4 h-1.5 overflow-hidden rounded-full bg-white">
-                  <FillBar pct={meters[index % meters.length].pct} color={meters[index % meters.length].color} play={play} />
-                </div>
-                <h3 className="mt-4 text-lg font-extrabold text-brand-deep">{point.title}</h3>
-                <p className="mt-2 text-sm leading-relaxed text-slate-600">{point.text}</p>
+      <section className="bg-white py-16 sm:py-20">
+        <div className="mx-auto max-w-6xl px-4 sm:px-6">
+          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">{topic.group}</p>
+          <h2 className="mt-2 max-w-2xl text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl">{topic.kicker}</h2>
+          <div className="mt-10 grid gap-5 md:grid-cols-3">
+            {topic.points.map((point) => (
+              <article key={point.title} className="rounded-3xl border border-slate-200 bg-brand-cloud p-6 sm:p-8">
+                <h3 className="text-xl font-extrabold text-brand-deep">{point.title}</h3>
+                <p className="mt-3 text-sm leading-relaxed text-slate-600 sm:text-base">{point.text}</p>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="guide" className="scroll-mt-24 py-14 sm:py-16">
-        <div className="mx-auto max-w-3xl space-y-4 px-4 sm:px-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Guide</p>
-          <h2 className="text-3xl font-extrabold text-brand-deep sm:text-4xl">How to use it</h2>
-          {topic.sections.map((section, index) => (
-            <article key={section.heading} className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8">
-              <p className="text-xs font-extrabold uppercase tracking-widest text-brand-action">Step {index + 1}</p>
-              <h3 className="mt-2 text-2xl font-extrabold text-brand-deep">{section.heading}</h3>
+      {topic.sections.map((section, index) => (
+        <section key={section.heading} className={index % 2 === 0 ? 'bg-brand-cloud' : 'bg-white'}>
+          <div className="mx-auto grid max-w-6xl items-start gap-6 px-4 py-16 sm:px-6 sm:py-20 lg:grid-cols-12 lg:gap-16">
+            <h2 className="text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl lg:col-span-5">{section.heading}</h2>
+            <div className="space-y-4 lg:col-span-7">
               {section.paragraphs.map((paragraph) => (
-                <p key={paragraph} className="mt-3 leading-relaxed text-slate-600">
+                <p key={paragraph} className="text-base leading-relaxed text-slate-600 sm:text-lg">
                   {paragraph}
                 </p>
               ))}
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="questions" className="scroll-mt-24 bg-white py-14">
-        <div className="mx-auto max-w-3xl px-4 sm:px-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">Questions</h2>
-          <div className="mt-4 rounded-3xl border border-slate-200 bg-brand-cloud px-5 sm:px-6">
-            <Questions items={topic.faqs} />
+            </div>
           </div>
-        </div>
-      </section>
+        </section>
+      ))}
 
-      <section id="related" className="scroll-mt-24 py-14">
-        <div className="mx-auto max-w-5xl px-4 sm:px-6">
-          <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Related</p>
-          <h2 className="mt-2 text-3xl font-extrabold text-brand-deep sm:text-4xl">Keep going</h2>
-          <div className="mt-6 grid gap-3 sm:grid-cols-3">
-            {topic.related.map((item) => (
-              <a
-                key={item.href}
-                href={item.href}
-                onClick={onSamePageClick}
-                className="flex items-center justify-between gap-3 rounded-3xl border border-slate-200 bg-white px-5 py-5 text-sm font-extrabold text-brand-deep transition hover:-translate-y-1 hover:border-brand-action hover:shadow-lg"
-              >
-                {item.label} <ArrowRight className="h-4 w-4 shrink-0 text-brand-action" />
-              </a>
-            ))}
+      <section id="questions" className="scroll-mt-24 bg-brand-cloud py-16 sm:py-20">
+        <div className="mx-auto grid max-w-6xl gap-12 px-4 sm:px-6 lg:grid-cols-[1.4fr_0.8fr] lg:items-start">
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-action">FAQ</p>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl">Questions</h2>
+            <div className="mt-6 rounded-3xl border border-slate-200 bg-white px-5 sm:px-6">
+              <Questions items={topic.faqs} />
+            </div>
+          </div>
+          <div>
+            <p className="text-xs font-bold uppercase tracking-widest text-brand-action">Related</p>
+            <h2 className="mt-2 text-3xl font-extrabold tracking-tight text-brand-deep sm:text-4xl">Keep going</h2>
+            <div className="mt-6 grid gap-3">
+              {topic.related.map((item) => (
+                <a
+                  key={item.href}
+                  href={item.href}
+                  onClick={onSamePageClick}
+                  className="flex items-center justify-between gap-3 rounded-3xl border border-slate-200 bg-white px-5 py-5 text-sm font-extrabold text-brand-deep transition hover:-translate-y-0.5 hover:border-brand-action hover:shadow-lg"
+                >
+                  {item.label} <ArrowRight className="h-4 w-4 shrink-0 text-brand-action" />
+                </a>
+              ))}
+            </div>
           </div>
         </div>
       </section>
