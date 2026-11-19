@@ -21,6 +21,54 @@ function relatedNote(href) {
   return match?.kicker || '';
 }
 
+const asideBySlug = {
+  'ai-meal-scan': {
+    src: '/screenshots/ai-food-scan.jpeg',
+    alt: 'Calviora quick add with AI Food Scan',
+  },
+  'meal-logging': {
+    src: '/screenshots/meal-times.jpeg',
+    alt: 'Calviora meal times for breakfast, lunch, and dinner',
+  },
+  'activity-tracker': {
+    src: '/screenshots/activities.jpeg',
+    alt: 'Calviora activities list with calories burned per minute',
+  },
+  'water-intake-tracker': {
+    src: '/screenshots/hydration.jpeg',
+    alt: 'Calviora hydration screen with 250 ml logged',
+  },
+  'ai-nutrition-coach': {
+    src: '/screenshots/phone-history.png',
+    alt: 'Calviora History screen with today\'s meals, calories, and macros',
+    framed: false,
+  },
+  'lose-weight': {
+    src: '/screenshots/personal-plan.jpeg',
+    alt: 'Calviora personal plan set to Lose Weight, 1,351 kcal a day',
+  },
+  'gain-muscle': {
+    src: '/screenshots/goals.jpeg',
+    alt: 'Calviora goals list with Gain Muscle',
+  },
+  'maintain-weight': {
+    src: '/screenshots/bmi-summary.jpeg',
+    alt: 'Calviora BMI summary at 20.8, marked Normal',
+  },
+  'improve-nutrition': {
+    src: '/screenshots/diet-type.jpeg',
+    alt: 'Calviora diet choices with Balanced Diet selected',
+  },
+  'boost-energy': {
+    src: '/screenshots/daily-progress.jpeg',
+    alt: 'Calviora daily progress with calories left and a water note',
+  },
+  'gain-weight': {
+    src: '/screenshots/goal-gain-weight.jpeg',
+    alt: 'Calviora target weight set to 65 kg, 5 kg to gain',
+  },
+};
+
 function leadAndRest(paragraph) {
   const split = paragraph.indexOf('. ');
   if (split < 0) return { lead: paragraph, rest: '' };
@@ -333,16 +381,30 @@ export default function TopicPage({ topic }) {
                 ))}
               </div>
             </div>
-            {screen ? (
-              <img
-                src={screen.src}
-                alt={screen.alt}
-                width="768"
-                height="1024"
-                loading="lazy"
-                decoding="async"
-                className="mx-auto h-auto w-[220px] drop-shadow-2xl sm:w-[280px]"
-              />
+            {asideBySlug[topic.slug] ? (
+              asideBySlug[topic.slug].framed === false ? (
+                <img
+                  src={asideBySlug[topic.slug].src}
+                  alt={asideBySlug[topic.slug].alt}
+                  width="768"
+                  height="1024"
+                  loading="lazy"
+                  decoding="async"
+                  className="mx-auto h-auto w-[220px] drop-shadow-2xl sm:w-[280px]"
+                />
+              ) : (
+                <div className="mx-auto w-[220px] rounded-[2rem] border-[8px] border-[#1c1c1e] bg-[#1c1c1e] shadow-2xl sm:w-[260px]">
+                  <img
+                    src={asideBySlug[topic.slug].src}
+                    alt={asideBySlug[topic.slug].alt}
+                    width="576"
+                    height="1280"
+                    loading="lazy"
+                    decoding="async"
+                    className="block w-full rounded-[1.45rem] bg-white"
+                  />
+                </div>
+              )
             ) : null}
           </div>
         </section>
