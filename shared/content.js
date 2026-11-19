@@ -66,9 +66,9 @@ export const faqs = [
   {
     id: 'desi-dishes',
     order: 2,
-    question: 'Will It Understand Biryani, Karahi And Other Desi Dishes?',
+    question: 'Does It Work With Food From My Country?',
     answer:
-      'Calviora is built to recognize many common South Asian dishes, along with everyday foods from other cuisines. If an estimate looks off, adjust the portion.',
+      'Calviora is built to recognize everyday foods from many cuisines, including home cooked meals and restaurant dishes. If an estimate looks off, adjust the portion.',
   },
   {
     id: 'pay',

@@ -129,7 +129,7 @@ export default function Features() {
                   {showPhoto ? (
                     <img
                       src="https://images.unsplash.com/photo-1563379091339-03b21ab4a4f8?auto=format&fit=crop&w=800&q=60"
-                      alt="Chicken biryani on a plate"
+                      alt="Chicken rice bowl"
                       width="800"
                       height="600"
                       decoding="async"
@@ -138,7 +138,7 @@ export default function Features() {
                   ) : null}
                   <div className="absolute inset-0 bg-gradient-to-t from-brand-deep/85 via-brand-deep/10 to-transparent"></div>
                   <div className="absolute bottom-5 left-5 right-5 rounded-2xl bg-white/95 p-4 shadow-xl">
-                    <p className="text-sm font-extrabold text-brand-deep">Chicken Biryani</p>
+                    <p className="text-sm font-extrabold text-brand-deep">Chicken Rice Bowl</p>
                     <p className="mt-1 text-xs font-semibold text-slate-500">540 kcal · Protein 28g · Carbs 62g · Fat 18g</p>
                     <div className="mt-3 h-2 overflow-hidden rounded-full bg-slate-100">
                       <FillBar pct={72} color="#087C50" play={play} />

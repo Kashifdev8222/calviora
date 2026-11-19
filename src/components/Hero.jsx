@@ -83,14 +83,14 @@ export default function Hero() {
             </h1>
 
             <p className="mt-6 text-lg sm:text-xl text-slate-600 max-w-2xl mx-auto xl:mx-0 font-medium">
-              Calviora is an AI calorie counter app that turns a photo of your meal, from biryani to avocado toast, into estimated calories and macros in seconds. Start free with 3 AI scans a day.
+              Calviora is an AI calorie counter app that turns a photo of your meal, from a pasta bowl to avocado toast, into estimated calories and macros in seconds. Start free with 3 AI scans a day.
             </p>
 
             <StoreBadges className="mt-8 justify-center xl:justify-start" />
             <p className="mt-4 text-sm font-medium text-slate-500">Try the free plan first. Upgrade only if you need more scans.</p>
 
             <div className="mt-8 flex flex-wrap items-center justify-center xl:justify-start gap-2">
-              {['3 Free Scans Every Day', 'South Asian Dishes Recognized', 'Free Plan Available'].map((label) => (
+              {['3 Free Scans Every Day', 'Meals From Many Cuisines', 'Free Plan Available'].map((label) => (
                 <div key={label} className="inline-flex items-center rounded-full border border-slate-200 bg-white px-3 py-1.5 shadow-sm">
                   <span className="text-xs font-bold text-brand-deep sm:text-sm">{label}</span>
                 </div>

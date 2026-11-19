@@ -37,7 +37,7 @@ const goals = [
   {
     slug: 'improve-nutrition',
     title: 'Improve Nutrition',
-    copy: "See what's really in your usual meals, from home cooked curry to restaurant favorites.",
+    copy: "See what's really in your usual meals, from home cooked dinners to restaurant favorites.",
     image: 'https://images.unsplash.com/photo-1540420773420-3366772f4999?auto=format&fit=crop&w=500&q=80',
     alt: 'Colorful nutritious meal',
     iconWrap: 'bg-emerald-100 text-emerald-600',

@@ -54,8 +54,8 @@ const steps = [
 const audiences = [
   {
     title: 'Home Cooked Meals',
-    text: "Rice, roti, dal and curry are everyday food for many of us. Calviora recognizes South Asian dishes, and you can correct the portion if it's off.",
-    points: ['South Asian dishes recognized', 'Correct the portion if it is off'],
+    text: "Pasta, stir fry, curry and a Sunday roast are everyday food for many of us. Calviora works with home cooked dishes, and you can correct the portion if it's off.",
+    points: ['Home cooked dishes supported', 'Correct the portion if it is off'],
     Icon: Camera,
     iconWrap: 'bg-emerald-100 text-emerald-700',
   },
